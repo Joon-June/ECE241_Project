@@ -46,3 +46,11 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name VERILOG_FILE data_towerplacer.v
+set_global_assignment -name VERILOG_FILE control_towerplacer.v
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name VERILOG_FILE ECE241Project.v
+set_global_assignment -name QIP_FILE ram19200x9.qip
+set_global_assignment -name QIP_FILE ram400x9_square_grid_selection.qip
+set_global_assignment -name QIP_FILE ram400x9_tower.qip

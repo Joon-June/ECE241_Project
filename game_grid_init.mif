@@ -1,0 +1,13 @@
+Depth = 6;
+Width = 8;
+Address_radix = dec;
+Data_radix = bin;
+Content
+BEGIN
+	 0:	0 0 0 0 0 0 0 0;
+	 8:	0 0 0 0 0 0 0 0;
+	16:	0 0 0 0 0 0 0 0;
+	24:	0 0 0 0 0 0 0 0;
+	32:	0 0 0 0 0 0 0 0;
+	40:	0 0 0 0 0 0 0 0;
+END;
