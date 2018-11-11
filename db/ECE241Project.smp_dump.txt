@@ -1,0 +1,14 @@
+
+State Machine - |ECE241Project|control:c0|current_state
+Name current_state.ERASE_SQUARE_TOWER current_state.ERASE_SQUARE_DOWN current_state.ERASE_SQUARE_RIGHT current_state.DRAW_TOWER current_state.MOVE_RIGHT_WAIT current_state.MOVE_RIGHT current_state.MOVE_DOWN_WAIT current_state.MOVE_DOWN current_state.WAIT current_state.DRAW_SQUARE current_state.TOP_LEFT 
+current_state.TOP_LEFT 0 0 0 0 0 0 0 0 0 0 0 
+current_state.DRAW_SQUARE 0 0 0 0 0 0 0 0 0 1 1 
+current_state.WAIT 0 0 0 0 0 0 0 0 1 0 1 
+current_state.MOVE_DOWN 0 0 0 0 0 0 0 1 0 0 1 
+current_state.MOVE_DOWN_WAIT 0 0 0 0 0 0 1 0 0 0 1 
+current_state.MOVE_RIGHT 0 0 0 0 0 1 0 0 0 0 1 
+current_state.MOVE_RIGHT_WAIT 0 0 0 0 1 0 0 0 0 0 1 
+current_state.DRAW_TOWER 0 0 0 1 0 0 0 0 0 0 1 
+current_state.ERASE_SQUARE_RIGHT 0 0 1 0 0 0 0 0 0 0 1 
+current_state.ERASE_SQUARE_DOWN 0 1 0 0 0 0 0 0 0 0 1 
+current_state.ERASE_SQUARE_TOWER 1 0 0 0 0 0 0 0 0 0 1 

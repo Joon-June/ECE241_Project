@@ -32,8 +32,8 @@ module control(
                MOVE_RIGHT_WAIT    = 5'd6,
                DRAW_TOWER   	  = 5'd7,
                ERASE_SQUARE_RIGHT = 5'd8,
-               ERASE_SQUARE_DOWN  = 5'10,
-               ERASE_SQUARE_TOWER = 5'11;
+               ERASE_SQUARE_DOWN  = 5'd10,
+               ERASE_SQUARE_TOWER = 5'd11;
 	
    always @ (*)
    begin: state_table 
@@ -51,11 +51,11 @@ module control(
                     else if (go_right == 1'b1)
                         next_state = ERASE_SQUARE_RIGHT;
                     else if (go_draw == 1'b1)
-                        next_state = DRAW_TOWER;
+                        next_state = ERASE_SQUARE_TOWER;
                     else
                         next_state = WAIT;
-				end
-				MOVE_DOWN: begin // continue moving down until the tile is valid
+					end
+					MOVE_DOWN: begin // continue moving down until the tile is valid
                     if(valid)
                         next_state = MOVE_DOWN_WAIT;
                     else
@@ -121,7 +121,7 @@ module control(
         move_down_wait = 1'b0;
         move_right_wait = 1'b0;
         draw_tower = 1'b0;
-        erase_square_down = 1'b1;
+        erase_square_down = 1'b0;
         erase_square_right = 1'b0;
         erase_square_tower = 1'b0;
 

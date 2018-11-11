@@ -8,14 +8,19 @@ module ECE241Project(
 	output			VGA_SYNC_N,				//	VGA SYNC
 	output	[9:0]	VGA_R,   				//	VGA Red[9:0]
 	output	[9:0]	VGA_G,	 				//	VGA Green[9:0]
-	output	[9:0]	VGA_B,   				//	VGA Blue[9:0]
-	output
+	output	[9:0]	VGA_B   				//	VGA Blue[9:0]
 );
-
+	
+	wire resetn;
+	assign resetn = KEY[3];
+	
 	wire [8:0] colour;
 	wire [7:0] x;
 	wire [6:0] y;
+	
 	wire writeEn;
+	
+	
 	// Create an Instance of a VGA controller - there can be only one!
 	// Define the number of colours as well as the initial background
 	// image file (.MIF) for the controller.
@@ -40,12 +45,15 @@ module ECE241Project(
 		defparam VGA.MONOCHROME = "FALSE";
 		defparam VGA.BITS_PER_COLOUR_CHANNEL = 3;
 		defparam VGA.BACKGROUND_IMAGE = "defense_map_straight.mif";
-			
+
+		
+		
+	assign writeEn = (draw_square | draw_tower | erase_square_right | erase_square_down | erase_square_tower);
 	// Put your code here. Your code should produce signals x,y,colour and writeEn
 	// for the VGA controller, in addition to any other functionality your design may require.
 
 	/*________________Feedback Wires From Datapath_____________________*/
-	wire valid_feeback, square_done, erase_square_done, tower_done
+	wire valid_feeback, square_done, erase_square_done, tower_done;
 
 	/*_________________________Control Wire___________________________*/
 	wire move_down, move_right, move_down_wait, move_right_wait, draw_square, draw_tower;
@@ -55,7 +63,7 @@ module ECE241Project(
 	datapath d0(
 	/*________Inputs____________*/
 		.clk(CLOCK_50),
-    	.resetn(~KEY[3]),
+    	.resetn(resetn),
     	.top_left(top_left), 
 		.draw_square(draw_square), 
 		.move_right(move_right), 
@@ -68,7 +76,7 @@ module ECE241Project(
 		.erase_square_tower(erase_square_tower),
 
   	/*__________Outputs____________*/	
-		.valid(valid_feeback)
+		.valid(valid_feeback),
 		.colour(colour),
 		.coordinates({x, y}),
 		.square_done(square_done),
@@ -79,7 +87,7 @@ module ECE241Project(
 	control c0(
 		/*__________Inputs______________*/
 		.clk(CLOCK_50),
-		.resetn(~KEY[3]),
+		.resetn(resetn),
 		.go_down(~KEY[0]),
 		.go_right(~KEY[1]),
 		.go_draw(~KEY[2]),
@@ -98,6 +106,6 @@ module ECE241Project(
 		.top_left(top_left),
 		.erase_square_right(erase_square_right),
 		.erase_square_down(erase_square_down),
-		.erase_sqaure_tower(erase_sqaure_tower)
+		.erase_square_tower(erase_square_tower)
 	);
 endmodule
