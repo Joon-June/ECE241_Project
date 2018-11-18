@@ -1,0 +1,93 @@
+-- Copyright (C) 2018  Intel Corporation. All rights reserved.
+-- Your use of Intel Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files from any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Intel Program License 
+-- Subscription Agreement, the Intel Quartus Prime License Agreement,
+-- the Intel FPGA IP License Agreement, or other applicable license
+-- agreement, including, without limitation, that your use is for
+-- the sole purpose of programming logic devices manufactured by
+-- Intel and sold by Intel or its authorized distributors.  Please
+-- refer to the applicable agreement for further details.
+
+-- Quartus Prime generated Memory Initialization File (.mif)
+
+WIDTH=12;
+DEPTH=400;
+
+ADDRESS_RADIX=HEX;
+DATA_RADIX=BIN;
+
+CONTENT BEGIN
+	000  :   0000111111111;
+	[001..016]  :   000111111111;
+	[017..01A]  :   000000000000;
+	01B  :   000111111111;
+	[01C..01F]  :   000000000000;
+	020  :   000111111111;
+	[021..024]  :   000000000000;
+	[025..02A]  :   000111111111;
+	02B  :   000000000000;
+	[02C..02D]  :   000100100100;
+	[02E..030]  :   000000000000;
+	[031..032]  :   000100100100;
+	[033..035]  :   000000000000;
+	[036..037]  :   000100100100;
+	038  :   000000000000;
+	[039..03E]  :   000111111111;
+	[03F..040]  :   000000000000;
+	[041..04A]  :   000100100100;
+	[04B..04C]  :   000000000000;
+	[04D..053]  :   000111111111;
+	[054..055]  :   000000000000;
+	[056..05D]  :   000100100100;
+	[05E..05F]  :   000000000000;
+	[060..068]  :   000111111111;
+	[069..072]  :   000000000000;
+	[073..07D]  :   000111111111;
+	07E  :   000000000000;
+	[07F..084]  :   000111010001;
+	085  :   000000000000;
+	[086..091]  :   000111111111;
+	[092..099]  :   000000000000;
+	[09A..0A5]  :   000111111111;
+	0A6  :   000000000000;
+	[0A7..0AC]  :   000100100100;
+	0AD  :   000000000000;
+	[0AE..0B9]  :   000111111111;
+	0BA  :   000000000000;
+	[0BB..0C0]  :   000100100100;
+	0C1  :   000000000000;
+	[0C2..0CD]  :   000111111111;
+	0CE  :   000000000000;
+	[0CF..0D4]  :   000100100100;
+	0D5  :   000000000000;
+	[0D6..0E1]  :   000111111111;
+	0E2  :   000000000000;
+	[0E3..0E8]  :   000100100100;
+	0E9  :   000000000000;
+	[0EA..0F5]  :   000111111111;
+	0F6  :   000000000000;
+	[0F7..0FC]  :   000100100100;
+	0FD  :   000000000000;
+	[0FE..107]  :   000111111111;
+	[108..112]  :   000000000000;
+	[113..11B]  :   000111111111;
+	[11C..11D]  :   000000000000;
+	[11E..125]  :   000111100000;
+	[126..127]  :   000000000000;
+	[128..12E]  :   000111111111;
+	[12F..13C]  :   000000000000;
+	[13D..140]  :   000111111111;
+	141  :   000000000000;
+	142  :   000111111111;
+	143  :   000000000000;
+	[144..14F]  :   000111111001;
+	150  :   000000000000;
+	[151..153]  :   000111111111;
+	[154..168]  :   000000000000;
+	[169..17A]  :   000100110010;
+	[17B..18F]  :   000000000000;
+END;

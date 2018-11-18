@@ -4,7 +4,7 @@
 // MODULE: altsyncram 
 
 // ============================================================
-// File Name: ram19200x9.v
+// File Name: ram19200x9_map_background.v
 // Megafunction Name(s):
 // 			altsyncram
 //
@@ -31,7 +31,7 @@
 //Intel and sold by Intel or its authorized distributors.  Please
 //refer to the applicable agreement for further details.
 
-module ram19200x9 (
+module ram19200x9_map_background (
 	address,
 	clock,
 	data,
@@ -75,7 +75,7 @@ endmodule
 // Retrieval info: PRIVATE: JTAG_ENABLED NUMERIC "0"
 // Retrieval info: PRIVATE: JTAG_ID STRING "NONE"
 // Retrieval info: PRIVATE: MAXIMUM_DEPTH NUMERIC "0"
-// Retrieval info: PRIVATE: MIFfilename STRING "defense_map_straight.mif"
+// Retrieval info: PRIVATE: MIFfilename STRING "../defense_map_with_turn.mif"
 // Retrieval info: PRIVATE: NUMWORDS_A NUMERIC "19200"
 // Retrieval info: PRIVATE: RAM_BLOCK_TYPE NUMERIC "0"
 // Retrieval info: PRIVATE: READ_DURING_WRITE_MODE_PORT_A NUMERIC "3"
@@ -92,7 +92,7 @@ endmodule
 // Retrieval info: LIBRARY: altera_mf altera_mf.altera_mf_components.all
 // Retrieval info: CONSTANT: CLOCK_ENABLE_INPUT_A STRING "BYPASS"
 // Retrieval info: CONSTANT: CLOCK_ENABLE_OUTPUT_A STRING "BYPASS"
-// Retrieval info: CONSTANT: INIT_FILE STRING "defense_map_straight.mif"
+// Retrieval info: CONSTANT: INIT_FILE STRING "../defense_map_with_turn.mif"
 // Retrieval info: CONSTANT: INTENDED_DEVICE_FAMILY STRING "Cyclone V"
 // Retrieval info: CONSTANT: LPM_HINT STRING "ENABLE_RUNTIME_MOD=NO"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "altsyncram"
@@ -115,10 +115,10 @@ endmodule
 // Retrieval info: CONNECT: @data_a 0 0 9 0 data 0 0 9 0
 // Retrieval info: CONNECT: @wren_a 0 0 0 0 wren 0 0 0 0
 // Retrieval info: CONNECT: q 0 0 9 0 @q_a 0 0 9 0
-// Retrieval info: GEN_FILE: TYPE_NORMAL ram19200x9.v TRUE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ram19200x9.inc FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ram19200x9.cmp FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ram19200x9.bsf FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ram19200x9_inst.v FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ram19200x9_bb.v TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL ram19200x9_map_background.v TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL ram19200x9_map_background.inc FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL ram19200x9_map_background.cmp FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL ram19200x9_map_background.bsf FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL ram19200x9_map_background_inst.v FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL ram19200x9_map_background_bb.v TRUE
 // Retrieval info: LIB_FILE: altera_mf

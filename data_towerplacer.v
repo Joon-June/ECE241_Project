@@ -1,8 +1,8 @@
 module datapath(
-    input clk,
-    input resetn,
+   input clk,
+   input resetn,
 	 //____Control Signals___//
-    input top_left, 
+   input top_left, 
 	input draw_square, 
 	input move_right, 
 	input move_down, 
@@ -13,7 +13,7 @@ module datapath(
 	input erase_square_down,
 	input erase_square_tower,
 	 //_______________________//
-   output reg valid,
+   	output reg valid,
 	output reg [8:0] colour,
 	output reg [14:0] coordinates,
 
@@ -58,10 +58,12 @@ module datapath(
 	wire [8:0] colour_map;
 	wire [8:0] colour_square;
 	wire [8:0] colour_tower;
+	wire tower_done_wire;
+	wire [14:0]coord;
 
 	
 
-	ram19200x9 map_background(
+	ram19200x9_map_background map_background(
 						.address(memory_address_map),
 						.clock(clk),
 						.data(9'b0),
@@ -76,14 +78,20 @@ module datapath(
 									.wren(1'b0),
 									.q(colour_square)
 									);
+	
+	draw_tower t1(
+			.clk(clk && draw_tower),
+			.resetn(resetn),
+			.COUNTER_X(Counter_X),
+			.COUNTER_Y(Counter_Y),
+			.colour(colour_tower),
+			.tower_done(tower_done_wire),
+			.x(coord[14:7]),
+			.y(coord[6:0])
+			);
 
-	ram400x9_tower tower_unit(
-					.address(memory_address_square),
-					.clock(clk),
-					.data(9'b0),
-					.wren(1'b0),
-					.q(colour_tower)
-					);
+
+
 
 	//  ram1x48_game_grid(
 	// 				.address(memory_address_square),
@@ -216,32 +224,9 @@ module datapath(
 		else if(draw_tower) begin
 			//Reset the flag for next use
 			erase_square_done <= 0;
-
-			//Draw Tower
+			coordinates <= coord;
 			colour <= colour_tower;
-			if (two_cycle_delay == 2'b10) begin
-			coordinates <= {((Counter_X * 5'b10100) + counter_memory_x_square), 
-							((Counter_Y * 5'b10100) + counter_memory_y_square)};
-			memory_address_square <= memory_address_square + 1;
-
-			counter_memory_x_square <= counter_memory_x_square + 1;
-			if(counter_memory_x_square >= 8'b00010011) begin
-				counter_memory_y_square <= counter_memory_y_square + 1;
-				counter_memory_x_square <= 0;
-			end
-
-			//Same as {x, y} >= {19, 19} - i.e. done accessing square memory
-			if({counter_memory_x_square, counter_memory_y_square} >= 15'b000100110010011) begin
-				tower_done <= 1;
-				memory_address_square <= 0;
-				counter_memory_x_square <= 0;
-				counter_memory_y_square <= 0;
-			end
-			end
-			if(two_cycle_delay >= 2'b10)
-				two_cycle_delay = 2'b00;
-			else
-				two_cycle_delay = two_cycle_delay + 1;
+			tower_done <= tower_done_wire;
 		end
 		//Separating right / down case is for state machine. Actual deletion is the same functionality
 		else if(erase_square_down | erase_square_right | erase_square_tower) begin 		
