@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ECE241Project
-Sun Nov 11 01:01:11 2018
+Sat Nov 17 22:05:25 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -21,7 +21,7 @@ Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
  13. Multiplexer Restructuring Statistics (Restructuring Performed)
  14. Source assignments for vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_1pn1:auto_generated
  15. Source assignments for datapath:d0|ram19200x9:map_background|altsyncram:altsyncram_component|altsyncram_vvp1:auto_generated
- 16. Source assignments for datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component|altsyncram_9vp1:auto_generated
+ 16. Source assignments for datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component|altsyncram_k3q1:auto_generated
  17. Source assignments for datapath:d0|ram400x9_tower:tower_unit|altsyncram:altsyncram_component|altsyncram_0uo1:auto_generated
  18. Parameter Settings for User Entity Instance: vga_adapter:VGA
  19. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_address_translator:user_input_translator
@@ -68,13 +68,13 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun Nov 11 01:01:11 2018       ;
+; Analysis & Synthesis Status     ; Successful - Sat Nov 17 22:05:25 2018       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; ECE241Project                               ;
 ; Top-level Entity Name           ; ECE241Project                               ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 120                                         ;
+; Total registers                 ; 118                                         ;
 ; Total pins                      ; 40                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 352,800                                     ;
@@ -227,7 +227,7 @@ refer to the applicable agreement for further details.
 ; cycloneii_pll.inc                ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/cycloneii_pll.inc     ;         ;
 ; db/altpll_80u.tdf                ; yes             ; Auto-Generated Megafunction            ; C:/intelFPGA_lite/18.0/ECE241Project/db/altpll_80u.tdf                       ;         ;
 ; db/altsyncram_vvp1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_vvp1.tdf                  ;         ;
-; db/altsyncram_9vp1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_9vp1.tdf                  ;         ;
+; db/altsyncram_k3q1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_k3q1.tdf                  ;         ;
 ; square_grid_selection.mif        ; yes             ; Auto-Found Memory Initialization File  ; C:/intelFPGA_lite/18.0/ECE241Project/square_grid_selection.mif               ;         ;
 ; db/altsyncram_0uo1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_0uo1.tdf                  ;         ;
 ; tower_basic.mif                  ; yes             ; Auto-Found Memory Initialization File  ; C:/intelFPGA_lite/18.0/ECE241Project/tower_basic.mif                         ;         ;
@@ -239,16 +239,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 162            ;
+; Estimate of Logic utilization (ALMs needed) ; 165            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 271            ;
-;     -- 7 input functions                    ; 12             ;
-;     -- 6 input functions                    ; 40             ;
-;     -- 5 input functions                    ; 47             ;
-;     -- 4 input functions                    ; 35             ;
-;     -- <=3 input functions                  ; 137            ;
+; Combinational ALUT usage for logic          ; 274            ;
+;     -- 7 input functions                    ; 9              ;
+;     -- 6 input functions                    ; 46             ;
+;     -- 5 input functions                    ; 48             ;
+;     -- 4 input functions                    ; 24             ;
+;     -- <=3 input functions                  ; 147            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 120            ;
+; Dedicated logic registers                   ; 118            ;
 ;                                             ;                ;
 ; I/O pins                                    ; 40             ;
 ; Total MLAB memory bits                      ; 0              ;
@@ -260,9 +260,9 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 163            ;
-; Total fan-out                               ; 3003           ;
-; Average fan-out                             ; 5.52           ;
+; Maximum fan-out                             ; 161            ;
+; Total fan-out                               ; 2986           ;
+; Average fan-out                             ; 5.48           ;
 +---------------------------------------------+----------------+
 
 
@@ -271,20 +271,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+--------------+
 ; Compilation Hierarchy Node                              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                        ; Entity Name                    ; Library Name ;
 +---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+--------------+
-; |ECE241Project                                          ; 271 (2)             ; 120 (0)                   ; 352800            ; 0          ; 40   ; 0            ; |ECE241Project                                                                                                                             ; ECE241Project                  ; work         ;
+; |ECE241Project                                          ; 274 (4)             ; 118 (0)                   ; 352800            ; 0          ; 40   ; 0            ; |ECE241Project                                                                                                                             ; ECE241Project                  ; work         ;
 ;    |control:c0|                                         ; 12 (12)             ; 11 (11)                   ; 0                 ; 0          ; 0    ; 0            ; |ECE241Project|control:c0                                                                                                                  ; control                        ; work         ;
-;    |datapath:d0|                                        ; 188 (185)           ; 79 (77)                   ; 180000            ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0                                                                                                                 ; datapath                       ; work         ;
+;    |datapath:d0|                                        ; 188 (185)           ; 77 (75)                   ; 180000            ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0                                                                                                                 ; datapath                       ; work         ;
 ;       |ram19200x9:map_background|                       ; 3 (0)               ; 2 (0)                     ; 172800            ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|ram19200x9:map_background                                                                                       ; ram19200x9                     ; work         ;
 ;          |altsyncram:altsyncram_component|              ; 3 (0)               ; 2 (0)                     ; 172800            ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|ram19200x9:map_background|altsyncram:altsyncram_component                                                       ; altsyncram                     ; work         ;
 ;             |altsyncram_vvp1:auto_generated|            ; 3 (0)               ; 2 (2)                     ; 172800            ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|ram19200x9:map_background|altsyncram:altsyncram_component|altsyncram_vvp1:auto_generated                        ; altsyncram_vvp1                ; work         ;
 ;                |decode_01a:rden_decode|                 ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|ram19200x9:map_background|altsyncram:altsyncram_component|altsyncram_vvp1:auto_generated|decode_01a:rden_decode ; decode_01a                     ; work         ;
 ;       |ram400x9_square_grid_selection:select_grid|      ; 0 (0)               ; 0 (0)                     ; 3600              ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|ram400x9_square_grid_selection:select_grid                                                                      ; ram400x9_square_grid_selection ; work         ;
 ;          |altsyncram:altsyncram_component|              ; 0 (0)               ; 0 (0)                     ; 3600              ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component                                      ; altsyncram                     ; work         ;
-;             |altsyncram_9vp1:auto_generated|            ; 0 (0)               ; 0 (0)                     ; 3600              ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component|altsyncram_9vp1:auto_generated       ; altsyncram_9vp1                ; work         ;
+;             |altsyncram_k3q1:auto_generated|            ; 0 (0)               ; 0 (0)                     ; 3600              ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component|altsyncram_k3q1:auto_generated       ; altsyncram_k3q1                ; work         ;
 ;       |ram400x9_tower:tower_unit|                       ; 0 (0)               ; 0 (0)                     ; 3600              ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|ram400x9_tower:tower_unit                                                                                       ; ram400x9_tower                 ; work         ;
 ;          |altsyncram:altsyncram_component|              ; 0 (0)               ; 0 (0)                     ; 3600              ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|ram400x9_tower:tower_unit|altsyncram:altsyncram_component                                                       ; altsyncram                     ; work         ;
 ;             |altsyncram_0uo1:auto_generated|            ; 0 (0)               ; 0 (0)                     ; 3600              ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|ram400x9_tower:tower_unit|altsyncram:altsyncram_component|altsyncram_0uo1:auto_generated                        ; altsyncram_0uo1                ; work         ;
-;    |vga_adapter:VGA|                                    ; 69 (2)              ; 30 (0)                    ; 172800            ; 0          ; 0    ; 0            ; |ECE241Project|vga_adapter:VGA                                                                                                             ; vga_adapter                    ; work         ;
+;    |vga_adapter:VGA|                                    ; 70 (3)              ; 30 (0)                    ; 172800            ; 0          ; 0    ; 0            ; |ECE241Project|vga_adapter:VGA                                                                                                             ; vga_adapter                    ; work         ;
 ;       |altsyncram:VideoMemory|                          ; 15 (0)              ; 4 (0)                     ; 172800            ; 0          ; 0    ; 0            ; |ECE241Project|vga_adapter:VGA|altsyncram:VideoMemory                                                                                      ; altsyncram                     ; work         ;
 ;          |altsyncram_1pn1:auto_generated|               ; 15 (0)              ; 4 (4)                     ; 172800            ; 0          ; 0    ; 0            ; |ECE241Project|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_1pn1:auto_generated                                                       ; altsyncram_1pn1                ; work         ;
 ;             |decode_01a:rden_decode_b|                  ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ECE241Project|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_1pn1:auto_generated|decode_01a:rden_decode_b                              ; decode_01a                     ; work         ;
@@ -300,16 +300,16 @@ refer to the applicable agreement for further details.
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                            ;
-+----------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+---------------------------+
-; Name                                                                                                                             ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF                       ;
-+----------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+---------------------------+
-; datapath:d0|ram19200x9:map_background|altsyncram:altsyncram_component|altsyncram_vvp1:auto_generated|ALTSYNCRAM                  ; AUTO ; Single Port      ; 19200        ; 9            ; --           ; --           ; 172800 ; defense_map_straight.mif  ;
-; datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component|altsyncram_9vp1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port      ; 400          ; 9            ; --           ; --           ; 3600   ; square_grid_selection.mif ;
-; datapath:d0|ram400x9_tower:tower_unit|altsyncram:altsyncram_component|altsyncram_0uo1:auto_generated|ALTSYNCRAM                  ; AUTO ; Single Port      ; 400          ; 9            ; --           ; --           ; 3600   ; tower_basic.mif           ;
-; vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_1pn1:auto_generated|ALTSYNCRAM                                                 ; AUTO ; Simple Dual Port ; 19200        ; 9            ; 19200        ; 9            ; 172800 ; defense_map_straight.mif  ;
-+----------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+---------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                               ;
++----------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------------------------------+
+; Name                                                                                                                             ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF                          ;
++----------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------------------------------+
+; datapath:d0|ram19200x9:map_background|altsyncram:altsyncram_component|altsyncram_vvp1:auto_generated|ALTSYNCRAM                  ; AUTO ; Single Port      ; 19200        ; 9            ; --           ; --           ; 172800 ; defense_map_straight.mif     ;
+; datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component|altsyncram_k3q1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port      ; 400          ; 9            ; --           ; --           ; 3600   ; ../square_grid_selection.mif ;
+; datapath:d0|ram400x9_tower:tower_unit|altsyncram:altsyncram_component|altsyncram_0uo1:auto_generated|ALTSYNCRAM                  ; AUTO ; Single Port      ; 400          ; 9            ; --           ; --           ; 3600   ; tower_basic.mif              ;
+; vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_1pn1:auto_generated|ALTSYNCRAM                                                 ; AUTO ; Simple Dual Port ; 19200        ; 9            ; 19200        ; 9            ; 172800 ; defense_map_straight.mif     ;
++----------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -343,17 +343,19 @@ Encoding Type:  One-Hot
 +----------------------------------+----------------------------------+---------------------------------+----------------------------------+--------------------------+-------------------------------+--------------------------+------------------------------+-------------------------+--------------------+---------------------------+------------------------+
 
 
-+------------------------------------------------------------+
-; Registers Removed During Synthesis                         ;
-+---------------------------------------+--------------------+
-; Register name                         ; Reason for Removal ;
-+---------------------------------------+--------------------+
-; control:c0|current_state~2            ; Lost fanout        ;
-; control:c0|current_state~3            ; Lost fanout        ;
-; control:c0|current_state~4            ; Lost fanout        ;
-; control:c0|current_state~5            ; Lost fanout        ;
-; Total Number of Removed Registers = 4 ;                    ;
-+---------------------------------------+--------------------+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; control:c0|current_state~2            ; Lost fanout                            ;
+; control:c0|current_state~3            ; Lost fanout                            ;
+; control:c0|current_state~4            ; Lost fanout                            ;
+; control:c0|current_state~5            ; Lost fanout                            ;
+; datapath:d0|Counter_X[3]              ; Stuck at GND due to stuck port data_in ;
+; datapath:d0|Counter_Y[3]              ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 6 ;                                        ;
++---------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -361,9 +363,9 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 120   ;
-; Number of registers using Synchronous Clear  ; 76    ;
-; Number of registers using Synchronous Load   ; 15    ;
+; Total registers                              ; 118   ;
+; Number of registers using Synchronous Clear  ; 67    ;
+; Number of registers using Synchronous Load   ; 13    ;
 ; Number of registers using Asynchronous Clear ; 20    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 81    ;
@@ -376,21 +378,25 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |ECE241Project|vga_adapter:VGA|vga_controller:controller|yCounter[0]                                             ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |ECE241Project|datapath:d0|Counter_Y[0]                                                                          ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |ECE241Project|vga_adapter:VGA|vga_controller:controller|yCounter[3]                                             ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |ECE241Project|datapath:d0|Counter_X[0]                                                                          ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |ECE241Project|datapath:d0|Counter_Y[1]                                                                          ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |ECE241Project|datapath:d0|Counter_Y[2]                                                                          ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |ECE241Project|datapath:d0|Counter_X[2]                                                                          ;
-; 5:1                ; 15 bits   ; 45 LEs        ; 0 LEs                ; 45 LEs                 ; Yes        ; |ECE241Project|datapath:d0|memory_address_map[13]                                                                ;
-; 6:1                ; 9 bits    ; 36 LEs        ; 0 LEs                ; 36 LEs                 ; Yes        ; |ECE241Project|datapath:d0|memory_address_square[4]                                                              ;
-; 7:1                ; 9 bits    ; 36 LEs        ; 27 LEs               ; 9 LEs                  ; Yes        ; |ECE241Project|datapath:d0|colour[4]                                                                             ;
-; 7:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |ECE241Project|datapath:d0|counter_memory_y_square[4]                                                            ;
-; 7:1                ; 7 bits    ; 28 LEs        ; 21 LEs               ; 7 LEs                  ; Yes        ; |ECE241Project|datapath:d0|counter_memory_x_square[1]                                                            ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; Yes        ; |ECE241Project|datapath:d0|two_cycle_delay[0]                                                                    ;
-; 10:1               ; 3 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[13]                                                                       ;
-; 10:1               ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[2]                                                                        ;
-; 11:1               ; 4 bits    ; 28 LEs        ; 20 LEs               ; 8 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[11]                                                                       ;
-; 11:1               ; 3 bits    ; 21 LEs        ; 12 LEs               ; 9 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[6]                                                                        ;
-; 3:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |ECE241Project|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_1pn1:auto_generated|mux_ofb:mux3|result_node[6] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |ECE241Project|datapath:d0|Counter_X[2]                                                                          ;
+; 5:1                ; 15 bits   ; 45 LEs        ; 0 LEs                ; 45 LEs                 ; Yes        ; |ECE241Project|datapath:d0|memory_address_map[12]                                                                ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ECE241Project|datapath:d0|counter_memory_x_square[1]                                                            ;
+; 6:1                ; 9 bits    ; 36 LEs        ; 0 LEs                ; 36 LEs                 ; Yes        ; |ECE241Project|datapath:d0|memory_address_square[7]                                                              ;
+; 7:1                ; 9 bits    ; 36 LEs        ; 27 LEs               ; 9 LEs                  ; Yes        ; |ECE241Project|datapath:d0|colour[3]                                                                             ;
+; 7:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |ECE241Project|datapath:d0|counter_memory_y_square[5]                                                            ;
+; 7:1                ; 6 bits    ; 24 LEs        ; 18 LEs               ; 6 LEs                  ; Yes        ; |ECE241Project|datapath:d0|counter_memory_x_square[3]                                                            ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[3]                                                                        ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; Yes        ; |ECE241Project|datapath:d0|two_cycle_delay[1]                                                                    ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[7]                                                                        ;
+; 9:1                ; 3 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[4]                                                                        ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[0]                                                                        ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[10]                                                                       ;
+; 11:1               ; 4 bits    ; 28 LEs        ; 20 LEs               ; 8 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[14]                                                                       ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |ECE241Project|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_1pn1:auto_generated|mux_ofb:mux3|result_node[0] ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |ECE241Project|control:c0|next_state                                                                             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------+
 
@@ -414,7 +420,7 @@ Encoding Type:  One-Hot
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------+
-; Source assignments for datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component|altsyncram_9vp1:auto_generated ;
+; Source assignments for datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component|altsyncram_k3q1:auto_generated ;
 +---------------------------------+--------------------+------+--------------------------------------------------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                                                             ;
 +---------------------------------+--------------------+------+--------------------------------------------------------------------------------+
@@ -982,62 +988,62 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 +-------------------------------------------------------------------------------------------------------------------------------------+
 ; Parameter Settings for User Entity Instance: datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component ;
-+------------------------------------+---------------------------+--------------------------------------------------------------------+
-; Parameter Name                     ; Value                     ; Type                                                               ;
-+------------------------------------+---------------------------+--------------------------------------------------------------------+
-; BYTE_SIZE_BLOCK                    ; 8                         ; Untyped                                                            ;
-; AUTO_CARRY_CHAINS                  ; ON                        ; AUTO_CARRY                                                         ;
-; IGNORE_CARRY_BUFFERS               ; OFF                       ; IGNORE_CARRY                                                       ;
-; AUTO_CASCADE_CHAINS                ; ON                        ; AUTO_CASCADE                                                       ;
-; IGNORE_CASCADE_BUFFERS             ; OFF                       ; IGNORE_CASCADE                                                     ;
-; WIDTH_BYTEENA                      ; 1                         ; Untyped                                                            ;
-; OPERATION_MODE                     ; SINGLE_PORT               ; Untyped                                                            ;
-; WIDTH_A                            ; 9                         ; Signed Integer                                                     ;
-; WIDTHAD_A                          ; 9                         ; Signed Integer                                                     ;
-; NUMWORDS_A                         ; 400                       ; Signed Integer                                                     ;
-; OUTDATA_REG_A                      ; UNREGISTERED              ; Untyped                                                            ;
-; ADDRESS_ACLR_A                     ; NONE                      ; Untyped                                                            ;
-; OUTDATA_ACLR_A                     ; NONE                      ; Untyped                                                            ;
-; WRCONTROL_ACLR_A                   ; NONE                      ; Untyped                                                            ;
-; INDATA_ACLR_A                      ; NONE                      ; Untyped                                                            ;
-; BYTEENA_ACLR_A                     ; NONE                      ; Untyped                                                            ;
-; WIDTH_B                            ; 1                         ; Untyped                                                            ;
-; WIDTHAD_B                          ; 1                         ; Untyped                                                            ;
-; NUMWORDS_B                         ; 1                         ; Untyped                                                            ;
-; INDATA_REG_B                       ; CLOCK1                    ; Untyped                                                            ;
-; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                    ; Untyped                                                            ;
-; RDCONTROL_REG_B                    ; CLOCK1                    ; Untyped                                                            ;
-; ADDRESS_REG_B                      ; CLOCK1                    ; Untyped                                                            ;
-; OUTDATA_REG_B                      ; UNREGISTERED              ; Untyped                                                            ;
-; BYTEENA_REG_B                      ; CLOCK1                    ; Untyped                                                            ;
-; INDATA_ACLR_B                      ; NONE                      ; Untyped                                                            ;
-; WRCONTROL_ACLR_B                   ; NONE                      ; Untyped                                                            ;
-; ADDRESS_ACLR_B                     ; NONE                      ; Untyped                                                            ;
-; OUTDATA_ACLR_B                     ; NONE                      ; Untyped                                                            ;
-; RDCONTROL_ACLR_B                   ; NONE                      ; Untyped                                                            ;
-; BYTEENA_ACLR_B                     ; NONE                      ; Untyped                                                            ;
-; WIDTH_BYTEENA_A                    ; 1                         ; Signed Integer                                                     ;
-; WIDTH_BYTEENA_B                    ; 1                         ; Untyped                                                            ;
-; RAM_BLOCK_TYPE                     ; AUTO                      ; Untyped                                                            ;
-; BYTE_SIZE                          ; 8                         ; Untyped                                                            ;
-; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                 ; Untyped                                                            ;
-; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ      ; Untyped                                                            ;
-; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ      ; Untyped                                                            ;
-; INIT_FILE                          ; square_grid_selection.mif ; Untyped                                                            ;
-; INIT_FILE_LAYOUT                   ; PORT_A                    ; Untyped                                                            ;
-; MAXIMUM_DEPTH                      ; 0                         ; Untyped                                                            ;
-; CLOCK_ENABLE_INPUT_A               ; BYPASS                    ; Untyped                                                            ;
-; CLOCK_ENABLE_INPUT_B               ; NORMAL                    ; Untyped                                                            ;
-; CLOCK_ENABLE_OUTPUT_A              ; BYPASS                    ; Untyped                                                            ;
-; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                    ; Untyped                                                            ;
-; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN           ; Untyped                                                            ;
-; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN           ; Untyped                                                            ;
-; ENABLE_ECC                         ; FALSE                     ; Untyped                                                            ;
-; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                     ; Untyped                                                            ;
-; WIDTH_ECCSTATUS                    ; 3                         ; Untyped                                                            ;
-; DEVICE_FAMILY                      ; Cyclone V                 ; Untyped                                                            ;
-; CBXI_PARAMETER                     ; altsyncram_9vp1           ; Untyped                                                            ;
-+------------------------------------+---------------------------+--------------------------------------------------------------------+
++------------------------------------+------------------------------+-----------------------------------------------------------------+
+; Parameter Name                     ; Value                        ; Type                                                            ;
++------------------------------------+------------------------------+-----------------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                            ; Untyped                                                         ;
+; AUTO_CARRY_CHAINS                  ; ON                           ; AUTO_CARRY                                                      ;
+; IGNORE_CARRY_BUFFERS               ; OFF                          ; IGNORE_CARRY                                                    ;
+; AUTO_CASCADE_CHAINS                ; ON                           ; AUTO_CASCADE                                                    ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                          ; IGNORE_CASCADE                                                  ;
+; WIDTH_BYTEENA                      ; 1                            ; Untyped                                                         ;
+; OPERATION_MODE                     ; SINGLE_PORT                  ; Untyped                                                         ;
+; WIDTH_A                            ; 9                            ; Signed Integer                                                  ;
+; WIDTHAD_A                          ; 9                            ; Signed Integer                                                  ;
+; NUMWORDS_A                         ; 400                          ; Signed Integer                                                  ;
+; OUTDATA_REG_A                      ; UNREGISTERED                 ; Untyped                                                         ;
+; ADDRESS_ACLR_A                     ; NONE                         ; Untyped                                                         ;
+; OUTDATA_ACLR_A                     ; NONE                         ; Untyped                                                         ;
+; WRCONTROL_ACLR_A                   ; NONE                         ; Untyped                                                         ;
+; INDATA_ACLR_A                      ; NONE                         ; Untyped                                                         ;
+; BYTEENA_ACLR_A                     ; NONE                         ; Untyped                                                         ;
+; WIDTH_B                            ; 1                            ; Untyped                                                         ;
+; WIDTHAD_B                          ; 1                            ; Untyped                                                         ;
+; NUMWORDS_B                         ; 1                            ; Untyped                                                         ;
+; INDATA_REG_B                       ; CLOCK1                       ; Untyped                                                         ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                       ; Untyped                                                         ;
+; RDCONTROL_REG_B                    ; CLOCK1                       ; Untyped                                                         ;
+; ADDRESS_REG_B                      ; CLOCK1                       ; Untyped                                                         ;
+; OUTDATA_REG_B                      ; UNREGISTERED                 ; Untyped                                                         ;
+; BYTEENA_REG_B                      ; CLOCK1                       ; Untyped                                                         ;
+; INDATA_ACLR_B                      ; NONE                         ; Untyped                                                         ;
+; WRCONTROL_ACLR_B                   ; NONE                         ; Untyped                                                         ;
+; ADDRESS_ACLR_B                     ; NONE                         ; Untyped                                                         ;
+; OUTDATA_ACLR_B                     ; NONE                         ; Untyped                                                         ;
+; RDCONTROL_ACLR_B                   ; NONE                         ; Untyped                                                         ;
+; BYTEENA_ACLR_B                     ; NONE                         ; Untyped                                                         ;
+; WIDTH_BYTEENA_A                    ; 1                            ; Signed Integer                                                  ;
+; WIDTH_BYTEENA_B                    ; 1                            ; Untyped                                                         ;
+; RAM_BLOCK_TYPE                     ; AUTO                         ; Untyped                                                         ;
+; BYTE_SIZE                          ; 8                            ; Untyped                                                         ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                    ; Untyped                                                         ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ         ; Untyped                                                         ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ         ; Untyped                                                         ;
+; INIT_FILE                          ; ../square_grid_selection.mif ; Untyped                                                         ;
+; INIT_FILE_LAYOUT                   ; PORT_A                       ; Untyped                                                         ;
+; MAXIMUM_DEPTH                      ; 0                            ; Untyped                                                         ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS                       ; Untyped                                                         ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                       ; Untyped                                                         ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS                       ; Untyped                                                         ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                       ; Untyped                                                         ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN              ; Untyped                                                         ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN              ; Untyped                                                         ;
+; ENABLE_ECC                         ; FALSE                        ; Untyped                                                         ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                        ; Untyped                                                         ;
+; WIDTH_ECCSTATUS                    ; 3                            ; Untyped                                                         ;
+; DEVICE_FAMILY                      ; Cyclone V                    ; Untyped                                                         ;
+; CBXI_PARAMETER                     ; altsyncram_k3q1              ; Untyped                                                         ;
++------------------------------------+------------------------------+-----------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -1229,42 +1235,40 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 120                         ;
+; arriav_ff             ; 118                         ;
 ;     CLR SCLR          ; 10                          ;
-;     ENA               ; 22                          ;
+;     ENA               ; 29                          ;
 ;     ENA CLR SCLR      ; 10                          ;
-;     ENA SCLR          ; 40                          ;
+;     ENA SCLR          ; 33                          ;
 ;     ENA SLD           ; 9                           ;
 ;     SCLR              ; 10                          ;
-;     SCLR SLD          ; 6                           ;
+;     SCLR SLD          ; 4                           ;
 ;     plain             ; 13                          ;
-; arriav_lcell_comb     ; 272                         ;
-;     arith             ; 78                          ;
-;         1 data inputs ; 51                          ;
-;         2 data inputs ; 15                          ;
-;         3 data inputs ; 7                           ;
-;         4 data inputs ; 5                           ;
-;     extend            ; 12                          ;
-;         7 data inputs ; 12                          ;
-;     normal            ; 143                         ;
-;         0 data inputs ; 2                           ;
-;         2 data inputs ; 15                          ;
+; arriav_lcell_comb     ; 275                         ;
+;     arith             ; 82                          ;
+;         1 data inputs ; 52                          ;
+;         2 data inputs ; 18                          ;
 ;         3 data inputs ; 12                          ;
-;         4 data inputs ; 27                          ;
-;         5 data inputs ; 47                          ;
-;         6 data inputs ; 40                          ;
-;     shared            ; 39                          ;
+;     extend            ; 9                           ;
+;         7 data inputs ; 9                           ;
+;     normal            ; 154                         ;
+;         0 data inputs ; 2                           ;
+;         2 data inputs ; 13                          ;
+;         3 data inputs ; 21                          ;
+;         4 data inputs ; 24                          ;
+;         5 data inputs ; 48                          ;
+;         6 data inputs ; 46                          ;
+;     shared            ; 30                          ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 5                           ;
-;         2 data inputs ; 17                          ;
-;         3 data inputs ; 12                          ;
-;         4 data inputs ; 3                           ;
+;         2 data inputs ; 15                          ;
+;         3 data inputs ; 8                           ;
 ; boundary_port         ; 40                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 72                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 4.80                        ;
-; Average LUT depth     ; 2.33                        ;
+; Max LUT depth         ; 4.70                        ;
+; Average LUT depth     ; 2.28                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1273,7 +1277,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -1283,7 +1287,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Sun Nov 11 01:00:41 2018
+    Info: Processing started: Sat Nov 17 22:04:55 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ECE241Project -c ECE241Project
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -1307,6 +1311,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file ram400x
     Info (12023): Found entity 1: ram400x9_square_grid_selection File: C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_square_grid_selection.v Line: 39
 Info (12021): Found 1 design units, including 1 entities, in source file ram400x9_tower.v
     Info (12023): Found entity 1: ram400x9_tower File: C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_tower.v Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file ram400x9_car.v
+    Info (12023): Found entity 1: ram400x9_car File: C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_car.v Line: 39
 Info (12127): Elaborating entity "ECE241Project" for the top level hierarchy
 Info (12128): Elaborating entity "vga_adapter" for hierarchy "vga_adapter:VGA" File: C:/intelFPGA_lite/18.0/ECE241Project/ECE241Project.v Line: 41
 Info (12128): Elaborating entity "vga_address_translator" for hierarchy "vga_adapter:VGA|vga_address_translator:user_input_translator" File: C:/intelFPGA_lite/18.0/ECE241Project/vga_adapter.v Line: 192
@@ -1363,21 +1369,21 @@ Info (12128): Elaborating entity "datapath" for hierarchy "datapath:d0" File: C:
 Warning (10036): Verilog HDL or VHDL warning at data_towerplacer.v(32): object "counter_memory_x_map" assigned a value but never read File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 32
 Warning (10036): Verilog HDL or VHDL warning at data_towerplacer.v(33): object "counter_memory_y_map" assigned a value but never read File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 33
 Warning (10036): Verilog HDL or VHDL warning at data_towerplacer.v(42): object "game_grid" assigned a value but never read File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 42
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(147): truncated value with size 32 to match size of target (9) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 147
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(152): truncated value with size 32 to match size of target (8) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 152
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(154): truncated value with size 32 to match size of target (7) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 154
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(170): truncated value with size 32 to match size of target (2) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 170
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(177): truncated value with size 32 to match size of target (4) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 177
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(178): truncated value with size 36 to match size of target (15) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 178
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(192): truncated value with size 32 to match size of target (4) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 192
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(193): truncated value with size 36 to match size of target (15) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 193
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(219): truncated value with size 32 to match size of target (9) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 219
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(221): truncated value with size 32 to match size of target (8) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 221
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(223): truncated value with size 32 to match size of target (7) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 223
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(238): truncated value with size 32 to match size of target (2) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 238
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(253): truncated value with size 32 to match size of target (8) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 253
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(255): truncated value with size 32 to match size of target (7) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 255
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(270): truncated value with size 32 to match size of target (2) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 270
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(148): truncated value with size 32 to match size of target (9) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 148
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(153): truncated value with size 32 to match size of target (8) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 153
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(155): truncated value with size 32 to match size of target (7) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 155
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(171): truncated value with size 32 to match size of target (2) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 171
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(180): truncated value with size 32 to match size of target (4) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 180
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(181): truncated value with size 39 to match size of target (15) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 181
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(197): truncated value with size 32 to match size of target (4) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 197
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(198): truncated value with size 40 to match size of target (15) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 198
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(225): truncated value with size 32 to match size of target (9) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 225
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(227): truncated value with size 32 to match size of target (8) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 227
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(229): truncated value with size 32 to match size of target (7) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 229
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(244): truncated value with size 32 to match size of target (2) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 244
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(259): truncated value with size 32 to match size of target (8) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 259
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(261): truncated value with size 32 to match size of target (7) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 261
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(276): truncated value with size 32 to match size of target (2) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 276
 Info (12128): Elaborating entity "ram19200x9" for hierarchy "datapath:d0|ram19200x9:map_background" File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 70
 Info (12128): Elaborating entity "altsyncram" for hierarchy "datapath:d0|ram19200x9:map_background|altsyncram:altsyncram_component" File: C:/intelFPGA_lite/18.0/ECE241Project/ram19200x9.v Line: 85
 Info (12130): Elaborated megafunction instantiation "datapath:d0|ram19200x9:map_background|altsyncram:altsyncram_component" File: C:/intelFPGA_lite/18.0/ECE241Project/ram19200x9.v Line: 85
@@ -1406,7 +1412,7 @@ Info (12130): Elaborated megafunction instantiation "datapath:d0|ram400x9_square
 Info (12133): Instantiated megafunction "datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component" with the following parameter: File: C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_square_grid_selection.v Line: 85
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
-    Info (12134): Parameter "init_file" = "square_grid_selection.mif"
+    Info (12134): Parameter "init_file" = "../square_grid_selection.mif"
     Info (12134): Parameter "intended_device_family" = "Cyclone V"
     Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
     Info (12134): Parameter "lpm_type" = "altsyncram"
@@ -1419,9 +1425,9 @@ Info (12133): Instantiated megafunction "datapath:d0|ram400x9_square_grid_select
     Info (12134): Parameter "widthad_a" = "9"
     Info (12134): Parameter "width_a" = "9"
     Info (12134): Parameter "width_byteena_a" = "1"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_9vp1.tdf
-    Info (12023): Found entity 1: altsyncram_9vp1 File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_9vp1.tdf Line: 27
-Info (12128): Elaborating entity "altsyncram_9vp1" for hierarchy "datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component|altsyncram_9vp1:auto_generated" File: c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_k3q1.tdf
+    Info (12023): Found entity 1: altsyncram_k3q1 File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_k3q1.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_k3q1" for hierarchy "datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component|altsyncram_k3q1:auto_generated" File: c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
 Info (12128): Elaborating entity "ram400x9_tower" for hierarchy "datapath:d0|ram400x9_tower:tower_unit" File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 86
 Info (12128): Elaborating entity "altsyncram" for hierarchy "datapath:d0|ram400x9_tower:tower_unit|altsyncram:altsyncram_component" File: C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_tower.v Line: 85
 Info (12130): Elaborated megafunction instantiation "datapath:d0|ram400x9_tower:tower_unit|altsyncram:altsyncram_component" File: C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_tower.v Line: 85
@@ -1463,17 +1469,17 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning: RST port on the PLL is not properly connected on instance vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated|generic_pll1. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: C:/intelFPGA_lite/18.0/ECE241Project/db/altpll_80u.tdf Line: 33
     Info: Must be connected
-Info (21057): Implemented 401 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 398 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
     Info (21059): Implemented 35 output pins
-    Info (21061): Implemented 288 logic cells
+    Info (21061): Implemented 285 logic cells
     Info (21064): Implemented 72 RAM segments
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 30 warnings
-    Info: Peak virtual memory: 4859 megabytes
-    Info: Processing ended: Sun Nov 11 01:01:11 2018
+    Info: Peak virtual memory: 4877 megabytes
+    Info: Processing ended: Sat Nov 17 22:05:25 2018
     Info: Elapsed time: 00:00:30
-    Info: Total CPU time (on all processors): 00:00:38
+    Info: Total CPU time (on all processors): 00:00:36
 
 
 +------------------------------------------+

@@ -142,61 +142,67 @@ module datapath(
 			two_cycle_delay = 2'b00;
 		end
 		else if (draw_square) begin
-			colour <= colour_square;
-			if (two_cycle_delay == 2'b10) begin
-				memory_address_square <= memory_address_square + 1;
-				coordinates <= {counter_memory_x_square + 1'b1 + (Counter_X * 4'b1010), 
-								counter_memory_y_square + (Counter_Y * 4'b1010)};
-				
+			if(!square_done) begin
+				colour <= colour_square;
+				if (two_cycle_delay == 2'b10) begin
+					memory_address_square <= memory_address_square + 1;
+					coordinates <= {counter_memory_x_square + 1'b1 + (Counter_X * 5'b10100), 
+									counter_memory_y_square + (Counter_Y * 5'b10100)};
+					
 
-				counter_memory_x_square <= counter_memory_x_square + 1;
-				if(counter_memory_x_square >= 8'b00010011) begin
-					counter_memory_y_square <= counter_memory_y_square + 1;
-					counter_memory_x_square <= 0;
-					coordinates <= {(8'b0 + (Counter_X * 4'b1010)), coordinates[6:0]};
-				end
+					counter_memory_x_square <= counter_memory_x_square + 1;
+					if(counter_memory_x_square >= 8'b00010011) begin
+						counter_memory_y_square <= counter_memory_y_square + 1;
+						counter_memory_x_square <= 0;
+						coordinates <= {(8'b0 + (Counter_X * 5'b10100)), coordinates[6:0]};
+					end
 
-				//Same as {x, y} >= {19, 19} - i.e. done accessing square memory
-				if({counter_memory_x_square, counter_memory_y_square} >= 15'b000100110010011) begin
-					square_done <= 1;
-					memory_address_square <= 0;
-					counter_memory_x_square <= 0;
-					counter_memory_y_square <= 0;
+					//Same as {x, y} >= {19, 19} - i.e. done accessing square memory
+					if({counter_memory_x_square, counter_memory_y_square} >= 15'b000100110010011) begin
+						square_done <= 1;
+						memory_address_square <= 0;
+						counter_memory_x_square <= 0;
+						counter_memory_y_square <= 0;
+					end
 				end
+				if(two_cycle_delay >= 2'b10)
+					two_cycle_delay <= 2'b00;
+				else
+					two_cycle_delay <= two_cycle_delay + 1;
 			end
-			if(two_cycle_delay >= 2'b10)
-				two_cycle_delay = 2'b00;
-			else
-				two_cycle_delay = two_cycle_delay + 1;
 		end
 		else if (move_right) begin
 			//Reset the flag for next use
 			erase_square_done <= 0;
 			// increment counter, update valid
-			if(Counter_X < 4'b1111) begin 
-				Counter_X <= Counter_X + 1;
-				coordinates <= {4'b1010 * (Counter_X + 1), 4'b1010 * Counter_Y};
-				valid <= 1'b1; //~(game_grid[Counter_X + 1][Counter_Y]);
-			end
-			else begin
-				Counter_X <= 0;
-				coordinates <= {8'b0, coordinates[6:0]};
-				valid <= 1'b1; //~(game_grid[0][Counter_Y]);
+			if(!valid) begin
+				if(Counter_X < 3'b111) begin 
+					Counter_X <= Counter_X + 1;
+					coordinates <= {(5'b10100 * (Counter_X + 1)) + 8'b0, (5'b10100 * Counter_Y) + 7'b0};
+					valid <= 1'b1; //~(game_grid[Counter_X + 1][Counter_Y]);
+				end
+				else begin
+					Counter_X <= 0;
+					coordinates <= {8'b0, (5'b10100 * Counter_Y) + 7'b0};
+					valid <= 1'b1; //~(game_grid[0][Counter_Y]);
+				end
 			end
 		end
 		else if (move_down) begin // because move down needs to get a new memory from memory, it has to wait for one cycle
 			//Reset the flag for next use
 			erase_square_done <= 0;
 			//increment counter, update valid
-			if(Counter_Y < 4'b1011) begin
-				Counter_Y <= Counter_Y + 1;
-				coordinates <= {4'b1010 * Counter_X, 4'b1010 * (Counter_Y + 1)};
-				valid <= 1'b1; //~(game_grid[Counter_X][Counter_Y + 1]);
-			end
-			else begin
-				Counter_Y <= 0;
-				coordinates <= {coordinates[14:7], 7'b0};
-				valid <= 1'b1; //~(game_grid[Counter_X][0]);
+			if(!valid) begin
+				if(Counter_Y < 3'b101) begin
+					Counter_Y <= Counter_Y + 1;
+					coordinates <= {(5'b10100 * Counter_X) + 8'b0, (5'b10100 * (Counter_Y + 1)) + 7'b0};
+					valid <= 1'b1; //~(game_grid[Counter_X][Counter_Y + 1]);
+				end
+				else begin
+					Counter_Y <= 0;
+					coordinates <= {(5'b10100 * Counter_X) + 8'b0, 7'b0};
+					valid <= 1'b1; //~(game_grid[Counter_X][0]);
+				end
 			end
 		end
 		else if (move_down_wait) begin
@@ -214,8 +220,8 @@ module datapath(
 			//Draw Tower
 			colour <= colour_tower;
 			if (two_cycle_delay == 2'b10) begin
-			coordinates <= {((Counter_X * 4'b1010) + counter_memory_x_square), 
-							((Counter_Y * 4'b1010) + counter_memory_y_square)};
+			coordinates <= {((Counter_X * 5'b10100) + counter_memory_x_square), 
+							((Counter_Y * 5'b10100) + counter_memory_y_square)};
 			memory_address_square <= memory_address_square + 1;
 
 			counter_memory_x_square <= counter_memory_x_square + 1;
@@ -238,36 +244,36 @@ module datapath(
 				two_cycle_delay = two_cycle_delay + 1;
 		end
 		//Separating right / down case is for state machine. Actual deletion is the same functionality
-		else if(erase_square_down | erase_square_right | erase_square_tower) begin 
-			//Reset the flag for next use
-			square_done <= 0;
-			//Erase current cell's suqare
-			colour <= colour_map;
-			if (two_cycle_delay == 2'b10) begin
-				coordinates <= {((Counter_X * 4'b1010) + counter_memory_x_square), 
-								((Counter_Y * 4'b1010) + counter_memory_y_square)};
-								
-				memory_address_map <= (Counter_Y * 8'b10100000 * 4'b1010) + (Counter_X * 4'b1010) + 
-											(8'b10100000 * counter_memory_y_square) + counter_memory_x_square;
-										
-				counter_memory_x_square <= counter_memory_x_square +1;
-				if(counter_memory_x_square >= 8'b00010011) begin
-					counter_memory_y_square <= counter_memory_y_square +1;
-					counter_memory_x_square <= 0;
-				end
+		else if(erase_square_down | erase_square_right | erase_square_tower) begin 		
+				//Reset the flag for next use
+				square_done <= 0;
+				//Erase current cell's square
+				colour <= colour_map;
+				if (two_cycle_delay == 2'b10) begin
+					coordinates <= {((Counter_X * 5'b10100) + counter_memory_x_square), 
+									((Counter_Y * 5'b10100) + counter_memory_y_square)};
+									
+					memory_address_map <= (Counter_Y * 8'b10100000 * 5'b10100) + (Counter_X * 5'b10100) + 
+												(8'b10100000 * counter_memory_y_square) + counter_memory_x_square;
+											
+					counter_memory_x_square <= counter_memory_x_square +1;
+					if(counter_memory_x_square >= 8'b00010011) begin
+						counter_memory_y_square <= counter_memory_y_square +1;
+						counter_memory_x_square <= 0;
+					end
 
-				//Same as {x, y} >= {19, 19} - i.e. done accessing square memory
-				if({counter_memory_x_square, counter_memory_y_square} >= 15'b000100110010011) begin
-					erase_square_done <= 1;
-					memory_address_map <= 0;
-					counter_memory_x_square <= 0;
-					counter_memory_y_square <= 0;
+					//Same as {x, y} >= {19, 19} - i.e. done accessing map memory
+					if({counter_memory_x_square, counter_memory_y_square} >= 15'b000100110010011) begin
+						erase_square_done <= 1;
+						memory_address_map <= 0;
+						counter_memory_x_square <= 0;
+						counter_memory_y_square <= 0;
+					end
 				end
+				if(two_cycle_delay >= 2'b10)
+					two_cycle_delay <= 2'b00;
+				else
+					two_cycle_delay <= two_cycle_delay + 1;
 			end
-			if(two_cycle_delay >= 2'b10)
-				two_cycle_delay = 2'b00;
-			else
-				two_cycle_delay = two_cycle_delay + 1;
-		end
 	end
 endmodule
