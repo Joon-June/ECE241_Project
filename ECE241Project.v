@@ -44,7 +44,7 @@ module ECE241Project(
 		defparam VGA.RESOLUTION = "160x120";
 		defparam VGA.MONOCHROME = "FALSE";
 		defparam VGA.BITS_PER_COLOUR_CHANNEL = 3;
-		defparam VGA.BACKGROUND_IMAGE = "defense_map_straight.mif";
+		defparam VGA.BACKGROUND_IMAGE = "defense_map_with_turn.mif";
 
 		
 		
