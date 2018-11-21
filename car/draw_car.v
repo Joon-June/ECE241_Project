@@ -31,7 +31,7 @@ module draw_car(
                                 ); 
 
     //.mif-initialized ram with tower image
-    ram400x9_car car_unit(
+    ram400x9_tower tower_unit(
 					.address(mem_add), //Connection A
 					.clock(clk),
 					.data(9'b0),

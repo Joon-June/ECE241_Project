@@ -94,6 +94,7 @@ module datapath_car(
 			initial_delay_done <= 0;
 			draw_done <= 0;
 			erase_done <= 0;
+			game_over <= 0;
 			
 			coordinates <= {9'b0, 6'b111100};
 
@@ -107,7 +108,8 @@ module datapath_car(
 			counter_memory_x_car <= 0;
 			counter_memory_y_car <= 0;
 			memory_address_car <= 0;
-
+			game_over <= 0;
+			
 			initial_delay_done <= 0;
 			draw_done <= 0;
 			erase_done <= 0;
