@@ -1,6 +1,6 @@
 Analysis & Synthesis report for ECE241Project
-Sun Nov 18 03:40:23 2018
-Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
+Wed Nov 21 13:25:05 2018
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
 ---------------------
@@ -68,14 +68,14 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun Nov 18 03:40:23 2018       ;
-; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
+; Analysis & Synthesis Status     ; Successful - Wed Nov 21 13:25:05 2018       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; ECE241Project                               ;
 ; Top-level Entity Name           ; ECE241Project                               ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 131                                         ;
-; Total pins                      ; 40                                          ;
+; Total registers                 ; 139                                         ;
+; Total pins                      ; 50                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 352,800                                     ;
 ; Total DSP Blocks                ; 0                                           ;
@@ -180,15 +180,15 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 4           ;
-; Maximum allowed            ; 2           ;
+; Number detected on machine ; 24          ;
+; Maximum allowed            ; 12          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 2           ;
+; Maximum used               ; 12          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
+;     Processors 2-12        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -197,42 +197,42 @@ refer to the applicable agreement for further details.
 +------------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path   ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                 ; Library ;
 +------------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+---------+
-; draw_tower.v                       ; yes             ; User Verilog HDL File                  ; C:/intelFPGA_lite/18.0/ECE241Project/draw_tower.v                            ;         ;
-; vga_files/vga_pll.v                ; yes             ; User Wizard-Generated File             ; C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_pll.v                     ;         ;
-; vga_files/vga_controller.v         ; yes             ; User Verilog HDL File                  ; C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_controller.v              ;         ;
-; vga_files/vga_address_translator.v ; yes             ; User Verilog HDL File                  ; C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_address_translator.v      ;         ;
-; vga_files/vga_adapter.v            ; yes             ; User Verilog HDL File                  ; C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_adapter.v                 ;         ;
-; data_towerplacer.v                 ; yes             ; User Verilog HDL File                  ; C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v                      ;         ;
-; control_towerplacer.v              ; yes             ; User Verilog HDL File                  ; C:/intelFPGA_lite/18.0/ECE241Project/control_towerplacer.v                   ;         ;
-; ECE241Project.v                    ; yes             ; User Verilog HDL File                  ; C:/intelFPGA_lite/18.0/ECE241Project/ECE241Project.v                         ;         ;
-; ram400x9_square_grid_selection.v   ; yes             ; User Wizard-Generated File             ; C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_square_grid_selection.v        ;         ;
-; ram400x9_tower.v                   ; yes             ; User Wizard-Generated File             ; C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_tower.v                        ;         ;
-; memory_address_translator_20x20.v  ; yes             ; User Verilog HDL File                  ; C:/intelFPGA_lite/18.0/ECE241Project/memory_address_translator_20x20.v       ;         ;
-; ram19200x9_map_background.v        ; yes             ; User Wizard-Generated File             ; C:/intelFPGA_lite/18.0/ECE241Project/ram19200x9_map_background.v             ;         ;
-; altsyncram.tdf                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
-; stratix_ram_block.inc              ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
-; lpm_mux.inc                        ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
-; lpm_decode.inc                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
-; aglobal180.inc                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/aglobal180.inc        ;         ;
-; a_rdenreg.inc                      ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
-; altrom.inc                         ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altrom.inc            ;         ;
-; altram.inc                         ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altram.inc            ;         ;
-; altdpram.inc                       ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altdpram.inc          ;         ;
-; db/altsyncram_vsn1.tdf             ; yes             ; Auto-Generated Megafunction            ; C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_vsn1.tdf                  ;         ;
-; defense_map_with_turn.mif          ; yes             ; Auto-Found Memory Initialization File  ; C:/intelFPGA_lite/18.0/ECE241Project/defense_map_with_turn.mif               ;         ;
-; db/decode_7la.tdf                  ; yes             ; Auto-Generated Megafunction            ; C:/intelFPGA_lite/18.0/ECE241Project/db/decode_7la.tdf                       ;         ;
-; db/decode_01a.tdf                  ; yes             ; Auto-Generated Megafunction            ; C:/intelFPGA_lite/18.0/ECE241Project/db/decode_01a.tdf                       ;         ;
-; db/mux_ofb.tdf                     ; yes             ; Auto-Generated Megafunction            ; C:/intelFPGA_lite/18.0/ECE241Project/db/mux_ofb.tdf                          ;         ;
-; altpll.tdf                         ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altpll.tdf            ;         ;
-; stratix_pll.inc                    ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/stratix_pll.inc       ;         ;
-; stratixii_pll.inc                  ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/stratixii_pll.inc     ;         ;
-; cycloneii_pll.inc                  ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/cycloneii_pll.inc     ;         ;
-; db/altpll_80u.tdf                  ; yes             ; Auto-Generated Megafunction            ; C:/intelFPGA_lite/18.0/ECE241Project/db/altpll_80u.tdf                       ;         ;
-; db/altsyncram_t3q1.tdf             ; yes             ; Auto-Generated Megafunction            ; C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_t3q1.tdf                  ;         ;
-; db/altsyncram_9vp1.tdf             ; yes             ; Auto-Generated Megafunction            ; C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_9vp1.tdf                  ;         ;
-; square_grid_selection.mif          ; yes             ; Auto-Found Memory Initialization File  ; C:/intelFPGA_lite/18.0/ECE241Project/square_grid_selection.mif               ;         ;
-; db/altsyncram_vao1.tdf             ; yes             ; Auto-Generated Megafunction            ; C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_vao1.tdf                  ;         ;
-; tower.mif                          ; yes             ; Auto-Found Memory Initialization File  ; C:/intelFPGA_lite/18.0/ECE241Project/tower.mif                               ;         ;
+; draw_tower.v                       ; yes             ; User Verilog HDL File                  ; W:/final_project_sun_18_2/draw_tower.v                                       ;         ;
+; vga_files/vga_pll.v                ; yes             ; User Wizard-Generated File             ; W:/final_project_sun_18_2/vga_files/vga_pll.v                                ;         ;
+; vga_files/vga_controller.v         ; yes             ; User Verilog HDL File                  ; W:/final_project_sun_18_2/vga_files/vga_controller.v                         ;         ;
+; vga_files/vga_address_translator.v ; yes             ; User Verilog HDL File                  ; W:/final_project_sun_18_2/vga_files/vga_address_translator.v                 ;         ;
+; vga_files/vga_adapter.v            ; yes             ; User Verilog HDL File                  ; W:/final_project_sun_18_2/vga_files/vga_adapter.v                            ;         ;
+; data_towerplacer.v                 ; yes             ; User Verilog HDL File                  ; W:/final_project_sun_18_2/data_towerplacer.v                                 ;         ;
+; control_towerplacer.v              ; yes             ; User Verilog HDL File                  ; W:/final_project_sun_18_2/control_towerplacer.v                              ;         ;
+; ECE241Project.v                    ; yes             ; User Verilog HDL File                  ; W:/final_project_sun_18_2/ECE241Project.v                                    ;         ;
+; ram400x9_square_grid_selection.v   ; yes             ; User Wizard-Generated File             ; W:/final_project_sun_18_2/ram400x9_square_grid_selection.v                   ;         ;
+; ram400x9_tower.v                   ; yes             ; User Wizard-Generated File             ; W:/final_project_sun_18_2/ram400x9_tower.v                                   ;         ;
+; memory_address_translator_20x20.v  ; yes             ; User Verilog HDL File                  ; W:/final_project_sun_18_2/memory_address_translator_20x20.v                  ;         ;
+; ram19200x9_map_background.v        ; yes             ; User Wizard-Generated File             ; W:/final_project_sun_18_2/ram19200x9_map_background.v                        ;         ;
+; altsyncram.tdf                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc              ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                        ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal181.inc                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/aglobal181.inc        ;         ;
+; a_rdenreg.inc                      ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                         ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                         ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                       ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_vsn1.tdf             ; yes             ; Auto-Generated Megafunction            ; W:/final_project_sun_18_2/db/altsyncram_vsn1.tdf                             ;         ;
+; defense_map_with_turn.mif          ; yes             ; Auto-Found Memory Initialization File  ; W:/final_project_sun_18_2/defense_map_with_turn.mif                          ;         ;
+; db/decode_7la.tdf                  ; yes             ; Auto-Generated Megafunction            ; W:/final_project_sun_18_2/db/decode_7la.tdf                                  ;         ;
+; db/decode_01a.tdf                  ; yes             ; Auto-Generated Megafunction            ; W:/final_project_sun_18_2/db/decode_01a.tdf                                  ;         ;
+; db/mux_ofb.tdf                     ; yes             ; Auto-Generated Megafunction            ; W:/final_project_sun_18_2/db/mux_ofb.tdf                                     ;         ;
+; altpll.tdf                         ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altpll.tdf            ;         ;
+; stratix_pll.inc                    ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/stratix_pll.inc       ;         ;
+; stratixii_pll.inc                  ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/stratixii_pll.inc     ;         ;
+; cycloneii_pll.inc                  ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/cycloneii_pll.inc     ;         ;
+; db/altpll_80u.tdf                  ; yes             ; Auto-Generated Megafunction            ; W:/final_project_sun_18_2/db/altpll_80u.tdf                                  ;         ;
+; db/altsyncram_t3q1.tdf             ; yes             ; Auto-Generated Megafunction            ; W:/final_project_sun_18_2/db/altsyncram_t3q1.tdf                             ;         ;
+; db/altsyncram_9vp1.tdf             ; yes             ; Auto-Generated Megafunction            ; W:/final_project_sun_18_2/db/altsyncram_9vp1.tdf                             ;         ;
+; square_grid_selection.mif          ; yes             ; Auto-Found Memory Initialization File  ; W:/final_project_sun_18_2/square_grid_selection.mif                          ;         ;
+; db/altsyncram_vao1.tdf             ; yes             ; Auto-Generated Megafunction            ; W:/final_project_sun_18_2/db/altsyncram_vao1.tdf                             ;         ;
+; tower.mif                          ; yes             ; Auto-Found Memory Initialization File  ; W:/final_project_sun_18_2/tower.mif                                          ;         ;
 +------------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+---------+
 
 
@@ -241,18 +241,18 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 195            ;
+; Estimate of Logic utilization (ALMs needed) ; 190            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 324            ;
-;     -- 7 input functions                    ; 15             ;
-;     -- 6 input functions                    ; 49             ;
-;     -- 5 input functions                    ; 65             ;
-;     -- 4 input functions                    ; 28             ;
-;     -- <=3 input functions                  ; 167            ;
+; Combinational ALUT usage for logic          ; 317            ;
+;     -- 7 input functions                    ; 14             ;
+;     -- 6 input functions                    ; 45             ;
+;     -- 5 input functions                    ; 64             ;
+;     -- 4 input functions                    ; 26             ;
+;     -- <=3 input functions                  ; 168            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 131            ;
+; Dedicated logic registers                   ; 139            ;
 ;                                             ;                ;
-; I/O pins                                    ; 40             ;
+; I/O pins                                    ; 50             ;
 ; Total MLAB memory bits                      ; 0              ;
 ; Total block memory bits                     ; 352800         ;
 ;                                             ;                ;
@@ -263,8 +263,8 @@ refer to the applicable agreement for further details.
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
 ; Maximum fan-out                             ; 153            ;
-; Total fan-out                               ; 3233           ;
-; Average fan-out                             ; 5.32           ;
+; Total fan-out                               ; 3228           ;
+; Average fan-out                             ; 5.13           ;
 +---------------------------------------------+----------------+
 
 
@@ -273,10 +273,10 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------+--------------+
 ; Compilation Hierarchy Node                              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                       ; Entity Name                     ; Library Name ;
 +---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------+--------------+
-; |ECE241Project                                          ; 324 (5)             ; 131 (0)                   ; 352800            ; 0          ; 40   ; 0            ; |ECE241Project                                                                                                                                            ; ECE241Project                   ; work         ;
+; |ECE241Project                                          ; 317 (5)             ; 139 (0)                   ; 352800            ; 0          ; 50   ; 0            ; |ECE241Project                                                                                                                                            ; ECE241Project                   ; work         ;
 ;    |control:c0|                                         ; 12 (12)             ; 11 (11)                   ; 0                 ; 0          ; 0    ; 0            ; |ECE241Project|control:c0                                                                                                                                 ; control                         ; work         ;
-;    |datapath:d0|                                        ; 238 (195)           ; 90 (75)                   ; 180000            ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0                                                                                                                                ; datapath                        ; work         ;
-;       |draw_tower:t1|                                   ; 40 (33)             ; 13 (13)                   ; 3600              ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|draw_tower:t1                                                                                                                  ; draw_tower                      ; work         ;
+;    |datapath:d0|                                        ; 231 (195)           ; 98 (75)                   ; 180000            ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0                                                                                                                                ; datapath                        ; work         ;
+;       |draw_tower:t1|                                   ; 33 (26)             ; 21 (21)                   ; 3600              ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|draw_tower:t1                                                                                                                  ; draw_tower                      ; work         ;
 ;          |memory_address_translator_20x20:m1|           ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|draw_tower:t1|memory_address_translator_20x20:m1                                                                               ; memory_address_translator_20x20 ; work         ;
 ;          |ram400x9_tower:tower_unit|                    ; 0 (0)               ; 0 (0)                     ; 3600              ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|draw_tower:t1|ram400x9_tower:tower_unit                                                                                        ; ram400x9_tower                  ; work         ;
 ;             |altsyncram:altsyncram_component|           ; 0 (0)               ; 0 (0)                     ; 3600              ; 0          ; 0    ; 0            ; |ECE241Project|datapath:d0|draw_tower:t1|ram400x9_tower:tower_unit|altsyncram:altsyncram_component                                                        ; altsyncram                      ; work         ;
@@ -367,12 +367,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 131   ;
+; Total registers                              ; 139   ;
 ; Number of registers using Synchronous Clear  ; 67    ;
 ; Number of registers using Synchronous Load   ; 13    ;
 ; Number of registers using Asynchronous Clear ; 20    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 82    ;
+; Number of registers using Clock Enable       ; 92    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -382,28 +382,27 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |ECE241Project|vga_adapter:VGA|vga_controller:controller|yCounter[0]                                             ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |ECE241Project|vga_adapter:VGA|vga_controller:controller|yCounter[4]                                             ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |ECE241Project|datapath:d0|Counter_X[1]                                                                          ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |ECE241Project|datapath:d0|draw_tower:t1|one_clk_delay[0]                                                        ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |ECE241Project|datapath:d0|Counter_Y[0]                                                                          ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |ECE241Project|datapath:d0|draw_tower:t1|counter_y[1]                                                            ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |ECE241Project|datapath:d0|draw_tower:t1|counter_y[4]                                                            ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |ECE241Project|datapath:d0|draw_tower:t1|counter_x[4]                                                            ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |ECE241Project|datapath:d0|Counter_Y[2]                                                                          ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |ECE241Project|datapath:d0|Counter_X[2]                                                                          ;
-; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |ECE241Project|datapath:d0|draw_tower:t1|counter_x[2]                                                            ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |ECE241Project|datapath:d0|Counter_X[3]                                                                          ;
 ; 5:1                ; 15 bits   ; 45 LEs        ; 0 LEs                ; 45 LEs                 ; Yes        ; |ECE241Project|datapath:d0|memory_address_map[12]                                                                ;
-; 5:1                ; 9 bits    ; 27 LEs        ; 0 LEs                ; 27 LEs                 ; Yes        ; |ECE241Project|datapath:d0|memory_address_square[2]                                                              ;
+; 5:1                ; 9 bits    ; 27 LEs        ; 0 LEs                ; 27 LEs                 ; Yes        ; |ECE241Project|datapath:d0|memory_address_square[1]                                                              ;
 ; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ECE241Project|datapath:d0|counter_memory_x_square[0]                                                            ;
 ; 7:1                ; 9 bits    ; 36 LEs        ; 27 LEs               ; 9 LEs                  ; Yes        ; |ECE241Project|datapath:d0|colour[1]                                                                             ;
-; 7:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |ECE241Project|datapath:d0|counter_memory_y_square[3]                                                            ;
-; 7:1                ; 6 bits    ; 24 LEs        ; 18 LEs               ; 6 LEs                  ; Yes        ; |ECE241Project|datapath:d0|counter_memory_x_square[5]                                                            ;
+; 7:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |ECE241Project|datapath:d0|counter_memory_y_square[6]                                                            ;
+; 7:1                ; 6 bits    ; 24 LEs        ; 18 LEs               ; 6 LEs                  ; Yes        ; |ECE241Project|datapath:d0|counter_memory_x_square[3]                                                            ;
 ; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; Yes        ; |ECE241Project|datapath:d0|two_cycle_delay[1]                                                                    ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[2]                                                                        ;
-; 10:1               ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[1]                                                                        ;
-; 10:1               ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[8]                                                                        ;
-; 10:1               ; 3 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[4]                                                                        ;
-; 11:1               ; 2 bits    ; 14 LEs        ; 10 LEs               ; 4 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[10]                                                                       ;
-; 12:1               ; 4 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[11]                                                                       ;
-; 3:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |ECE241Project|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_vsn1:auto_generated|mux_ofb:mux3|result_node[5] ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[0]                                                                        ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[7]                                                                        ;
+; 10:1               ; 3 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[6]                                                                        ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 10 LEs               ; 4 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[9]                                                                        ;
+; 12:1               ; 4 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; Yes        ; |ECE241Project|datapath:d0|coordinates[12]                                                                       ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |ECE241Project|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_vsn1:auto_generated|mux_ofb:mux3|result_node[0] ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |ECE241Project|control:c0|next_state                                                                             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------+
 
@@ -1242,16 +1241,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 131                         ;
+; arriav_ff             ; 139                         ;
 ;     CLR SCLR          ; 10                          ;
-;     ENA               ; 30                          ;
+;     ENA               ; 40                          ;
 ;     ENA CLR SCLR      ; 10                          ;
 ;     ENA SCLR          ; 33                          ;
 ;     ENA SLD           ; 9                           ;
 ;     SCLR              ; 10                          ;
 ;     SCLR SLD          ; 4                           ;
-;     plain             ; 25                          ;
-; arriav_lcell_comb     ; 325                         ;
+;     plain             ; 23                          ;
+; arriav_lcell_comb     ; 318                         ;
 ;     arith             ; 100                         ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 53                          ;
@@ -1259,26 +1258,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;         3 data inputs ; 17                          ;
 ;         4 data inputs ; 3                           ;
 ;         5 data inputs ; 2                           ;
-;     extend            ; 15                          ;
-;         7 data inputs ; 15                          ;
-;     normal            ; 180                         ;
+;     extend            ; 14                          ;
+;         7 data inputs ; 14                          ;
+;     normal            ; 174                         ;
 ;         0 data inputs ; 2                           ;
 ;         2 data inputs ; 18                          ;
-;         3 data inputs ; 23                          ;
-;         4 data inputs ; 25                          ;
-;         5 data inputs ; 63                          ;
-;         6 data inputs ; 49                          ;
+;         3 data inputs ; 24                          ;
+;         4 data inputs ; 23                          ;
+;         5 data inputs ; 62                          ;
+;         6 data inputs ; 45                          ;
 ;     shared            ; 30                          ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 5                           ;
 ;         2 data inputs ; 15                          ;
 ;         3 data inputs ; 8                           ;
-; boundary_port         ; 40                          ;
+; boundary_port         ; 50                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 72                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.70                        ;
-; Average LUT depth     ; 2.32                        ;
+; Average LUT depth     ; 2.31                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1287,7 +1286,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:03     ;
 +----------------+--------------+
 
 
@@ -1296,43 +1295,58 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Sun Nov 18 03:39:51 2018
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Wed Nov 21 13:24:32 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ECE241Project -c ECE241Project
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file car/draw_car.v
+    Info (12023): Found entity 1: draw_car File: W:/final_project_sun_18_2/car/draw_car.v Line: 1
+Info (12021): Found 2 design units, including 2 entities, in source file car/data_car.v
+    Info (12023): Found entity 1: datapath_car File: W:/final_project_sun_18_2/car/data_car.v Line: 1
+    Info (12023): Found entity 2: DelayCounter File: W:/final_project_sun_18_2/car/data_car.v Line: 200
+Info (12021): Found 1 design units, including 1 entities, in source file car/control_car.v
+    Info (12023): Found entity 1: control_car File: W:/final_project_sun_18_2/car/control_car.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file car/car.v
+    Info (12023): Found entity 1: car File: W:/final_project_sun_18_2/car/car.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file draw_tower.v
-    Info (12023): Found entity 1: draw_tower File: C:/intelFPGA_lite/18.0/ECE241Project/draw_tower.v Line: 1
+    Info (12023): Found entity 1: draw_tower File: W:/final_project_sun_18_2/draw_tower.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file vga_files/vga_pll.v
-    Info (12023): Found entity 1: vga_pll File: C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_pll.v Line: 36
+    Info (12023): Found entity 1: vga_pll File: W:/final_project_sun_18_2/vga_files/vga_pll.v Line: 36
 Info (12021): Found 1 design units, including 1 entities, in source file vga_files/vga_controller.v
-    Info (12023): Found entity 1: vga_controller File: C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_controller.v Line: 9
+    Info (12023): Found entity 1: vga_controller File: W:/final_project_sun_18_2/vga_files/vga_controller.v Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file vga_files/vga_address_translator.v
-    Info (12023): Found entity 1: vga_address_translator File: C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_address_translator.v Line: 4
+    Info (12023): Found entity 1: vga_address_translator File: W:/final_project_sun_18_2/vga_files/vga_address_translator.v Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file vga_files/vga_adapter.v
-    Info (12023): Found entity 1: vga_adapter File: C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_adapter.v Line: 78
+    Info (12023): Found entity 1: vga_adapter File: W:/final_project_sun_18_2/vga_files/vga_adapter.v Line: 78
 Info (12021): Found 1 design units, including 1 entities, in source file data_towerplacer.v
-    Info (12023): Found entity 1: datapath File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 1
+    Info (12023): Found entity 1: datapath File: W:/final_project_sun_18_2/data_towerplacer.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file control_towerplacer.v
-    Info (12023): Found entity 1: control File: C:/intelFPGA_lite/18.0/ECE241Project/control_towerplacer.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file ece241project.v
-    Info (12023): Found entity 1: ECE241Project File: C:/intelFPGA_lite/18.0/ECE241Project/ECE241Project.v Line: 1
+    Info (12023): Found entity 1: control File: W:/final_project_sun_18_2/control_towerplacer.v Line: 1
+Info (12021): Found 2 design units, including 2 entities, in source file ece241project.v
+    Info (12023): Found entity 1: ECE241Project File: W:/final_project_sun_18_2/ECE241Project.v Line: 1
+    Info (12023): Found entity 2: FrameCounter_30 File: W:/final_project_sun_18_2/ECE241Project.v Line: 140
 Info (12021): Found 1 design units, including 1 entities, in source file ram400x9_square_grid_selection.v
-    Info (12023): Found entity 1: ram400x9_square_grid_selection File: C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_square_grid_selection.v Line: 39
+    Info (12023): Found entity 1: ram400x9_square_grid_selection File: W:/final_project_sun_18_2/ram400x9_square_grid_selection.v Line: 39
 Info (12021): Found 1 design units, including 1 entities, in source file ram400x9_tower.v
-    Info (12023): Found entity 1: ram400x9_tower File: C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_tower.v Line: 39
+    Info (12023): Found entity 1: ram400x9_tower File: W:/final_project_sun_18_2/ram400x9_tower.v Line: 39
 Info (12021): Found 1 design units, including 1 entities, in source file ram400x9_car.v
-    Info (12023): Found entity 1: ram400x9_car File: C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_car.v Line: 39
+    Info (12023): Found entity 1: ram400x9_car File: W:/final_project_sun_18_2/ram400x9_car.v Line: 39
 Info (12021): Found 1 design units, including 1 entities, in source file memory_address_translator_20x20.v
-    Info (12023): Found entity 1: memory_address_translator_20x20 File: C:/intelFPGA_lite/18.0/ECE241Project/memory_address_translator_20x20.v Line: 2
+    Info (12023): Found entity 1: memory_address_translator_20x20 File: W:/final_project_sun_18_2/memory_address_translator_20x20.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file ram19200x9_map_background.v
-    Info (12023): Found entity 1: ram19200x9_map_background File: C:/intelFPGA_lite/18.0/ECE241Project/ram19200x9_map_background.v Line: 39
+    Info (12023): Found entity 1: ram19200x9_map_background File: W:/final_project_sun_18_2/ram19200x9_map_background.v Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file tower.v
+    Info (12023): Found entity 1: tower File: W:/final_project_sun_18_2/tower.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file grid_selection_square.v
+    Info (12023): Found entity 1: grid_selection_square File: W:/final_project_sun_18_2/grid_selection_square.v Line: 1
 Info (12127): Elaborating entity "ECE241Project" for the top level hierarchy
-Info (12128): Elaborating entity "vga_adapter" for hierarchy "vga_adapter:VGA" File: C:/intelFPGA_lite/18.0/ECE241Project/ECE241Project.v Line: 41
-Info (12128): Elaborating entity "vga_address_translator" for hierarchy "vga_adapter:VGA|vga_address_translator:user_input_translator" File: C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_adapter.v Line: 192
-Info (12128): Elaborating entity "altsyncram" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory" File: C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_adapter.v Line: 213
-Info (12130): Elaborated megafunction instantiation "vga_adapter:VGA|altsyncram:VideoMemory" File: C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_adapter.v Line: 213
-Info (12133): Instantiated megafunction "vga_adapter:VGA|altsyncram:VideoMemory" with the following parameter: File: C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_adapter.v Line: 213
+Warning (10034): Output port "LEDR" at ECE241Project.v(4) has no driver File: W:/final_project_sun_18_2/ECE241Project.v Line: 4
+Info (12128): Elaborating entity "vga_adapter" for hierarchy "vga_adapter:VGA" File: W:/final_project_sun_18_2/ECE241Project.v Line: 42
+Info (12128): Elaborating entity "vga_address_translator" for hierarchy "vga_adapter:VGA|vga_address_translator:user_input_translator" File: W:/final_project_sun_18_2/vga_files/vga_adapter.v Line: 192
+Info (12128): Elaborating entity "altsyncram" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory" File: W:/final_project_sun_18_2/vga_files/vga_adapter.v Line: 213
+Info (12130): Elaborated megafunction instantiation "vga_adapter:VGA|altsyncram:VideoMemory" File: W:/final_project_sun_18_2/vga_files/vga_adapter.v Line: 213
+Info (12133): Instantiated megafunction "vga_adapter:VGA|altsyncram:VideoMemory" with the following parameter: File: W:/final_project_sun_18_2/vga_files/vga_adapter.v Line: 213
     Info (12134): Parameter "WIDTH_A" = "9"
     Info (12134): Parameter "WIDTH_B" = "9"
     Info (12134): Parameter "INTENDED_DEVICE_FAMILY" = "Cyclone II"
@@ -1349,21 +1363,22 @@ Info (12133): Instantiated megafunction "vga_adapter:VGA|altsyncram:VideoMemory"
     Info (12134): Parameter "POWER_UP_UNINITIALIZED" = "FALSE"
     Info (12134): Parameter "INIT_FILE" = "defense_map_with_turn.mif"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_vsn1.tdf
-    Info (12023): Found entity 1: altsyncram_vsn1 File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_vsn1.tdf Line: 33
-Info (12128): Elaborating entity "altsyncram_vsn1" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_vsn1:auto_generated" File: c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+    Info (12023): Found entity 1: altsyncram_vsn1 File: W:/final_project_sun_18_2/db/altsyncram_vsn1.tdf Line: 33
+Info (12128): Elaborating entity "altsyncram_vsn1" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_vsn1:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Warning (113018): Width of data items in "defense_map_with_turn.mif" is greater than the memory width. Truncating data items to fit in memory. File: W:/final_project_sun_18_2/defense_map_with_turn.mif Line: 5
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_7la.tdf
-    Info (12023): Found entity 1: decode_7la File: C:/intelFPGA_lite/18.0/ECE241Project/db/decode_7la.tdf Line: 22
-Info (12128): Elaborating entity "decode_7la" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_vsn1:auto_generated|decode_7la:decode2" File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_vsn1.tdf Line: 46
+    Info (12023): Found entity 1: decode_7la File: W:/final_project_sun_18_2/db/decode_7la.tdf Line: 22
+Info (12128): Elaborating entity "decode_7la" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_vsn1:auto_generated|decode_7la:decode2" File: W:/final_project_sun_18_2/db/altsyncram_vsn1.tdf Line: 46
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_01a.tdf
-    Info (12023): Found entity 1: decode_01a File: C:/intelFPGA_lite/18.0/ECE241Project/db/decode_01a.tdf Line: 22
-Info (12128): Elaborating entity "decode_01a" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_vsn1:auto_generated|decode_01a:rden_decode_b" File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_vsn1.tdf Line: 47
+    Info (12023): Found entity 1: decode_01a File: W:/final_project_sun_18_2/db/decode_01a.tdf Line: 22
+Info (12128): Elaborating entity "decode_01a" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_vsn1:auto_generated|decode_01a:rden_decode_b" File: W:/final_project_sun_18_2/db/altsyncram_vsn1.tdf Line: 47
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_ofb.tdf
-    Info (12023): Found entity 1: mux_ofb File: C:/intelFPGA_lite/18.0/ECE241Project/db/mux_ofb.tdf Line: 22
-Info (12128): Elaborating entity "mux_ofb" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_vsn1:auto_generated|mux_ofb:mux3" File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_vsn1.tdf Line: 49
-Info (12128): Elaborating entity "vga_pll" for hierarchy "vga_adapter:VGA|vga_pll:mypll" File: C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_adapter.v Line: 231
-Info (12128): Elaborating entity "altpll" for hierarchy "vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component" File: C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_pll.v Line: 53
-Info (12130): Elaborated megafunction instantiation "vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component" File: C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_pll.v Line: 53
-Info (12133): Instantiated megafunction "vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component" with the following parameter: File: C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_pll.v Line: 53
+    Info (12023): Found entity 1: mux_ofb File: W:/final_project_sun_18_2/db/mux_ofb.tdf Line: 22
+Info (12128): Elaborating entity "mux_ofb" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_vsn1:auto_generated|mux_ofb:mux3" File: W:/final_project_sun_18_2/db/altsyncram_vsn1.tdf Line: 49
+Info (12128): Elaborating entity "vga_pll" for hierarchy "vga_adapter:VGA|vga_pll:mypll" File: W:/final_project_sun_18_2/vga_files/vga_adapter.v Line: 231
+Info (12128): Elaborating entity "altpll" for hierarchy "vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component" File: W:/final_project_sun_18_2/vga_files/vga_pll.v Line: 53
+Info (12130): Elaborated megafunction instantiation "vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component" File: W:/final_project_sun_18_2/vga_files/vga_pll.v Line: 53
+Info (12133): Instantiated megafunction "vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component" with the following parameter: File: W:/final_project_sun_18_2/vga_files/vga_pll.v Line: 53
     Info (12134): Parameter "operation_mode" = "NORMAL"
     Info (12134): Parameter "intended_device_family" = "Cyclone II"
     Info (12134): Parameter "lpm_type" = "altpll"
@@ -1376,28 +1391,28 @@ Info (12133): Instantiated megafunction "vga_adapter:VGA|vga_pll:mypll|altpll:al
     Info (12134): Parameter "clk0_multiply_by" = "1"
     Info (12134): Parameter "clk0_duty_cycle" = "50"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altpll_80u.tdf
-    Info (12023): Found entity 1: altpll_80u File: C:/intelFPGA_lite/18.0/ECE241Project/db/altpll_80u.tdf Line: 25
-Info (12128): Elaborating entity "altpll_80u" for hierarchy "vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated" File: c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altpll.tdf Line: 897
-Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_adapter:VGA|vga_controller:controller" File: C:/intelFPGA_lite/18.0/ECE241Project/vga_files/vga_adapter.v Line: 262
-Info (12128): Elaborating entity "datapath" for hierarchy "datapath:d0" File: C:/intelFPGA_lite/18.0/ECE241Project/ECE241Project.v Line: 85
-Warning (10036): Verilog HDL or VHDL warning at data_towerplacer.v(32): object "counter_memory_x_map" assigned a value but never read File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 32
-Warning (10036): Verilog HDL or VHDL warning at data_towerplacer.v(33): object "counter_memory_y_map" assigned a value but never read File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 33
-Warning (10036): Verilog HDL or VHDL warning at data_towerplacer.v(42): object "game_grid" assigned a value but never read File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 42
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(156): truncated value with size 32 to match size of target (9) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 156
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(161): truncated value with size 32 to match size of target (8) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 161
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(163): truncated value with size 32 to match size of target (7) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 163
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(179): truncated value with size 32 to match size of target (2) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 179
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(188): truncated value with size 32 to match size of target (4) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 188
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(189): truncated value with size 39 to match size of target (15) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 189
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(205): truncated value with size 32 to match size of target (4) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 205
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(206): truncated value with size 40 to match size of target (15) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 206
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(244): truncated value with size 32 to match size of target (8) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 244
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(246): truncated value with size 32 to match size of target (7) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 246
-Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(261): truncated value with size 32 to match size of target (2) File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 261
-Info (12128): Elaborating entity "ram19200x9_map_background" for hierarchy "datapath:d0|ram19200x9_map_background:map_background" File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 72
-Info (12128): Elaborating entity "altsyncram" for hierarchy "datapath:d0|ram19200x9_map_background:map_background|altsyncram:altsyncram_component" File: C:/intelFPGA_lite/18.0/ECE241Project/ram19200x9_map_background.v Line: 85
-Info (12130): Elaborated megafunction instantiation "datapath:d0|ram19200x9_map_background:map_background|altsyncram:altsyncram_component" File: C:/intelFPGA_lite/18.0/ECE241Project/ram19200x9_map_background.v Line: 85
-Info (12133): Instantiated megafunction "datapath:d0|ram19200x9_map_background:map_background|altsyncram:altsyncram_component" with the following parameter: File: C:/intelFPGA_lite/18.0/ECE241Project/ram19200x9_map_background.v Line: 85
+    Info (12023): Found entity 1: altpll_80u File: W:/final_project_sun_18_2/db/altpll_80u.tdf Line: 25
+Info (12128): Elaborating entity "altpll_80u" for hierarchy "vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altpll.tdf Line: 897
+Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_adapter:VGA|vga_controller:controller" File: W:/final_project_sun_18_2/vga_files/vga_adapter.v Line: 262
+Info (12128): Elaborating entity "datapath" for hierarchy "datapath:d0" File: W:/final_project_sun_18_2/ECE241Project.v Line: 110
+Warning (10036): Verilog HDL or VHDL warning at data_towerplacer.v(32): object "counter_memory_x_map" assigned a value but never read File: W:/final_project_sun_18_2/data_towerplacer.v Line: 32
+Warning (10036): Verilog HDL or VHDL warning at data_towerplacer.v(33): object "counter_memory_y_map" assigned a value but never read File: W:/final_project_sun_18_2/data_towerplacer.v Line: 33
+Warning (10036): Verilog HDL or VHDL warning at data_towerplacer.v(42): object "game_grid" assigned a value but never read File: W:/final_project_sun_18_2/data_towerplacer.v Line: 42
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(156): truncated value with size 32 to match size of target (9) File: W:/final_project_sun_18_2/data_towerplacer.v Line: 156
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(161): truncated value with size 32 to match size of target (8) File: W:/final_project_sun_18_2/data_towerplacer.v Line: 161
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(163): truncated value with size 32 to match size of target (7) File: W:/final_project_sun_18_2/data_towerplacer.v Line: 163
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(179): truncated value with size 32 to match size of target (2) File: W:/final_project_sun_18_2/data_towerplacer.v Line: 179
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(188): truncated value with size 32 to match size of target (4) File: W:/final_project_sun_18_2/data_towerplacer.v Line: 188
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(189): truncated value with size 39 to match size of target (15) File: W:/final_project_sun_18_2/data_towerplacer.v Line: 189
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(205): truncated value with size 32 to match size of target (4) File: W:/final_project_sun_18_2/data_towerplacer.v Line: 205
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(206): truncated value with size 40 to match size of target (15) File: W:/final_project_sun_18_2/data_towerplacer.v Line: 206
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(244): truncated value with size 32 to match size of target (8) File: W:/final_project_sun_18_2/data_towerplacer.v Line: 244
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(246): truncated value with size 32 to match size of target (7) File: W:/final_project_sun_18_2/data_towerplacer.v Line: 246
+Warning (10230): Verilog HDL assignment warning at data_towerplacer.v(261): truncated value with size 32 to match size of target (2) File: W:/final_project_sun_18_2/data_towerplacer.v Line: 261
+Info (12128): Elaborating entity "ram19200x9_map_background" for hierarchy "datapath:d0|ram19200x9_map_background:map_background" File: W:/final_project_sun_18_2/data_towerplacer.v Line: 72
+Info (12128): Elaborating entity "altsyncram" for hierarchy "datapath:d0|ram19200x9_map_background:map_background|altsyncram:altsyncram_component" File: W:/final_project_sun_18_2/ram19200x9_map_background.v Line: 85
+Info (12130): Elaborated megafunction instantiation "datapath:d0|ram19200x9_map_background:map_background|altsyncram:altsyncram_component" File: W:/final_project_sun_18_2/ram19200x9_map_background.v Line: 85
+Info (12133): Instantiated megafunction "datapath:d0|ram19200x9_map_background:map_background|altsyncram:altsyncram_component" with the following parameter: File: W:/final_project_sun_18_2/ram19200x9_map_background.v Line: 85
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
     Info (12134): Parameter "init_file" = "defense_map_with_turn.mif"
@@ -1414,12 +1429,12 @@ Info (12133): Instantiated megafunction "datapath:d0|ram19200x9_map_background:m
     Info (12134): Parameter "width_a" = "9"
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_t3q1.tdf
-    Info (12023): Found entity 1: altsyncram_t3q1 File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_t3q1.tdf Line: 33
-Info (12128): Elaborating entity "altsyncram_t3q1" for hierarchy "datapath:d0|ram19200x9_map_background:map_background|altsyncram:altsyncram_component|altsyncram_t3q1:auto_generated" File: c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Info (12128): Elaborating entity "ram400x9_square_grid_selection" for hierarchy "datapath:d0|ram400x9_square_grid_selection:select_grid" File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 80
-Info (12128): Elaborating entity "altsyncram" for hierarchy "datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component" File: C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_square_grid_selection.v Line: 85
-Info (12130): Elaborated megafunction instantiation "datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component" File: C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_square_grid_selection.v Line: 85
-Info (12133): Instantiated megafunction "datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component" with the following parameter: File: C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_square_grid_selection.v Line: 85
+    Info (12023): Found entity 1: altsyncram_t3q1 File: W:/final_project_sun_18_2/db/altsyncram_t3q1.tdf Line: 33
+Info (12128): Elaborating entity "altsyncram_t3q1" for hierarchy "datapath:d0|ram19200x9_map_background:map_background|altsyncram:altsyncram_component|altsyncram_t3q1:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12128): Elaborating entity "ram400x9_square_grid_selection" for hierarchy "datapath:d0|ram400x9_square_grid_selection:select_grid" File: W:/final_project_sun_18_2/data_towerplacer.v Line: 80
+Info (12128): Elaborating entity "altsyncram" for hierarchy "datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component" File: W:/final_project_sun_18_2/ram400x9_square_grid_selection.v Line: 85
+Info (12130): Elaborated megafunction instantiation "datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component" File: W:/final_project_sun_18_2/ram400x9_square_grid_selection.v Line: 85
+Info (12133): Instantiated megafunction "datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component" with the following parameter: File: W:/final_project_sun_18_2/ram400x9_square_grid_selection.v Line: 85
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
     Info (12134): Parameter "init_file" = "square_grid_selection.mif"
@@ -1436,17 +1451,17 @@ Info (12133): Instantiated megafunction "datapath:d0|ram400x9_square_grid_select
     Info (12134): Parameter "width_a" = "9"
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_9vp1.tdf
-    Info (12023): Found entity 1: altsyncram_9vp1 File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_9vp1.tdf Line: 27
-Info (12128): Elaborating entity "altsyncram_9vp1" for hierarchy "datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component|altsyncram_9vp1:auto_generated" File: c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Info (12128): Elaborating entity "draw_tower" for hierarchy "datapath:d0|draw_tower:t1" File: C:/intelFPGA_lite/18.0/ECE241Project/data_towerplacer.v Line: 91
-Warning (10230): Verilog HDL assignment warning at draw_tower.v(52): truncated value with size 32 to match size of target (2) File: C:/intelFPGA_lite/18.0/ECE241Project/draw_tower.v Line: 52
-Warning (10230): Verilog HDL assignment warning at draw_tower.v(59): truncated value with size 32 to match size of target (5) File: C:/intelFPGA_lite/18.0/ECE241Project/draw_tower.v Line: 59
-Warning (10230): Verilog HDL assignment warning at draw_tower.v(61): truncated value with size 32 to match size of target (5) File: C:/intelFPGA_lite/18.0/ECE241Project/draw_tower.v Line: 61
-Info (12128): Elaborating entity "memory_address_translator_20x20" for hierarchy "datapath:d0|draw_tower:t1|memory_address_translator_20x20:m1" File: C:/intelFPGA_lite/18.0/ECE241Project/draw_tower.v Line: 31
-Info (12128): Elaborating entity "ram400x9_tower" for hierarchy "datapath:d0|draw_tower:t1|ram400x9_tower:tower_unit" File: C:/intelFPGA_lite/18.0/ECE241Project/draw_tower.v Line: 40
-Info (12128): Elaborating entity "altsyncram" for hierarchy "datapath:d0|draw_tower:t1|ram400x9_tower:tower_unit|altsyncram:altsyncram_component" File: C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_tower.v Line: 85
-Info (12130): Elaborated megafunction instantiation "datapath:d0|draw_tower:t1|ram400x9_tower:tower_unit|altsyncram:altsyncram_component" File: C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_tower.v Line: 85
-Info (12133): Instantiated megafunction "datapath:d0|draw_tower:t1|ram400x9_tower:tower_unit|altsyncram:altsyncram_component" with the following parameter: File: C:/intelFPGA_lite/18.0/ECE241Project/ram400x9_tower.v Line: 85
+    Info (12023): Found entity 1: altsyncram_9vp1 File: W:/final_project_sun_18_2/db/altsyncram_9vp1.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_9vp1" for hierarchy "datapath:d0|ram400x9_square_grid_selection:select_grid|altsyncram:altsyncram_component|altsyncram_9vp1:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Warning (113018): Width of data items in "square_grid_selection.mif" is greater than the memory width. Truncating data items to fit in memory. File: W:/final_project_sun_18_2/square_grid_selection.mif Line: 5
+Info (12128): Elaborating entity "draw_tower" for hierarchy "datapath:d0|draw_tower:t1" File: W:/final_project_sun_18_2/data_towerplacer.v Line: 91
+Warning (10230): Verilog HDL assignment warning at draw_tower.v(54): truncated value with size 32 to match size of target (5) File: W:/final_project_sun_18_2/draw_tower.v Line: 54
+Warning (10230): Verilog HDL assignment warning at draw_tower.v(56): truncated value with size 32 to match size of target (5) File: W:/final_project_sun_18_2/draw_tower.v Line: 56
+Info (12128): Elaborating entity "memory_address_translator_20x20" for hierarchy "datapath:d0|draw_tower:t1|memory_address_translator_20x20:m1" File: W:/final_project_sun_18_2/draw_tower.v Line: 31
+Info (12128): Elaborating entity "ram400x9_tower" for hierarchy "datapath:d0|draw_tower:t1|ram400x9_tower:tower_unit" File: W:/final_project_sun_18_2/draw_tower.v Line: 40
+Info (12128): Elaborating entity "altsyncram" for hierarchy "datapath:d0|draw_tower:t1|ram400x9_tower:tower_unit|altsyncram:altsyncram_component" File: W:/final_project_sun_18_2/ram400x9_tower.v Line: 85
+Info (12130): Elaborated megafunction instantiation "datapath:d0|draw_tower:t1|ram400x9_tower:tower_unit|altsyncram:altsyncram_component" File: W:/final_project_sun_18_2/ram400x9_tower.v Line: 85
+Info (12133): Instantiated megafunction "datapath:d0|draw_tower:t1|ram400x9_tower:tower_unit|altsyncram:altsyncram_component" with the following parameter: File: W:/final_project_sun_18_2/ram400x9_tower.v Line: 85
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
     Info (12134): Parameter "init_file" = "tower.mif"
@@ -1463,44 +1478,54 @@ Info (12133): Instantiated megafunction "datapath:d0|draw_tower:t1|ram400x9_towe
     Info (12134): Parameter "width_a" = "9"
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_vao1.tdf
-    Info (12023): Found entity 1: altsyncram_vao1 File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_vao1.tdf Line: 27
-Info (12128): Elaborating entity "altsyncram_vao1" for hierarchy "datapath:d0|draw_tower:t1|ram400x9_tower:tower_unit|altsyncram:altsyncram_component|altsyncram_vao1:auto_generated" File: c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Warning (113018): Width of data items in "tower.mif" is greater than the memory width. Truncating data items to fit in memory. File: C:/intelFPGA_lite/18.0/ECE241Project/tower.mif Line: 5
-Info (12128): Elaborating entity "control" for hierarchy "control:c0" File: C:/intelFPGA_lite/18.0/ECE241Project/ECE241Project.v Line: 110
-Warning (10270): Verilog HDL Case Statement warning at control_towerplacer.v(128): incomplete case statement has no default case item File: C:/intelFPGA_lite/18.0/ECE241Project/control_towerplacer.v Line: 128
-Info (10264): Verilog HDL Case Statement information at control_towerplacer.v(128): all case item expressions in this case statement are onehot File: C:/intelFPGA_lite/18.0/ECE241Project/control_towerplacer.v Line: 128
+    Info (12023): Found entity 1: altsyncram_vao1 File: W:/final_project_sun_18_2/db/altsyncram_vao1.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_vao1" for hierarchy "datapath:d0|draw_tower:t1|ram400x9_tower:tower_unit|altsyncram:altsyncram_component|altsyncram_vao1:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Warning (113018): Width of data items in "tower.mif" is greater than the memory width. Truncating data items to fit in memory. File: W:/final_project_sun_18_2/tower.mif Line: 10
+Info (12128): Elaborating entity "control" for hierarchy "control:c0" File: W:/final_project_sun_18_2/ECE241Project.v Line: 135
+Warning (10270): Verilog HDL Case Statement warning at control_towerplacer.v(128): incomplete case statement has no default case item File: W:/final_project_sun_18_2/control_towerplacer.v Line: 128
+Info (10264): Verilog HDL Case Statement information at control_towerplacer.v(128): all case item expressions in this case statement are onehot File: W:/final_project_sun_18_2/control_towerplacer.v Line: 128
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "VGA_SYNC_N" is stuck at VCC File: C:/intelFPGA_lite/18.0/ECE241Project/ECE241Project.v Line: 8
-    Warning (13410): Pin "VGA_R[8]" is stuck at GND File: C:/intelFPGA_lite/18.0/ECE241Project/ECE241Project.v Line: 9
-    Warning (13410): Pin "VGA_R[9]" is stuck at GND File: C:/intelFPGA_lite/18.0/ECE241Project/ECE241Project.v Line: 9
-    Warning (13410): Pin "VGA_G[8]" is stuck at GND File: C:/intelFPGA_lite/18.0/ECE241Project/ECE241Project.v Line: 10
-    Warning (13410): Pin "VGA_G[9]" is stuck at GND File: C:/intelFPGA_lite/18.0/ECE241Project/ECE241Project.v Line: 10
-    Warning (13410): Pin "VGA_B[8]" is stuck at GND File: C:/intelFPGA_lite/18.0/ECE241Project/ECE241Project.v Line: 12
-    Warning (13410): Pin "VGA_B[9]" is stuck at GND File: C:/intelFPGA_lite/18.0/ECE241Project/ECE241Project.v Line: 12
+    Warning (13410): Pin "LEDR[0]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 4
+    Warning (13410): Pin "LEDR[1]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 4
+    Warning (13410): Pin "LEDR[2]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 4
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 4
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 4
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 4
+    Warning (13410): Pin "LEDR[6]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 4
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 4
+    Warning (13410): Pin "LEDR[8]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 4
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 4
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at VCC File: W:/final_project_sun_18_2/ECE241Project.v Line: 9
+    Warning (13410): Pin "VGA_R[8]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 10
+    Warning (13410): Pin "VGA_R[9]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 10
+    Warning (13410): Pin "VGA_G[8]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 11
+    Warning (13410): Pin "VGA_G[9]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 11
+    Warning (13410): Pin "VGA_B[8]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 13
+    Warning (13410): Pin "VGA_B[9]" is stuck at GND File: W:/final_project_sun_18_2/ECE241Project.v Line: 13
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 4 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file C:/intelFPGA_lite/18.0/ECE241Project/output_files/ECE241Project.map.smsg
+Info (144001): Generated suppressed messages file W:/final_project_sun_18_2/output_files/ECE241Project.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Warning: RST port on the PLL is not properly connected on instance vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated|generic_pll1. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: C:/intelFPGA_lite/18.0/ECE241Project/db/altpll_80u.tdf Line: 33
+Warning: RST port on the PLL is not properly connected on instance vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated|generic_pll1. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: W:/final_project_sun_18_2/db/altpll_80u.tdf Line: 33
     Info: Must be connected
-Info (21057): Implemented 449 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 462 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
-    Info (21059): Implemented 35 output pins
-    Info (21061): Implemented 336 logic cells
+    Info (21059): Implemented 45 output pins
+    Info (21061): Implemented 339 logic cells
     Info (21064): Implemented 72 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 30 warnings
-    Info: Peak virtual memory: 4868 megabytes
-    Info: Processing ended: Sun Nov 18 03:40:23 2018
-    Info: Elapsed time: 00:00:32
-    Info: Total CPU time (on all processors): 00:00:38
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 42 warnings
+    Info: Peak virtual memory: 769 megabytes
+    Info: Processing ended: Wed Nov 21 13:25:05 2018
+    Info: Elapsed time: 00:00:33
+    Info: Total CPU time (on all processors): 00:01:16
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/intelFPGA_lite/18.0/ECE241Project/output_files/ECE241Project.map.smsg.
+The suppressed messages can be found in W:/final_project_sun_18_2/output_files/ECE241Project.map.smsg.
 
 

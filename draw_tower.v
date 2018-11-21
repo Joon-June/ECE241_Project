@@ -12,14 +12,14 @@ module draw_tower(
     wire [8:0]mem_add;
     wire [8:0]colour_tower;
 
-    reg [4:0]counter_x;
+    reg [4:0]temp_x;
+    reg [4:0]temp_y;
+	 reg [4:0]counter_x;
     reg [4:0]counter_y;
-    reg one_clk_delay;
 
     initial begin
         counter_x = 5'b0;
         counter_y = 5'b0;
-        one_clk_delay = 1'b0;
         tower_done = 0;
     end
 
@@ -40,35 +40,30 @@ module draw_tower(
 					);
 
     always @(posedge clk) begin
-        if(!resetn) begin
+		  if(!resetn) begin
             counter_x <= 0;
             counter_y <= 0;
-            one_clk_delay <= 0;
         end
         else begin
-            if(one_clk_delay == 1'b0)
-                one_clk_delay <= 1;
-            
-            if(counter_x == 0)
+            temp_x <= counter_x;
+			   temp_y <= counter_y;
+			   if(counter_x == 0)
                 tower_done <= 0;
                     
-            //Loop
-            if(one_clk_delay == 2'b10) begin
-                colour <= colour_tower;
-                counter_x <= counter_x + 1;
-                if(counter_x == 5'b10011) begin
-                    counter_y <= counter_y + 1;
-                    counter_x <= 0;
-                end
-                    one_clk_delay <= 0;
-            end
+           
+				counter_x <= counter_x + 1;
+				if(counter_x == 5'b10011) begin
+				  counter_y <= counter_y + 1;
+				  counter_x <= 0;
+				end
         
             //Same as {counter_x, counter_y} >= {19, 19} - i.e. done accessing square memory
             if({counter_x, counter_y} == 10'b1001110011) begin
                 tower_done <= 1;
                 counter_x <= 0;
                 counter_y <= 0;
-                one_clk_delay <= 0;
+					 temp_x <= counter_x;
+					 temp_y <= counter_y;
             end
         end
     end
@@ -76,6 +71,6 @@ module draw_tower(
     // always @(colour_tower) //1 cycle delay from counter_x & counter_y
     //     colour = colour_tower;
 
-    assign x = COUNTER_X * 5'b10100 + counter_x;
-    assign y = COUNTER_Y * 5'b10100 + counter_y;
+    assign x = COUNTER_X * 5'b10100 + temp_x;
+    assign y = COUNTER_Y * 5'b10100 + temp_y;
 endmodule
