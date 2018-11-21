@@ -9,13 +9,13 @@ z2
 cModel Technology
 Z0 dC:/intelfpga_lite/18.0/ECE241Project
 vdraw_tower
-Z1 !s110 1542528107
+Z1 !s110 1542533013
 !i10b 1
-!s100 S;P2n4Pfg]WaU2nC42`:V2
-IDbgN3HEzk[Xd=WJC`eJmH1
+!s100 TR?^>b2F6Y9SgZ;__=<Q]0
+IDe=YeoLTd767RkzFjSmfz0
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1542526702
+w1542532788
 8draw_tower.v
 Fdraw_tower.v
 L0 1
@@ -23,7 +23,7 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1542528107.000000
+Z4 !s108 1542533013.000000
 !s107 draw_tower.v|
 !s90 -reportprogress|300|draw_tower.v|
 !i113 1

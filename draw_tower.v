@@ -14,7 +14,7 @@ module draw_tower(
 
     reg [4:0]counter_x;
     reg [4:0]counter_y;
-    reg [1:0]one_clk_delay;
+    reg one_clk_delay;
 
     initial begin
         counter_x = 5'b0;
@@ -46,22 +46,21 @@ module draw_tower(
             one_clk_delay <= 0;
         end
         else begin
-            if(one_clk_delay >= 2'b10)
-                one_clk_delay <= 0;
-            else
-                one_clk_delay <= one_clk_delay + 1;
+            if(one_clk_delay == 1'b0)
+                one_clk_delay <= 1;
             
             if(counter_x == 0)
                 tower_done <= 0;
                     
             //Loop
             if(one_clk_delay == 2'b10) begin
+                colour <= colour_tower;
                 counter_x <= counter_x + 1;
                 if(counter_x == 5'b10011) begin
                     counter_y <= counter_y + 1;
                     counter_x <= 0;
                 end
-                    // one_clk_delay <= 0;
+                    one_clk_delay <= 0;
             end
         
             //Same as {counter_x, counter_y} >= {19, 19} - i.e. done accessing square memory
@@ -74,8 +73,8 @@ module draw_tower(
         end
     end
 
-    always @(colour_tower) //1 cycle delay from counter_x & counter_y
-        colour = colour_tower;
+    // always @(colour_tower) //1 cycle delay from counter_x & counter_y
+    //     colour = colour_tower;
 
     assign x = COUNTER_X * 5'b10100 + counter_x;
     assign y = COUNTER_Y * 5'b10100 + counter_y;
