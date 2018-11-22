@@ -102,7 +102,7 @@ module control_car(
                 erase_car = 1'b1;
             end
 				INCREMENT: begin
-			    increment = 1'b1;
+					increment = 1'b1;
             end
 				DESTROYED: begin
 			    destroyed_state = 1'b1;

@@ -25,7 +25,7 @@ module datapath(
 	 
 	reg [3:0] Counter_X; // Column in grid, not coordinates on vga
 	reg [3:0] Counter_Y; // Row in grid, not coordinates on vga
-	reg [1:0] two_cycle_delay;
+	reg [1:0]two_cycle_delay;
 
 
 	/*____________Map Related Registers___________*/
@@ -54,30 +54,19 @@ module datapath(
 	/*___________________Flags____________________*/
 	//  reg down_wait = 1'b0;
 	 
-	/*___________Memory Accessing Wires___________*/
-	wire [8:0] colour_map;
-	wire [8:0] colour_square;
+	/*___________Memory Accessing Wires___________*/	
 	wire [8:0] colour_tower;
 	wire tower_done_wire;
-	wire [14:0]coord;
-
+	wire [14:0]coord_tower;
 	
-
-	ram19200x9_map_background map_background(
-						.address(memory_address_map),
-						.clock(clk),
-						.data(9'b0),
-						.wren(1'b0),
-						.q(colour_map)
-						);
-							
-	ram400x9_square_grid_selection select_grid(
-									.address(memory_address_square),
-									.clock(clk),
-									.data(9'b0),
-									.wren(1'b0),
-									.q(colour_square)
-									);
+	wire [8:0] colour_square;
+	wire square_done_wire;
+	wire [14:0]coord_square;
+	
+	wire [8:0]colour_erase_square;
+	wire erase_square_done_wire;
+	wire [14:0]coord_erase_square;
+						
 	
 	draw_tower t1(
 			.clk(clk && draw_tower),
@@ -86,20 +75,31 @@ module datapath(
 			.COUNTER_Y(Counter_Y),
 			.colour(colour_tower),
 			.tower_done(tower_done_wire),
-			.x(coord[14:7]),
-			.y(coord[6:0])
+			.x(coord_tower[14:7]),
+			.y(coord_tower[6:0])
 			);
-
-
-
-
-	//  ram1x48_game_grid(
-	// 				.address(memory_address_square),
-	// 				.clock(clk),
-	// 				.data(9'b0),
-	// 				.wren(1'b0),
-	// 				.q(colour_square)
-	// 				);
+	
+	draw_square_grid s1(
+			.clk(clk && draw_square),
+			.resetn(resetn),
+			.COUNTER_X(Counter_X), //Uppercase indicates grid coutner
+			.COUNTER_Y(Counter_Y), //Uppercase indicates grid coutner
+			.colour(colour_square),
+			.square_done(square_done_wire),
+			.x(coord_square[14:7]), //Will go into VGA Input
+			.y(coord_square[6:0]) //Will go into VGA Input
+		 );
+	
+	erase_square e1(
+			.clk(clk && (erase_square_down | erase_square_right | erase_square_tower)),
+			.resetn(resetn),
+			.COUNTER_X(Counter_X), //Uppercase indicates grid coutner
+			.COUNTER_Y(Counter_Y), //Uppercase indicates grid coutner
+			.colour(colour_erase_square),
+			.erase_square_done(erase_square_done_wire),
+			.x(coord_erase_square[14:7]), //Will go into VGA Input
+			.y(coord_erase_square[6:0]) //Will go into VGA Input
+		 );
 	 
 	 always @ (posedge clk) begin
 		if (!resetn) begin
@@ -151,32 +151,9 @@ module datapath(
 		end
 		else if (draw_square) begin
 			if(!square_done) begin
+				coordinates <= coord_square;
 				colour <= colour_square;
-				if (two_cycle_delay == 2'b10) begin
-					memory_address_square <= memory_address_square + 1;
-					coordinates <= {counter_memory_x_square + 1'b1 + (Counter_X * 5'b10100), 
-									counter_memory_y_square + (Counter_Y * 5'b10100)};
-					
-
-					counter_memory_x_square <= counter_memory_x_square + 1;
-					if(counter_memory_x_square >= 8'b00010011) begin
-						counter_memory_y_square <= counter_memory_y_square + 1;
-						counter_memory_x_square <= 0;
-						coordinates <= {(8'b0 + (Counter_X * 5'b10100)), coordinates[6:0]};
-					end
-
-					//Same as {x, y} >= {19, 19} - i.e. done accessing square memory
-					if({counter_memory_x_square, counter_memory_y_square} >= 15'b000100110010011) begin
-						square_done <= 1;
-						memory_address_square <= 0;
-						counter_memory_x_square <= 0;
-						counter_memory_y_square <= 0;
-					end
-				end
-				if(two_cycle_delay >= 2'b10)
-					two_cycle_delay <= 2'b00;
-				else
-					two_cycle_delay <= two_cycle_delay + 1;
+				square_done <= square_done_wire;
 			end
 		end
 		else if (move_right) begin
@@ -224,41 +201,18 @@ module datapath(
 		else if(draw_tower) begin
 			//Reset the flag for next use
 			erase_square_done <= 0;
-			coordinates <= coord;
+			coordinates <= coord_tower;
 			colour <= colour_tower;
 			tower_done <= tower_done_wire;
 		end
 		//Separating right / down case is for state machine. Actual deletion is the same functionality
 		else if(erase_square_down | erase_square_right | erase_square_tower) begin 		
-				//Reset the flag for next use
-				square_done <= 0;
-				//Erase current cell's square
-				colour <= colour_map;
-				if (two_cycle_delay == 2'b10) begin
-					coordinates <= {((Counter_X * 5'b10100) + counter_memory_x_square), 
-									((Counter_Y * 5'b10100) + counter_memory_y_square)};
-									
-					memory_address_map <= (Counter_Y * 8'b10100000 * 5'b10100) + (Counter_X * 5'b10100) + 
-												(8'b10100000 * counter_memory_y_square) + counter_memory_x_square;
-											
-					counter_memory_x_square <= counter_memory_x_square +1;
-					if(counter_memory_x_square >= 8'b00010011) begin
-						counter_memory_y_square <= counter_memory_y_square +1;
-						counter_memory_x_square <= 0;
-					end
-
-					//Same as {x, y} >= {19, 19} - i.e. done accessing map memory
-					if({counter_memory_x_square, counter_memory_y_square} >= 15'b000100110010011) begin
-						erase_square_done <= 1;
-						memory_address_map <= 0;
-						counter_memory_x_square <= 0;
-						counter_memory_y_square <= 0;
-					end
-				end
-				if(two_cycle_delay >= 2'b10)
-					two_cycle_delay <= 2'b00;
-				else
-					two_cycle_delay <= two_cycle_delay + 1;
-			end
+			//Reset the flag for next use
+			square_done <= 0;
+			//Erase current cell's square
+			colour <= colour_erase_square;
+			coordinates <= coord_erase_square;
+			erase_square_done <= erase_square_done_wire;
+		end
 	end
 endmodule

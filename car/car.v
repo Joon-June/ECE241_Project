@@ -23,7 +23,7 @@ module car(
 	
 	assign car_done = draw_done;
 	
-	assign LEDR[0] = resetn;
+	assign LEDR[0] = enable_draw;
 	assign LEDR[1] = wait_start;
 	assign LEDR[2] = delay;
 	assign LEDR[3] = draw_car;

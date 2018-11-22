@@ -14,7 +14,7 @@ module datapath_car(
 	//___________________//
 	output reg game_over,
 	output reg [8:0] colour,
-	output reg [14:0] coordinates,
+	output reg [14:0] coordinates, // coordinates sent to VGA
 	output reg [7:0]Counter_X, // Location (top left of car) on map, not pixel coordinates sent vga
 	output reg [6:0]Counter_Y, // Location (top left of car) on map, not pixel coordinates sent vga
 
@@ -24,15 +24,12 @@ module datapath_car(
 	output reg erase_done
 	);
 	 
-	reg [1:0] two_cycle_delay;
-
 	/*____________Map Related Registers___________*/
 	reg [14:0] memory_address_map; //need 15 bits to access map.mif (19200 addresses - 160 x 120)
 	
 	/*___________Car Related Registers___________*/
 	reg [7:0] counter_memory_x_car; //counter to track pixel location while drawing/erasing
 	reg [6:0] counter_memory_y_car; //counter to track pixel location while drawing/erasing
-	reg [8:0] memory_address_car; //need 8 bit to access car.mif (400 addresses - 20 x 20)
 	 
 	  /*___________Register for Game Grid___________*/
 	reg [7:0] game_grid [5:0];
@@ -46,14 +43,21 @@ module datapath_car(
 	end
 	 
 	/*___________________Flags____________________*/
-	//  reg down_wait = 1'b0;
+	wire delay_done_wire;
 	 
 	/*___________Memory Accessing Wires___________*/
-	wire [8:0] colour_map;
 	wire [8:0] colour_car;
 	wire draw_done_wire;
-	wire [14:0]coord; // output from draw_tower module
-	wire delay_done_wire;
+	wire [14:0]coord_draw_car; // output from draw_tower module
+	
+
+	wire [8:0] colour_erase_car;
+	wire erase_done_wire;
+	wire [14:0]coord_erase_car;
+	
+	
+	
+	
 	/*___________Counter enabled during delay state_______*/
 	DelayCounter d1(
 						.Clock(clk),
@@ -61,14 +65,6 @@ module datapath_car(
 						.delay_length(delay_frames),
 						.Enable(delay),
 						.delay_done(delay_done_wire));
-
-	ram19200x9_map_background map_background(
-						.address(memory_address_map),
-						.clock(clk),
-						.data(9'b0),
-						.wren(1'b0),
-						.q(colour_map)
-						);
 	
 	draw_car c1(
 			.clk(clk && draw_car),
@@ -77,28 +73,36 @@ module datapath_car(
 			.COUNTER_Y(Counter_Y),
 			.colour(colour_car),
 			.draw_done(draw_done_wire),
-			.x(coord[14:7]),
-			.y(coord[6:0])
+			.x(coord_draw_car[14:7]),
+			.y(coord_draw_car[6:0])
+			);
+			
+	erase_car_background e1(
+			.clk(clk && erase_car),
+			.resetn(resetn),
+			.COUNTER_X(Counter_X),
+			.COUNTER_Y(Counter_Y),
+			.colour(colour_erase_car),
+			.erase_car_done(erase_done_wire),
+			.x(coord_erase_car[14:7]),
+			.y(coord_erase_car[6:0])
 			);
 	 
 	 always @ (posedge clk) begin
 		if (!resetn) begin
 			Counter_X <= 0;
-			Counter_Y <= 6'b111100;
+			Counter_Y <= 6'b111100; //60
 			memory_address_map <= 0;
 
 			counter_memory_x_car <= 0;
 			counter_memory_y_car <= 0;
-			memory_address_car <= 0;
 
 			initial_delay_done <= 0;
 			draw_done <= 0;
 			erase_done <= 0;
 			game_over <= 0;
 			
-			coordinates <= {9'b0, 6'b111100};
-
-			two_cycle_delay = 2'b00;
+			coordinates <= {9'b0, 6'b111100}; //{0, 60}
 		end
 		else if (wait_start) begin
 			Counter_X <= 0;
@@ -107,7 +111,6 @@ module datapath_car(
 
 			counter_memory_x_car <= 0;
 			counter_memory_y_car <= 0;
-			memory_address_car <= 0;
 			game_over <= 0;
 			
 			initial_delay_done <= 0;
@@ -115,8 +118,6 @@ module datapath_car(
 			erase_done <= 0;
 
 			coordinates <= {9'b0, 6'b111100};
-
-			two_cycle_delay = 2'b00;
 		end
 		else if (delay) begin
 			initial_delay_done <= delay_done_wire;
@@ -157,42 +158,19 @@ module datapath_car(
 		end
 		else if(draw_car) begin
 			//Reset the flag for next use
-			coordinates <= coord;
+			coordinates <= coord_draw_car;
 			colour <= colour_car;
 			draw_done <= draw_done_wire;
 		end
 		//Separating right / down case is for state machine. Actual deletion is the same functionality
 		else if(erase_car) begin 		
-				//Reset the flag for next use
-				draw_done <= 0;
-				//Erase current cell's car
-				colour <= colour_map;
-				if (two_cycle_delay == 2'b10) begin
-					coordinates <= {(Counter_X + counter_memory_x_car), 
-									(Counter_Y + counter_memory_y_car)};
-									
-					memory_address_map <= (Counter_Y * 8'b10100000) + Counter_X + 
-												(8'b10100000 * counter_memory_y_car) + counter_memory_x_car;
-											
-					counter_memory_x_car <= counter_memory_x_car +1;
-					if(counter_memory_x_car >= 8'b00010011) begin
-						counter_memory_y_car <= counter_memory_y_car +1;
-						counter_memory_x_car <= 0;
-					end
-
-					//Same as {x, y} >= {19, 19} - i.e. done accessing map memory
-					if({counter_memory_x_car, counter_memory_y_car} >= 15'b000100110010011) begin
-						erase_done <= 1;
-						memory_address_map <= 0;
-						counter_memory_x_car <= 0;
-						counter_memory_y_car <= 0;
-					end
-				end
-				if(two_cycle_delay >= 2'b10)
-					two_cycle_delay <= 2'b00;
-				else
-					two_cycle_delay <= two_cycle_delay + 1;
-			end
+			//Reset the flag for next use
+			draw_done <= 0;
+			//Erase current cell's car
+			coordinates <= coord_erase_car;
+			colour <= colour_erase_car;
+			erase_done <= erase_done_wire;
+		end
 	end
 endmodule
 

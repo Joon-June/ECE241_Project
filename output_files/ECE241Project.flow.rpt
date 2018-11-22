@@ -1,6 +1,6 @@
 Flow report for ECE241Project
-Wed Nov 21 13:28:04 2018
-Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Wed Nov 21 22:39:16 2018
+Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
 ---------------------
@@ -40,15 +40,15 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Wed Nov 21 13:27:44 2018       ;
-; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Flow Status                     ; Successful - Wed Nov 21 22:39:00 2018       ;
+; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; ECE241Project                               ;
 ; Top-level Entity Name           ; ECE241Project                               ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 186 / 32,070 ( < 1 % )                      ;
-; Total registers                 ; 144                                         ;
+; Logic utilization (in ALMs)     ; 193 / 32,070 ( < 1 % )                      ;
+; Total registers                 ; 152                                         ;
 ; Total pins                      ; 50 / 457 ( 11 % )                           ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 352,800 / 4,065,280 ( 9 % )                 ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/21/2018 13:24:33 ;
+; Start date & time ; 11/21/2018 22:36:55 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; ECE241Project       ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 233845175658565.154282467315336        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 209472083398803.154285781404480        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; MISC_FILE                           ; ram400x9_square_grid_selection_bb.v    ; --            ; --          ; --         ;
@@ -99,24 +99,24 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:32     ; 1.0                     ; 769 MB              ; 00:01:15                           ;
-; Fitter               ; 00:02:15     ; 1.1                     ; 3350 MB             ; 00:07:33                           ;
-; Assembler            ; 00:00:17     ; 1.0                     ; 728 MB              ; 00:00:17                           ;
-; Timing Analyzer      ; 00:00:19     ; 1.8                     ; 1156 MB             ; 00:00:25                           ;
-; Total                ; 00:03:23     ; --                      ; --                  ; 00:09:30                           ;
+; Analysis & Synthesis ; 00:00:31     ; 1.0                     ; 4860 MB             ; 00:00:36                           ;
+; Fitter               ; 00:01:13     ; 1.0                     ; 6376 MB             ; 00:01:55                           ;
+; Assembler            ; 00:00:16     ; 1.0                     ; 4869 MB             ; 00:00:10                           ;
+; Timing Analyzer      ; 00:00:14     ; 1.2                     ; 5185 MB             ; 00:00:14                           ;
+; Total                ; 00:02:14     ; --                      ; --                  ; 00:02:55                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+-----------------------------------------------------------------------------------+
-; Flow OS Summary                                                                   ;
-+----------------------+------------------+-----------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
-+----------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis ; APP1             ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter               ; APP1             ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler            ; APP1             ; Windows 7 ; 6.1        ; x86_64         ;
-; Timing Analyzer      ; APP1             ; Windows 7 ; 6.1        ; x86_64         ;
-+----------------------+------------------+-----------+------------+----------------+
++------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                    ;
++----------------------+------------------+------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++----------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis ; DESKTOP-K5KGVTU  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; DESKTOP-K5KGVTU  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; DESKTOP-K5KGVTU  ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; DESKTOP-K5KGVTU  ; Windows 10 ; 10.0       ; x86_64         ;
++----------------------+------------------+------------+------------+----------------+
 
 
 ------------

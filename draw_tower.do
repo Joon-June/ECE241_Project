@@ -10,5 +10,14 @@ add wave {/*}
 force {clk} 0 0ns, 1 {5ns} -r 10ns
 force {COUNTER_X} 0;
 force {COUNTER_Y} 0;
-run 8100ns
+run 8000ns
+
+force {clk} 0
+run 100ns
+
+force {clk} 0 0ns, 1 {5ns} -r 10ns
+run 1000ns
+
+
+
 

@@ -47,29 +47,31 @@ module ECE241Project(
 		defparam VGA.BITS_PER_COLOUR_CHANNEL = 3;
 		defparam VGA.BACKGROUND_IMAGE = "defense_map_with_turn.mif";
 
-//	wire car1en, enable_draw;
+	wire car1en, enable_draw, game_over;
 		
-//	assign WriteEn = (colour != 9'b111111111) && car1en;
+//	assign writeEn = (colour != 9'b111111111) && car1en;
 	assign writeEn = (colour != 9'b111111111) && (draw_square | draw_tower | erase_square_right | erase_square_down | erase_square_tower);
 	// Put your code here. Your code should produce signals x,y,colour and writeEn
 	// for the VGA controller, in addition to any other functionality your design may require.
 
 
 	
-//	FrameCounter_30 FC1(.Clock(Clock_50), .resetn(resetn), .Enable30(enable_draw));
+//	FrameCounter_30 FC1(.Clock(CLOCK_50), .resetn(resetn), .Enable30(enable_draw));
 //	
-//	assign LEDR[9] = enable_draw;
+//	assign LEDR[9] = ~KEY[0];
 //	
+//	assign LEDR[8] = game_over;
+	
 //	car CAR1(
-//		.clk(Clock_50),
+//		.clk(CLOCK_50),
 //		.resetn(resetn),
 //		.initiate(~KEY[0]), // beginning of stage
-//		.car_destroyed(1'b0), // input from towers
-//		.enable_draw(1'b1), // begin drawing cycle
+//		.car_destroyed(1'b0 | (game_over == 1'b1)), // input from towers
+//		.enable_draw(enable_draw), // begin drawing cycle
 //		.delay_frames(5'b11110), // 1 second @ 30fps
 //
-//		.game_over(LEDR[8]),
-//      //.car_done(LEDR[2]), // needs to be added
+//		.game_over(game_over),
+//      //.car_done(LEDR[2]), // needs to be used
 //		.vga_WriteEn(car1en), // enables the WriteEn in vga
 //      .vga_coords({x,y}), 
 //		.vga_colour(colour),
@@ -137,7 +139,7 @@ endmodule
 
 
 // Testing module to count 30fps
-module FrameCounter_30(Clock, resetn, Enable30);
+module FrameCounter_30(Clock, resetn, Enable30); // tested
 	input Clock;
 	input resetn;
 	output reg Enable30;

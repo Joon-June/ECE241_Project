@@ -41,7 +41,7 @@ set_global_assignment -name DEVICE 5CSEMA5F31C6
 set_global_assignment -name TOP_LEVEL_ENTITY ECE241Project
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.0.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "13:21:15  NOVEMBER 09, 2018"
-set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
@@ -329,4 +329,8 @@ set_global_assignment -name MIF_FILE work/tower_basic.mif
 set_global_assignment -name QIP_FILE ram19200x9_map_background.qip
 set_global_assignment -name VERILOG_FILE tower.v
 set_global_assignment -name VERILOG_FILE grid_selection_square.v
+set_global_assignment -name VERILOG_FILE draw_square.v
+set_global_assignment -name VERILOG_FILE erase_square.v
+set_global_assignment -name VERILOG_FILE memory_address_translator_160x120.v
+set_global_assignment -name VERILOG_FILE output_files/erase_car.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

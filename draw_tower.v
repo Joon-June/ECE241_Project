@@ -16,11 +16,14 @@ module draw_tower(
     reg [4:0]temp_y;
 	 reg [4:0]counter_x;
     reg [4:0]counter_y;
+	 
+	 reg delay;
 
     initial begin
         counter_x = 5'b0;
         counter_y = 5'b0;
         tower_done = 0;
+		  delay = 0;
     end
 
     //Memory Address Translator for 20x20 .mif files
@@ -43,33 +46,40 @@ module draw_tower(
 		  if(!resetn) begin
             counter_x <= 0;
             counter_y <= 0;
+				temp_x <= 0;
+				temp_y <= 0;
+				delay <= 0;
         end
         else begin
-            temp_x <= counter_x;
-			   temp_y <= counter_y;
-			   if(counter_x == 0)
-                tower_done <= 0;
-                    
-           
-				counter_x <= counter_x + 1;
-				if(counter_x == 5'b10011) begin
-				  counter_y <= counter_y + 1;
-				  counter_x <= 0;
+            if(delay == 1) begin
+					temp_x <= counter_x;
+					temp_y <= counter_y;
+					if(counter_x == 0)
+						 tower_done <= 0;
+							  
+				  
+					counter_x <= counter_x + 1;
+					if(counter_x == 5'b10011) begin
+					  counter_y <= counter_y + 1;
+					  counter_x <= 0;
+					end
+			  
+					//Same as {counter_x, counter_y} >= {19, 19} - i.e. done accessing square memory
+					if({counter_x, counter_y} == 10'b1001110011) begin
+						 tower_done <= 1;
+						 counter_x <= 0;
+						 counter_y <= 0;
+						 delay <= 0;
+					end
 				end
-        
-            //Same as {counter_x, counter_y} >= {19, 19} - i.e. done accessing square memory
-            if({counter_x, counter_y} == 10'b1001110011) begin
-                tower_done <= 1;
-                counter_x <= 0;
-                counter_y <= 0;
-					 temp_x <= counter_x;
-					 temp_y <= counter_y;
-            end
+				else
+					delay <= delay + 1;
         end
     end
 
-    // always @(colour_tower) //1 cycle delay from counter_x & counter_y
-    //     colour = colour_tower;
+   always @(colour_tower) //1 cycle delay from counter_x & counter_y
+         colour = colour_tower;
+
 
     assign x = COUNTER_X * 5'b10100 + temp_x;
     assign y = COUNTER_Y * 5'b10100 + temp_y;
