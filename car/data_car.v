@@ -1,6 +1,7 @@
 module datapath_car(
    input clk,
    input resetn,
+	input enable_draw,
 	 //____Control Signals___//
    input wait_start, 
    input delay, 
@@ -164,12 +165,13 @@ module datapath_car(
 		end
 		//Separating right / down case is for state machine. Actual deletion is the same functionality
 		else if(erase_car) begin 		
-			//Reset the flag for next use
-			draw_done <= 0;
 			//Erase current cell's car
 			coordinates <= coord_erase_car;
 			colour <= colour_erase_car;
 			erase_done <= erase_done_wire;
+		end
+		else if(destroyed_state) begin
+			draw_done <= enable_draw;
 		end
 	end
 endmodule

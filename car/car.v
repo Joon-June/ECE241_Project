@@ -11,9 +11,8 @@ module car(
 		output vga_WriteEn, // erase_car | draw_car
       output [14:0] vga_coords, 
 		output [8:0] vga_colour,
-      output [14:0] car_location, // for towers
+      output [14:0] car_location // for towers
 		
-		output [7:0]LEDR
    );
 	 
 	wire wait_start, delay, draw_car, draw_wait, erase_car, increment, destroyed_state;
@@ -22,20 +21,12 @@ module car(
 	assign vga_WriteEn = draw_car | erase_car;
 	
 	assign car_done = draw_done;
-	
-	assign LEDR[0] = enable_draw;
-	assign LEDR[1] = wait_start;
-	assign LEDR[2] = delay;
-	assign LEDR[3] = draw_car;
-	assign LEDR[4] = draw_wait;
-	assign LEDR[5] = erase_car;
-	assign LEDR[6] = increment;
-	assign LEDR[7] = destroyed_state;
  
 	
 	datapath_car d0(
 		.clk(clk),
 		.resetn(resetn),
+		.enable_draw(enable_draw),
 		//____Control Signals___//
 		.wait_start(wait_start), 
 		.delay(delay), 

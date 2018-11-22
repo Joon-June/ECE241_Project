@@ -52,7 +52,7 @@ module control_car(
                         next_state = WAIT_DRAW;
                 end                 
                 ERASE_CAR: begin
-                    if(car_destroyed == 1'b1)
+                    if(car_destroyed == 1'b1 && erase_done == 1'b1)
 								next_state = DESTROYED;
 						  else if(erase_done == 1'b1)
                         next_state = INCREMENT;

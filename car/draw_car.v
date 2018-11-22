@@ -60,7 +60,7 @@ module draw_car(
         
             //Same as {counter_x, counter_y} >= {19, 19} - i.e. done accessing square memory
             if({counter_x, counter_y} == 10'b1001110011) begin
-                draw_done <= 1;
+                draw_done <= 1'b1;
                 counter_x <= 0;
                 counter_y <= 0;
             end
