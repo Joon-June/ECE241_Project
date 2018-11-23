@@ -1,4 +1,4 @@
-module control(
+module control_towerplacer(
 		input clk,
 		input resetn,
 		input go_down, // ~KEY[0]
@@ -8,6 +8,7 @@ module control(
         input square_done,
         input erase_square_done,
         input tower_done,
+        input enable_draw,
 
 		output reg move_down, 
         output reg move_right, 
@@ -38,7 +39,12 @@ module control(
    always @ (*)
    begin: state_table 
 		case (current_state)
-                TOP_LEFT: next_state = DRAW_SQUARE;
+                TOP_LEFT: begin
+                   if(enable_draw)
+                        next_state = DRAW_SQUARE;
+                    else
+                        next_state = TOP_LEFT;
+                end
                 DRAW_SQUARE: begin
                     if(square_done)
                         next_state = WAIT;

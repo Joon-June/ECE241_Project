@@ -24,14 +24,7 @@ module datapath_car(
 	output reg draw_done,
 	output reg erase_done
 	);
-	 
-	/*____________Map Related Registers___________*/
-	reg [14:0] memory_address_map; //need 15 bits to access map.mif (19200 addresses - 160 x 120)
-	
-	/*___________Car Related Registers___________*/
-	reg [7:0] counter_memory_x_car; //counter to track pixel location while drawing/erasing
-	reg [6:0] counter_memory_y_car; //counter to track pixel location while drawing/erasing
-	 
+	 	 
 	  /*___________Register for Game Grid___________*/
 	reg [7:0] game_grid [5:0];
 	initial begin //Represents the path of the game grid
@@ -93,10 +86,6 @@ module datapath_car(
 		if (!resetn) begin
 			Counter_X <= 0;
 			Counter_Y <= 6'b111100; //60
-			memory_address_map <= 0;
-
-			counter_memory_x_car <= 0;
-			counter_memory_y_car <= 0;
 
 			initial_delay_done <= 0;
 			draw_done <= 0;
@@ -108,10 +97,6 @@ module datapath_car(
 		else if (wait_start) begin
 			Counter_X <= 0;
 			Counter_Y <= 6'b111100;
-			memory_address_map <= 0;
-
-			counter_memory_x_car <= 0;
-			counter_memory_y_car <= 0;
 			game_over <= 0;
 			
 			initial_delay_done <= 0;

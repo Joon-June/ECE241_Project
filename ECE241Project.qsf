@@ -309,6 +309,8 @@ set_location_assignment PIN_E12 -to VGA_R[6]
 set_location_assignment PIN_F13 -to VGA_R[7]
 set_location_assignment PIN_C10 -to VGA_SYNC_N
 set_location_assignment PIN_D11 -to VGA_VS
+set_global_assignment -name VERILOG_FILE data_game_flow.v
+set_global_assignment -name VERILOG_FILE control_game_flow.v
 set_global_assignment -name VERILOG_FILE car/draw_car.v
 set_global_assignment -name VERILOG_FILE car/data_car.v
 set_global_assignment -name VERILOG_FILE car/control_car.v
@@ -332,5 +334,7 @@ set_global_assignment -name VERILOG_FILE grid_selection_square.v
 set_global_assignment -name VERILOG_FILE draw_square.v
 set_global_assignment -name VERILOG_FILE erase_square.v
 set_global_assignment -name VERILOG_FILE memory_address_translator_160x120.v
-set_global_assignment -name VERILOG_FILE output_files/erase_car.v
+set_global_assignment -name VERILOG_FILE erase_car.v
+set_global_assignment -name VERILOG_FILE TOWERS.v
+set_global_assignment -name VERILOG_FILE CARS.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

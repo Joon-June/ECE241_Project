@@ -106,13 +106,6 @@ module datapath(
 			Counter_X <= 0;
 			Counter_Y <= 0;
 			valid <= 0;
-			counter_memory_x_map <= 0;
-	 		counter_memory_y_map <= 0;
-			memory_address_map <= 0;
-
-			counter_memory_x_square <= 0;
-			counter_memory_y_square <= 0;
-			memory_address_square <= 0;
 
 			square_done <= 0;
 			erase_square_done <= 0;
@@ -127,27 +120,16 @@ module datapath(
 			game_grid[4] <= 8'b0;
 			game_grid[5] <= 8'b0;
 			//end
-
-			two_cycle_delay = 2'b00;
 		end
 		else if (top_left) begin
 			Counter_X <= 0;
 			Counter_Y <= 0;
 			valid <= 0;
-			counter_memory_x_map <= 0;
-	 		counter_memory_y_map <= 0;
-			memory_address_map <= 0;
-
-			counter_memory_x_square <= 0;
-			counter_memory_y_square <= 0;
-			memory_address_square <= 0;
 
 			square_done <= 0;
 			erase_square_done <= 0;
 			tower_done <= 0;
 			coordinates <= 0;
-
-			two_cycle_delay = 2'b00;
 		end
 		else if (draw_square) begin
 			if(!square_done) begin
@@ -191,11 +173,9 @@ module datapath(
 			end
 		end
 		else if (move_down_wait) begin
-			two_cycle_delay = 2'b00;
 			valid <= 0;
 		end
 		else if (move_right_wait) begin
-			two_cycle_delay = 2'b00;
 			valid <= 0;
 		end
 		else if(draw_tower) begin

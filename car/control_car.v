@@ -45,11 +45,11 @@ module control_car(
                     else
                         next_state = DELAY;
 					end
-					WAIT_DRAW: begin // wait for the drawing of this car to be enabled
-                    if(enable_draw == 1'b1)
-                        next_state = ERASE_CAR;
-                    else
-                        next_state = WAIT_DRAW;
+                WAIT_DRAW: begin // wait for the drawing of this car to be enabled
+                if(enable_draw == 1'b1)
+                    next_state = ERASE_CAR;
+                else
+                    next_state = WAIT_DRAW;
                 end                 
                 ERASE_CAR: begin
                     if(car_destroyed == 1'b1 && erase_done == 1'b1)
@@ -66,7 +66,12 @@ module control_car(
                     else
                         next_state = DRAW_CAR;
                 end
-                DESTROYED: next_state = DESTROYED;
+                DESTROYED: begin
+                    if(initiate == 1'b0)
+                        next_state = WAIT_START;
+                    else
+                        next_state = DESTROYED;
+                end 
             default: next_state = RESET;
 		endcase // state table
 	end

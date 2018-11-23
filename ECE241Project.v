@@ -1,7 +1,6 @@
 module ECE241Project(
 	input [3:0]KEY,
 	input CLOCK_50,
-	output [9:0]LEDR,
 	output			VGA_CLK,   				//	VGA Clock
 	output			VGA_HS,					//	VGA H_SYNC
 	output			VGA_VS,					//	VGA V_SYNC
@@ -11,20 +10,191 @@ module ECE241Project(
 	output	[9:0]	VGA_G,	 				//	VGA Green[9:0]
 	output	[9:0]	VGA_B   				//	VGA Blue[9:0]
 );
+//_______________________Wires & Registers____________________________//
 	
+	//_________reset_________//
 	wire resetn;
 	assign resetn = KEY[3];
 	
-	reg [8:0] colour;
-	reg [7:0] x;
-	reg [6:0] y;
+	//_________User Inputs_______//
+	wire go_down;
+	wire go_right;
+	wire go_draw;
+	assign go_down = ~KEY[0];
+	assign go_right = ~KEY[1];
+	assign go_draw = ~KEY[2];
 	
+	//_______VGA Inputs______//
+	wire [8:0] colour;
+	wire [7:0] x;
+	wire [6:0] y;
+	wire writeEn_from_data;
 	wire writeEn;
+	assign writeEn = (colour != 8'b11111111) && writeEn_from_data;	
+	
+	//______Game Flow Related Wires______//
+	//Initial Setup
+	wire wait_start;
+	wire start_display_done;
+	//Control Feebacks
+	wire [3:0]stage_1_feedback;
+	wire [3:0]stage_2_feedback;
+	wire [3:0]stage_3_feedback;
+	//Control Output
+	wire [3:0]stage_1_control;
+	wire [3:0]stage_2_control;
+	wire [3:0]stage_3_control;
+	//Terminal States
+	wire win;
+	wire game_over_control;
+	wire game_over_feedback;
+//____________________________________________________________________//
+
+
+//_________________________Data Path__________________________________//
+	data_game_flow DGF(
+		.clk(CLOCK_50),
+		.resetn(resetn),
+		//__________________________________//
+		//____________User Input____________//
+		//__________________________________//
+		.go_down(go_down),
+		.go_right(go_right),
+		.go_draw(go_draw),		
+		
+				
+		//__________________________________//
+		//_______Control Signal Input_______//
+		//__________________________________//
+		.wait_start(wait_start), 
+        //______Stage 1_______//
+		.stage_1_begin(stage_1_control[0]),
+		.stage_1_draw_tower(stage_1_control[1]),
+		.stage_1_in_progress(stage_1_control[2]),
+		.stage_1_done(stage_1_control[3]),
+
+		//______Stage 2_______//
+		.stage_2_begin(stage_2_control[0]),
+		.stage_2_draw_tower(stage_2_control[1]),
+		.stage_2_in_progress(stage_2_control[2]),
+		.stage_2_done(stage_2_control[3]),
+
+		//______Stage 3_______//
+		.stage_3_begin(stage_3_control[0]),
+		.stage_3_draw_tower(stage_3_control[1]),
+		.stage_3_in_progress(stage_3_control[2]),
+		.stage_3_done(stage_3_control[3]),
+		
+		//Terminal States
+		.win(win),
+		.game_over(game_over_control),
+
+
+		//_________________________________//
+		//______Control Feedback Output_____//
+		//_________________________________//
+		.start_display_done(start_display_done),
+		
+		//_________STAGE 1___________//
+		.stage_1_begin_done(stage_1_feedback[0]),
+		.stage_1_tower_done(stage_1_feedback[1]),
+		.stage_1_car_done(stage_1_feedback[2]),
+		.stage_1_end_display_done(stage_1_feedback[3]),
+		
+		//_________STAGE 2___________//
+		.stage_2_begin_done(stage_2_feedback[0]),
+		.stage_2_tower_done(stage_2_feedback[1]),
+		.stage_2_car_done(stage_2_feedback[2]),
+		.stage_2_end_display_done(stage_2_feedback[3]),
+		
+		//_________STAGE 3___________//
+		.stage_3_begin_done(stage_3_feedback[0]),
+		.stage_3_tower_done(stage_3_feedback[1]),
+		.stage_3_car_done(stage_3_feedback[2]),
+		.stage_3_end_display_done(stage_3_feedback[3]),
+
+		//Terminal States
+		.game_over_feedback(game_over_feedback),
+
+		
+		//________VGA Inputs_________//
+		.colours(colour),
+		.coordinates({x, y}),
+		.VGA_write_enable(writeEn_from_data)
+	);
+//____________________________________________________________________//
+
 	
 	
-	// Create an Instance of a VGA controller - there can be only one!
-	// Define the number of colours as well as the initial background
-	// image file (.MIF) for the controller.
+	
+	
+//____________________Finite State Machine____________________________//
+
+	control_game_flow CGF(
+		.clk(CLOCK_50),
+		.resetn(resetn),
+		//_________________________________//
+		//______Control Feedback Input_____//
+		//_________________________________//
+		.start_display_done(start_display_done),
+		
+		//_________STAGE 1___________//
+		.stage_1_begin_done(stage_1_feedback[0]),
+		.stage_1_tower_done(stage_1_feedback[1]),
+		.stage_1_car_done(stage_1_feedback[2]),
+		.stage_1_end_display_done(stage_1_feedback[3]),
+		
+		//_________STAGE 2___________//
+		.stage_2_begin_done(stage_2_feedback[0]),
+		.stage_2_tower_done(stage_2_feedback[1]),
+		.stage_2_car_done(stage_2_feedback[2]),
+		.stage_2_end_display_done(stage_2_feedback[3]),
+		
+		//_________STAGE 3___________//
+		.stage_3_begin_done(stage_3_feedback[0]),
+		.stage_3_tower_done(stage_3_feedback[1]),
+		.stage_3_car_done(stage_3_feedback[2]),
+		.stage_3_end_display_done(stage_3_feedback[3]),
+
+		//Terminal States
+		.game_over_in(game_over_feedback),
+
+		
+		//__________________________________//
+		//______Control Signal Output_______//
+		//__________________________________//
+		.wait_start(wait_start), 
+        //______Stage 1_______//
+		.stage_1_begin(stage_1_control[0]),
+		.stage_1_draw_tower(stage_1_control[1]),
+		.stage_1_in_progress(stage_1_control[2]),
+		.stage_1_done(stage_1_control[3]),
+
+		//______Stage 2_______//
+		.stage_2_begin(stage_2_control[0]),
+		.stage_2_draw_tower(stage_2_control[1]),
+		.stage_2_in_progress(stage_2_control[2]),
+		.stage_2_done(stage_2_control[3]),
+
+		//______Stage 3_______//
+		.stage_3_begin(stage_3_control[0]),
+		.stage_3_draw_tower(stage_3_control[1]),
+		.stage_3_in_progress(stage_3_control[2]),
+		.stage_3_done(stage_3_control[3]),
+
+		.win(win),
+		.game_over_out(game_over_control)
+	
+	);
+//____________________________________________________________________//
+	
+
+	
+//____________________________VGA Module______________________________//
+
+// Create an Instance of a VGA controller - there can be only one!
+// Define the number of colours as well as the initial background
+// image file (.MIF) for the controller.
 	vga_adapter VGA(
 			.resetn(resetn),
 			.clock(CLOCK_50),
@@ -47,194 +217,7 @@ module ECE241Project(
 		defparam VGA.BITS_PER_COLOUR_CHANNEL = 3;
 		defparam VGA.BACKGROUND_IMAGE = "defense_map_with_turn.mif";
 
-	wire [3:0]car_writeEn;
-	wire [3:0]enable_car_draw;
-	wire [3:0]game_over;
-	wire [8:0]colour0, colour1, colour2, colour3;
-	wire [14:0]coords0, coords1, coords2, coords3;
-		
-	assign writeEn = (colour != 9'b111111111) && (|car_writeEn);
-//	assign writeEn = (colour != 9'b111111111) && (draw_square | draw_tower | erase_square_right | erase_square_down | erase_square_tower);
-	// Put your code here. Your code should produce signals x,y,colour and writeEn
-	// for the VGA controller, in addition to any other functionality your design may require.
-
-	assign LEDR[3:0] = car_writeEn;
-	assign LEDR[7:4] = game_over;
-	assign LEDR[9:8] = enable_car_draw[1:0];
-	
-	FrameCounter_30 FC1(.Clock(CLOCK_50), .resetn(resetn), .Enable30(enable_car_draw[0]));
-	
-	
-	car CAR0(
-		.clk(CLOCK_50),
-		.resetn(resetn),
-		.initiate(~KEY[0]), // beginning of stage
-		.car_destroyed(1'b0 | (game_over[0] == 1'b1)), // input from towers
-		.enable_draw(enable_car_draw[0]), // begin drawing cycle
-		.delay_frames(8'b0), // 1 second @ 30fps
-
-		.game_over(game_over[0]),
-      .car_done(enable_car_draw[1]), // needs to be used
-		.vga_WriteEn(car_writeEn[0]), // enables the WriteEn in vga
-      .vga_coords(coords0), 
-		.vga_colour(colour0),
-      //.car_location // for towers
-   );
-	
-	car CAR1(
-		.clk(CLOCK_50),
-		.resetn(resetn),
-		.initiate(~KEY[0]), // beginning of stage
-		.car_destroyed(1'b0 | (game_over[1] == 1'b1)), // input from towers
-		.enable_draw(enable_car_draw[1]), // begin drawing cycle
-		.delay_frames(8'b00011110), // 1 second @ 30fps
-
-		.game_over(game_over[1]),
-      .car_done(enable_car_draw[2]), // needs to be used
-		.vga_WriteEn(car_writeEn[1]), // enables the WriteEn in vga
-      .vga_coords(coords1), 
-		.vga_colour(colour1),
-      //.car_location // for towers
-   );
-	
-	car CAR2(
-		.clk(CLOCK_50),
-		.resetn(resetn),
-		.initiate(~KEY[0]), // beginning of stage
-		.car_destroyed(1'b0 | (game_over[2] == 1'b1)), // input from towers
-		.enable_draw(enable_car_draw[2]), // begin drawing cycle
-		.delay_frames(8'b01000000), // 128 frames @ 30fps
-
-		.game_over(game_over[2]),
-      .car_done(enable_car_draw[3]), // needs to be used
-		.vga_WriteEn(car_writeEn[2]), // enables the WriteEn in vga
-      .vga_coords(coords2), 
-		.vga_colour(colour2),
-      //.car_location // for towers
-   );
-	
-	car CAR3(
-		.clk(CLOCK_50),
-		.resetn(resetn),
-		.initiate(~KEY[0]), // beginning of stage
-		.car_destroyed(1'b0 | (game_over[3] == 1'b1)), // input from towers
-		.enable_draw(enable_car_draw[3]), // begin drawing cycle
-		.delay_frames(8'b10000000), // 256 frames @ 30fps
-
-		.game_over(game_over[3]),
-      //.car_done(enable_car_draw[1]), // needs to be used
-		.vga_WriteEn(car_writeEn[3]), // enables the WriteEn in vga
-      .vga_coords(coords3), 
-		.vga_colour(colour3),
-      //.car_location // for towers
-   );
-	
-	
-	/*________________Mux for colours and coords from cars to VGA_____________*/
-	always @(*) begin
-		if(car_writeEn[0] == 1'b1) begin
-			colour = colour0;
-			{x,y} = coords0;
-		end
-		else if(car_writeEn[1] == 1'b1) begin
-			colour = colour1;
-			{x,y} = coords1;
-		end
-		else if(car_writeEn[2] == 1'b1) begin
-			colour = colour2;
-			{x,y} = coords2;
-		end
-		else if(car_writeEn[3] == 1'b1) begin
-			colour = colour3;
-			{x,y} = coords3;
-		end
-		else begin
-			colour = 0;
-			{x,y} = 0;
-		end
-	end
-	
-//	/*________________Feedback Wires From Datapath_____________________*/
-//	wire valid_feeback, square_done, erase_square_done, tower_done;
-//
-//	/*_________________________Control Wire___________________________*/
-//	wire move_down, move_right, move_down_wait, move_right_wait, draw_square, draw_tower;
-//	wire top_left, erase_square_right, erase_square_down, erase_square_tower;
-//
-//
-//	datapath d0(
-//	/*________Inputs____________*/
-//		.clk(CLOCK_50),
-//    	.resetn(resetn),
-//    	.top_left(top_left), 
-//		.draw_square(draw_square), 
-//		.move_right(move_right), 
-//		.move_down(move_down), 
-//		.move_down_wait(move_down_wait), 
-//		.move_right_wait(move_right_wait),
-//		.draw_tower(draw_tower),
-//		.erase_square_right(erase_square_right),
-//		.erase_square_down(erase_square_down),
-//		.erase_square_tower(erase_square_tower),
-//
-//  	/*__________Outputs____________*/	
-//		.valid(valid_feeback),
-//		.colour(colour),
-//		.coordinates({x, y}),
-//		.square_done(square_done),
-//		.erase_square_done(erase_square_done),
-//		.tower_done(tower_done)
-//	);
-//
-//	control c0(
-//		/*__________Inputs______________*/
-//		.clk(CLOCK_50),
-//		.resetn(resetn),
-//		.go_down(~KEY[0]),
-//		.go_right(~KEY[1]),
-//		.go_draw(~KEY[2]),
-//		.valid(valid_feeback),
-//		.square_done(square_done),
-//		.erase_square_done(erase_square_done),
-//		.tower_done(tower_done),
-//
-//		/*__________Outputs____________*/
-//		.move_down(move_down),
-//		.move_right(move_right),
-//		.move_down_wait(move_down_wait),
-//		.move_right_wait(move_right_wait),
-//		.draw_square(draw_square),
-//		.draw_tower(draw_tower),
-//		.top_left(top_left),
-//		.erase_square_right(erase_square_right),
-//		.erase_square_down(erase_square_down),
-//		.erase_square_tower(erase_square_tower)
-//	);
+//____________________________________________________________________//
 endmodule
 
 
-// Testing module to count 30fps
-module FrameCounter_30(Clock, resetn, Enable30); // tested
-	input Clock;
-	input resetn;
-	output reg Enable30;
-
-	reg [20:0] Q;
-
-	always @(posedge Clock) begin
-		if (!resetn) begin
-			Q <= 0;
-			Enable30 <= 0;
-		end
-
-		else if (Q >= 21'b110010110111001101010) begin // 30 fps @ 50MHz
-			Enable30 <= 1'b1;
-			Q <= 0;
-		end
-
-		else begin
-			Enable30 <= 1'b0;
-			Q <= Q + 1;
-		end
-	end
-endmodule

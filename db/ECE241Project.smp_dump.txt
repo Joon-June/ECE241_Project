@@ -1,5 +1,24 @@
 
-State Machine - |ECE241Project|car:CAR3|control_car:c0|current_state
+State Machine - |ECE241Project|control_game_flow:CGF|current_state
+Name current_state.GAME_OVER current_state.WIN current_state.STAGE_3_DONE current_state.STAGE_3_IN_PROGRESS current_state.STAGE_3_DRAW_TOWER current_state.STAGE_3_BEGIN current_state.STAGE_2_DONE current_state.STAGE_2_IN_PROGRESS current_state.STAGE_2_DRAW_TOWER current_state.STAGE_2_BEGIN current_state.STAGE_1_DONE current_state.STAGE_1_IN_PROGRESS current_state.STAGE_1_DRAW_TOWER current_state.STAGE_1_BEGIN current_state.WAIT_START current_state.RESET 
+current_state.RESET 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+current_state.WAIT_START 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+current_state.STAGE_1_BEGIN 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+current_state.STAGE_1_DRAW_TOWER 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+current_state.STAGE_1_IN_PROGRESS 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+current_state.STAGE_1_DONE 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+current_state.STAGE_2_BEGIN 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+current_state.STAGE_2_DRAW_TOWER 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+current_state.STAGE_2_IN_PROGRESS 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+current_state.STAGE_2_DONE 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+current_state.STAGE_3_BEGIN 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+current_state.STAGE_3_DRAW_TOWER 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+current_state.STAGE_3_IN_PROGRESS 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.STAGE_3_DONE 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.WIN 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.GAME_OVER 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |ECE241Project|data_game_flow:DGF|CARS:C1|car:CAR3|control_car:c0|current_state
 Name current_state.DESTROYED current_state.INCREMENT current_state.ERASE_CAR current_state.WAIT_DRAW current_state.DRAW_CAR current_state.DELAY current_state.WAIT_START current_state.RESET 
 current_state.RESET 0 0 0 0 0 0 0 0 
 current_state.WAIT_START 0 0 0 0 0 0 1 1 
@@ -10,7 +29,7 @@ current_state.ERASE_CAR 0 0 1 0 0 0 0 1
 current_state.INCREMENT 0 1 0 0 0 0 0 1 
 current_state.DESTROYED 1 0 0 0 0 0 0 1 
 
-State Machine - |ECE241Project|car:CAR2|control_car:c0|current_state
+State Machine - |ECE241Project|data_game_flow:DGF|CARS:C1|car:CAR2|control_car:c0|current_state
 Name current_state.DESTROYED current_state.INCREMENT current_state.ERASE_CAR current_state.WAIT_DRAW current_state.DRAW_CAR current_state.DELAY current_state.WAIT_START current_state.RESET 
 current_state.RESET 0 0 0 0 0 0 0 0 
 current_state.WAIT_START 0 0 0 0 0 0 1 1 
@@ -21,7 +40,7 @@ current_state.ERASE_CAR 0 0 1 0 0 0 0 1
 current_state.INCREMENT 0 1 0 0 0 0 0 1 
 current_state.DESTROYED 1 0 0 0 0 0 0 1 
 
-State Machine - |ECE241Project|car:CAR1|control_car:c0|current_state
+State Machine - |ECE241Project|data_game_flow:DGF|CARS:C1|car:CAR1|control_car:c0|current_state
 Name current_state.DESTROYED current_state.INCREMENT current_state.ERASE_CAR current_state.WAIT_DRAW current_state.DRAW_CAR current_state.DELAY current_state.WAIT_START current_state.RESET 
 current_state.RESET 0 0 0 0 0 0 0 0 
 current_state.WAIT_START 0 0 0 0 0 0 1 1 
@@ -32,7 +51,7 @@ current_state.ERASE_CAR 0 0 1 0 0 0 0 1
 current_state.INCREMENT 0 1 0 0 0 0 0 1 
 current_state.DESTROYED 1 0 0 0 0 0 0 1 
 
-State Machine - |ECE241Project|car:CAR0|control_car:c0|current_state
+State Machine - |ECE241Project|data_game_flow:DGF|CARS:C1|car:CAR0|control_car:c0|current_state
 Name current_state.DESTROYED current_state.INCREMENT current_state.ERASE_CAR current_state.WAIT_DRAW current_state.DRAW_CAR current_state.DELAY current_state.WAIT_START current_state.RESET 
 current_state.RESET 0 0 0 0 0 0 0 0 
 current_state.WAIT_START 0 0 0 0 0 0 1 1 
@@ -42,3 +61,45 @@ current_state.WAIT_DRAW 0 0 0 1 0 0 0 1
 current_state.ERASE_CAR 0 0 1 0 0 0 0 1 
 current_state.INCREMENT 0 1 0 0 0 0 0 1 
 current_state.DESTROYED 1 0 0 0 0 0 0 1 
+
+State Machine - |ECE241Project|data_game_flow:DGF|TOWERS:T1|tower:TOWER3|control_towerplacer:c0|current_state
+Name current_state.ERASE_SQUARE_TOWER current_state.ERASE_SQUARE_DOWN current_state.ERASE_SQUARE_RIGHT current_state.DRAW_TOWER current_state.MOVE_RIGHT_WAIT current_state.MOVE_RIGHT current_state.MOVE_DOWN_WAIT current_state.MOVE_DOWN current_state.WAIT current_state.DRAW_SQUARE current_state.TOP_LEFT 
+current_state.TOP_LEFT 0 0 0 0 0 0 0 0 0 0 0 
+current_state.DRAW_SQUARE 0 0 0 0 0 0 0 0 0 1 1 
+current_state.WAIT 0 0 0 0 0 0 0 0 1 0 1 
+current_state.MOVE_DOWN 0 0 0 0 0 0 0 1 0 0 1 
+current_state.MOVE_DOWN_WAIT 0 0 0 0 0 0 1 0 0 0 1 
+current_state.MOVE_RIGHT 0 0 0 0 0 1 0 0 0 0 1 
+current_state.MOVE_RIGHT_WAIT 0 0 0 0 1 0 0 0 0 0 1 
+current_state.DRAW_TOWER 0 0 0 1 0 0 0 0 0 0 1 
+current_state.ERASE_SQUARE_RIGHT 0 0 1 0 0 0 0 0 0 0 1 
+current_state.ERASE_SQUARE_DOWN 0 1 0 0 0 0 0 0 0 0 1 
+current_state.ERASE_SQUARE_TOWER 1 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |ECE241Project|data_game_flow:DGF|TOWERS:T1|tower:TOWER2|control_towerplacer:c0|current_state
+Name current_state.ERASE_SQUARE_TOWER current_state.ERASE_SQUARE_DOWN current_state.ERASE_SQUARE_RIGHT current_state.DRAW_TOWER current_state.MOVE_RIGHT_WAIT current_state.MOVE_RIGHT current_state.MOVE_DOWN_WAIT current_state.MOVE_DOWN current_state.WAIT current_state.DRAW_SQUARE current_state.TOP_LEFT 
+current_state.TOP_LEFT 0 0 0 0 0 0 0 0 0 0 0 
+current_state.DRAW_SQUARE 0 0 0 0 0 0 0 0 0 1 1 
+current_state.WAIT 0 0 0 0 0 0 0 0 1 0 1 
+current_state.MOVE_DOWN 0 0 0 0 0 0 0 1 0 0 1 
+current_state.MOVE_DOWN_WAIT 0 0 0 0 0 0 1 0 0 0 1 
+current_state.MOVE_RIGHT 0 0 0 0 0 1 0 0 0 0 1 
+current_state.MOVE_RIGHT_WAIT 0 0 0 0 1 0 0 0 0 0 1 
+current_state.DRAW_TOWER 0 0 0 1 0 0 0 0 0 0 1 
+current_state.ERASE_SQUARE_RIGHT 0 0 1 0 0 0 0 0 0 0 1 
+current_state.ERASE_SQUARE_DOWN 0 1 0 0 0 0 0 0 0 0 1 
+current_state.ERASE_SQUARE_TOWER 1 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |ECE241Project|data_game_flow:DGF|TOWERS:T1|tower:TOWER1|control_towerplacer:c0|current_state
+Name current_state.ERASE_SQUARE_TOWER current_state.ERASE_SQUARE_DOWN current_state.ERASE_SQUARE_RIGHT current_state.DRAW_TOWER current_state.MOVE_RIGHT_WAIT current_state.MOVE_RIGHT current_state.MOVE_DOWN_WAIT current_state.MOVE_DOWN current_state.WAIT current_state.DRAW_SQUARE current_state.TOP_LEFT 
+current_state.TOP_LEFT 0 0 0 0 0 0 0 0 0 0 0 
+current_state.DRAW_SQUARE 0 0 0 0 0 0 0 0 0 1 1 
+current_state.WAIT 0 0 0 0 0 0 0 0 1 0 1 
+current_state.MOVE_DOWN 0 0 0 0 0 0 0 1 0 0 1 
+current_state.MOVE_DOWN_WAIT 0 0 0 0 0 0 1 0 0 0 1 
+current_state.MOVE_RIGHT 0 0 0 0 0 1 0 0 0 0 1 
+current_state.MOVE_RIGHT_WAIT 0 0 0 0 1 0 0 0 0 0 1 
+current_state.DRAW_TOWER 0 0 0 1 0 0 0 0 0 0 1 
+current_state.ERASE_SQUARE_RIGHT 0 0 1 0 0 0 0 0 0 0 1 
+current_state.ERASE_SQUARE_DOWN 0 1 0 0 0 0 0 0 0 0 1 
+current_state.ERASE_SQUARE_TOWER 1 0 0 0 0 0 0 0 0 0 1 

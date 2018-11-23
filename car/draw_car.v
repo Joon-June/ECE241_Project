@@ -70,6 +70,6 @@ module draw_car(
     always @(colour_car) //1 cycle delay from counter_x & counter_y
         colour = colour_car;
 
-    assign x = COUNTER_X + counter_x;
-    assign y = COUNTER_Y + counter_y;
+    assign x = COUNTER_X + temp_x;
+    assign y = COUNTER_Y + temp_y;
 endmodule
