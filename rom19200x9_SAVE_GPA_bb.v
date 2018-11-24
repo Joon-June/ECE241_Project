@@ -1,10 +1,10 @@
-// megafunction wizard: %RAM: 1-PORT%
+// megafunction wizard: %ROM: 1-PORT%VBB%
 // GENERATION: STANDARD
 // VERSION: WM1.0
 // MODULE: altsyncram 
 
 // ============================================================
-// File Name: ram400x9_car.v
+// File Name: rom19200x9_SAVE_GPA.v
 // Megafunction Name(s):
 // 			altsyncram
 //
@@ -16,7 +16,6 @@
 //
 // 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 // ************************************************************
-
 
 //Copyright (C) 2018  Intel Corporation. All rights reserved.
 //Your use of Intel Corporation's design tools, logic functions 
@@ -32,21 +31,13 @@
 //Intel and sold by Intel or its authorized distributors.  Please
 //refer to the applicable agreement for further details.
 
-
-// synopsys translate_off
-`timescale 1 ps / 1 ps
-// synopsys translate_on
-module ram400x9_car (
+module rom19200x9_SAVE_GPA (
 	address,
 	clock,
-	data,
-	wren,
 	q);
 
-	input	[8:0]  address;
+	input	[14:0]  address;
 	input	  clock;
-	input	[8:0]  data;
-	input	  wren;
 	output	[8:0]  q;
 `ifndef ALTERA_RESERVED_QIS
 // synopsys translate_off
@@ -56,51 +47,6 @@ module ram400x9_car (
 // synopsys translate_on
 `endif
 
-	wire [8:0] sub_wire0;
-	wire [8:0] q = sub_wire0[8:0];
-
-	altsyncram	altsyncram_component (
-				.address_a (address),
-				.clock0 (clock),
-				.data_a (data),
-				.wren_a (wren),
-				.q_a (sub_wire0),
-				.aclr0 (1'b0),
-				.aclr1 (1'b0),
-				.address_b (1'b1),
-				.addressstall_a (1'b0),
-				.addressstall_b (1'b0),
-				.byteena_a (1'b1),
-				.byteena_b (1'b1),
-				.clock1 (1'b1),
-				.clocken0 (1'b1),
-				.clocken1 (1'b1),
-				.clocken2 (1'b1),
-				.clocken3 (1'b1),
-				.data_b (1'b1),
-				.eccstatus (),
-				.q_b (),
-				.rden_a (1'b1),
-				.rden_b (1'b1),
-				.wren_b (1'b0));
-	defparam
-		altsyncram_component.clock_enable_input_a = "BYPASS",
-		altsyncram_component.clock_enable_output_a = "BYPASS",
-		altsyncram_component.init_file = "4.0.mif",
-		altsyncram_component.intended_device_family = "Cyclone V",
-		altsyncram_component.lpm_hint = "ENABLE_RUNTIME_MOD=NO",
-		altsyncram_component.lpm_type = "altsyncram",
-		altsyncram_component.numwords_a = 400,
-		altsyncram_component.operation_mode = "SINGLE_PORT",
-		altsyncram_component.outdata_aclr_a = "NONE",
-		altsyncram_component.outdata_reg_a = "UNREGISTERED",
-		altsyncram_component.power_up_uninitialized = "FALSE",
-		altsyncram_component.read_during_write_mode_port_a = "NEW_DATA_NO_NBE_READ",
-		altsyncram_component.widthad_a = 9,
-		altsyncram_component.width_a = 9,
-		altsyncram_component.width_byteena_a = 1;
-
-
 endmodule
 
 // ============================================================
@@ -109,7 +55,6 @@ endmodule
 // Retrieval info: PRIVATE: ADDRESSSTALL_A NUMERIC "0"
 // Retrieval info: PRIVATE: AclrAddr NUMERIC "0"
 // Retrieval info: PRIVATE: AclrByte NUMERIC "0"
-// Retrieval info: PRIVATE: AclrData NUMERIC "0"
 // Retrieval info: PRIVATE: AclrOutput NUMERIC "0"
 // Retrieval info: PRIVATE: BYTE_ENABLE NUMERIC "0"
 // Retrieval info: PRIVATE: BYTE_SIZE NUMERIC "9"
@@ -117,7 +62,6 @@ endmodule
 // Retrieval info: PRIVATE: CLOCK_ENABLE_INPUT_A NUMERIC "0"
 // Retrieval info: PRIVATE: CLOCK_ENABLE_OUTPUT_A NUMERIC "0"
 // Retrieval info: PRIVATE: Clken NUMERIC "0"
-// Retrieval info: PRIVATE: DataBusSeparated NUMERIC "1"
 // Retrieval info: PRIVATE: IMPLEMENT_IN_LES NUMERIC "0"
 // Retrieval info: PRIVATE: INIT_FILE_LAYOUT STRING "PORT_A"
 // Retrieval info: PRIVATE: INIT_TO_SIM_X NUMERIC "0"
@@ -125,50 +69,42 @@ endmodule
 // Retrieval info: PRIVATE: JTAG_ENABLED NUMERIC "0"
 // Retrieval info: PRIVATE: JTAG_ID STRING "NONE"
 // Retrieval info: PRIVATE: MAXIMUM_DEPTH NUMERIC "0"
-// Retrieval info: PRIVATE: MIFfilename STRING "car.mif"
-// Retrieval info: PRIVATE: NUMWORDS_A NUMERIC "400"
+// Retrieval info: PRIVATE: MIFfilename STRING "../SAVE_GPA.mif"
+// Retrieval info: PRIVATE: NUMWORDS_A NUMERIC "19200"
 // Retrieval info: PRIVATE: RAM_BLOCK_TYPE NUMERIC "0"
-// Retrieval info: PRIVATE: READ_DURING_WRITE_MODE_PORT_A NUMERIC "3"
 // Retrieval info: PRIVATE: RegAddr NUMERIC "1"
-// Retrieval info: PRIVATE: RegData NUMERIC "1"
 // Retrieval info: PRIVATE: RegOutput NUMERIC "0"
 // Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "0"
 // Retrieval info: PRIVATE: SingleClock NUMERIC "1"
-// Retrieval info: PRIVATE: UseDQRAM NUMERIC "1"
-// Retrieval info: PRIVATE: WRCONTROL_ACLR_A NUMERIC "0"
-// Retrieval info: PRIVATE: WidthAddr NUMERIC "9"
+// Retrieval info: PRIVATE: UseDQRAM NUMERIC "0"
+// Retrieval info: PRIVATE: WidthAddr NUMERIC "15"
 // Retrieval info: PRIVATE: WidthData NUMERIC "9"
 // Retrieval info: PRIVATE: rden NUMERIC "0"
 // Retrieval info: LIBRARY: altera_mf altera_mf.altera_mf_components.all
+// Retrieval info: CONSTANT: ADDRESS_ACLR_A STRING "NONE"
 // Retrieval info: CONSTANT: CLOCK_ENABLE_INPUT_A STRING "BYPASS"
 // Retrieval info: CONSTANT: CLOCK_ENABLE_OUTPUT_A STRING "BYPASS"
-// Retrieval info: CONSTANT: INIT_FILE STRING "car.mif"
+// Retrieval info: CONSTANT: INIT_FILE STRING "../SAVE_GPA.mif"
 // Retrieval info: CONSTANT: INTENDED_DEVICE_FAMILY STRING "Cyclone V"
 // Retrieval info: CONSTANT: LPM_HINT STRING "ENABLE_RUNTIME_MOD=NO"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "altsyncram"
-// Retrieval info: CONSTANT: NUMWORDS_A NUMERIC "400"
-// Retrieval info: CONSTANT: OPERATION_MODE STRING "SINGLE_PORT"
+// Retrieval info: CONSTANT: NUMWORDS_A NUMERIC "19200"
+// Retrieval info: CONSTANT: OPERATION_MODE STRING "ROM"
 // Retrieval info: CONSTANT: OUTDATA_ACLR_A STRING "NONE"
 // Retrieval info: CONSTANT: OUTDATA_REG_A STRING "UNREGISTERED"
-// Retrieval info: CONSTANT: POWER_UP_UNINITIALIZED STRING "FALSE"
-// Retrieval info: CONSTANT: READ_DURING_WRITE_MODE_PORT_A STRING "NEW_DATA_NO_NBE_READ"
-// Retrieval info: CONSTANT: WIDTHAD_A NUMERIC "9"
+// Retrieval info: CONSTANT: WIDTHAD_A NUMERIC "15"
 // Retrieval info: CONSTANT: WIDTH_A NUMERIC "9"
 // Retrieval info: CONSTANT: WIDTH_BYTEENA_A NUMERIC "1"
-// Retrieval info: USED_PORT: address 0 0 9 0 INPUT NODEFVAL "address[8..0]"
+// Retrieval info: USED_PORT: address 0 0 15 0 INPUT NODEFVAL "address[14..0]"
 // Retrieval info: USED_PORT: clock 0 0 0 0 INPUT VCC "clock"
-// Retrieval info: USED_PORT: data 0 0 9 0 INPUT NODEFVAL "data[8..0]"
 // Retrieval info: USED_PORT: q 0 0 9 0 OUTPUT NODEFVAL "q[8..0]"
-// Retrieval info: USED_PORT: wren 0 0 0 0 INPUT NODEFVAL "wren"
-// Retrieval info: CONNECT: @address_a 0 0 9 0 address 0 0 9 0
+// Retrieval info: CONNECT: @address_a 0 0 15 0 address 0 0 15 0
 // Retrieval info: CONNECT: @clock0 0 0 0 0 clock 0 0 0 0
-// Retrieval info: CONNECT: @data_a 0 0 9 0 data 0 0 9 0
-// Retrieval info: CONNECT: @wren_a 0 0 0 0 wren 0 0 0 0
 // Retrieval info: CONNECT: q 0 0 9 0 @q_a 0 0 9 0
-// Retrieval info: GEN_FILE: TYPE_NORMAL ram400x9_car.v TRUE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ram400x9_car.inc FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ram400x9_car.cmp FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ram400x9_car.bsf FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ram400x9_car_inst.v FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL ram400x9_car_bb.v TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL rom19200x9_SAVE_GPA.v TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL rom19200x9_SAVE_GPA.inc FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL rom19200x9_SAVE_GPA.cmp FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL rom19200x9_SAVE_GPA.bsf FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL rom19200x9_SAVE_GPA_inst.v FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL rom19200x9_SAVE_GPA_bb.v TRUE
 // Retrieval info: LIB_FILE: altera_mf

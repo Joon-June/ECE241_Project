@@ -84,9 +84,22 @@ module data_game_flow(
 
 
 //______________________Module Instatiations__________________________//
+	//@@@To be implemented
+	//Save Current Situation to following ram
+	//Only need to save tower information
+	ram19200x9_map_background(
+			.address(mem_add),
+			.clock(clk),
+			.data(9'b0),
+			.wren(1'b0),
+			.q(colour_erase_square)
+	);
+	
+	
+	
 	TOWERS T1(
 		//_________________________Inputs_____________________________//
-      .clk(clk),
+      .clk(clk && (stage_1_draw_tower | stage_2_draw_tower | stage_3_draw_tower)),
       .resetn(resetn),
       //________User Input________//
 		.go_down(go_down),
@@ -112,7 +125,7 @@ module data_game_flow(
 
 	CARS C1(
 		//_________________________Inputs_____________________________//
-        .clk(clk),
+        .clk(clk && (stage_1_in_progress | stage_2_in_progress | stage_3_in_progress)),
         .resetn(resetn),
         
         //________Control Signal__________//

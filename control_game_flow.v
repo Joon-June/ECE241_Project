@@ -194,6 +194,7 @@ module control_game_flow(
 		   GAME_OVER: begin
 				next_state = GAME_OVER;
 			end
+			default: next_state = WAIT_START;
 		endcase
 	end
 	
