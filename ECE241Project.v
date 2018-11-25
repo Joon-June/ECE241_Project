@@ -1,5 +1,6 @@
 module ECE241Project(
 	input [3:0]KEY,
+	input [9:0]SW,
 	input CLOCK_50,
 	output			VGA_CLK,   				//	VGA Clock
 	output			VGA_HS,					//	VGA H_SYNC
@@ -14,15 +15,17 @@ module ECE241Project(
 	
 	//_________reset_________//
 	wire resetn;
-	assign resetn = KEY[3];
+	assign resetn = ~SW[0];
 	
 	//_________User Inputs_______//
 	wire go_down;
 	wire go_right;
 	wire go_draw;
+	wire start;
 	assign go_down = ~KEY[0];
 	assign go_right = ~KEY[1];
 	assign go_draw = ~KEY[2];
+	assign start = ~KEY[3];
 	
 	//_______VGA Inputs______//
 	wire [8:0] colour;
@@ -30,7 +33,7 @@ module ECE241Project(
 	wire [6:0] y;
 	wire writeEn_from_data;
 	wire writeEn;
-	assign writeEn = (colour != 8'b11111111) && writeEn_from_data;	
+	assign writeEn = (colour != 9'b111111111) && writeEn_from_data;	
 	
 	//______Game Flow Related Wires______//
 	//Initial Setup
@@ -61,7 +64,7 @@ module ECE241Project(
 		.go_down(go_down),
 		.go_right(go_right),
 		.go_draw(go_draw),		
-		
+		.start(start),
 				
 		//__________________________________//
 		//_______Control Signal Input_______//
@@ -118,7 +121,7 @@ module ECE241Project(
 
 		
 		//________VGA Inputs_________//
-		.colours(colour),
+		.colour(colour),
 		.coordinates({x, y}),
 		.VGA_write_enable(writeEn_from_data)
 	);

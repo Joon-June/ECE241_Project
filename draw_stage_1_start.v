@@ -50,10 +50,7 @@ module draw_stage_1_start(
         else begin
 				if(delay == 1) begin
 					temp_x <= counter_x;
-					temp_y <= counter_y;
-					if(counter_x == 0)
-						 stage_1_start_done <= 0;
-							  
+					temp_y <= counter_y;							  
 				  
 					counter_x <= counter_x + 1;
 					if(counter_x == 7'b1001111) begin

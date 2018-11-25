@@ -1,5 +1,5 @@
 Flow report for ECE241Project
-Fri Nov 23 01:43:27 2018
+Sun Nov 25 01:04:37 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -40,18 +40,18 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Fri Nov 23 01:43:15 2018       ;
+; Flow Status                     ; Successful - Sun Nov 25 01:04:23 2018       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; ECE241Project                               ;
 ; Top-level Entity Name           ; ECE241Project                               ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 28 / 32,070 ( < 1 % )                       ;
-; Total registers                 ; 35                                          ;
-; Total pins                      ; 40 / 457 ( 9 % )                            ;
+; Logic utilization (in ALMs)     ; 119 / 32,070 ( < 1 % )                      ;
+; Total registers                 ; 130                                         ;
+; Total pins                      ; 50 / 457 ( 11 % )                           ;
 ; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 172,800 / 4,065,280 ( 4 % )                 ;
+; Total block memory bits         ; 518,418 / 4,065,280 ( 13 % )                ;
 ; Total DSP Blocks                ; 0 / 87 ( 0 % )                              ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/23/2018 01:41:31 ;
+; Start date & time ; 11/25/2018 01:02:15 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; ECE241Project       ;
 +-------------------+---------------------+
@@ -78,13 +78,22 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 209472083398803.154295529012444        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 209472083398803.154312573405244        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; MISC_FILE                           ; ram400x9_square_grid_selection_bb.v    ; --            ; --          ; --         ;
 ; MISC_FILE                           ; ram400x9_tower_bb.v                    ; --            ; --          ; --         ;
 ; MISC_FILE                           ; ram400x9_car_bb.v                      ; --            ; --          ; --         ;
 ; MISC_FILE                           ; ram19200x9_map_background_bb.v         ; --            ; --          ; --         ;
+; MISC_FILE                           ; rom19200x9_LOSE_bb.v                   ; --            ; --          ; --         ;
+; MISC_FILE                           ; rom19200x9_WIN_bb.v                    ; --            ; --          ; --         ;
+; MISC_FILE                           ; rom19200x9_SAVE_GPA_bb.v               ; --            ; --          ; --         ;
+; MISC_FILE                           ; rom3200x9_stage_1_start_bb.v           ; --            ; --          ; --         ;
+; MISC_FILE                           ; rom3200x9_stage_1_clear_bb.v           ; --            ; --          ; --         ;
+; MISC_FILE                           ; rom3200x9_stage_2_start_bb.v           ; --            ; --          ; --         ;
+; MISC_FILE                           ; rom3200x9_stage_2_clear_bb.v           ; --            ; --          ; --         ;
+; MISC_FILE                           ; rom3200x9_stage_3_start_bb.v           ; --            ; --          ; --         ;
+; MISC_FILE                           ; rom3200x9_stage_3_clear_bb.v           ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
@@ -99,11 +108,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:21     ; 1.0                     ; 4851 MB             ; 00:00:37                           ;
-; Fitter               ; 00:01:04     ; 1.0                     ; 6328 MB             ; 00:01:27                           ;
-; Assembler            ; 00:00:14     ; 1.0                     ; 4866 MB             ; 00:00:09                           ;
-; Timing Analyzer      ; 00:00:11     ; 1.1                     ; 5149 MB             ; 00:00:09                           ;
-; Total                ; 00:01:50     ; --                      ; --                  ; 00:02:22                           ;
+; Analysis & Synthesis ; 00:00:40     ; 1.0                     ; 4897 MB             ; 00:00:43                           ;
+; Fitter               ; 00:01:08     ; 1.0                     ; 6379 MB             ; 00:01:42                           ;
+; Assembler            ; 00:00:14     ; 1.0                     ; 4877 MB             ; 00:00:09                           ;
+; Timing Analyzer      ; 00:00:12     ; 1.2                     ; 5185 MB             ; 00:00:12                           ;
+; Total                ; 00:02:14     ; --                      ; --                  ; 00:02:46                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

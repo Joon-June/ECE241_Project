@@ -42,9 +42,9 @@ module CARS(
 	wire [14:0]coord_car_0, coord_car_1, coord_car_2, coord_car_3; //Output coordinate from each car
     wire car_done_wire;
 
-    assign stage_1_car_done = (|game_over);
-    assign stage_2_car_done = (|game_over);
-    assign stage_3_car_done = (|game_over);
+    assign stage_1_car_done = (game_over[3]);
+    assign stage_2_car_done = (game_over[3]);
+    assign stage_3_car_done = (game_over[3]);
 
     assign car_wren = (|car_writeEn); //Unary Opeartor
     assign game_over_feedback = 1'b0/*(|game_over)*/; //Unary Operator
