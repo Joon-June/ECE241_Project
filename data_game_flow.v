@@ -14,7 +14,7 @@ module data_game_flow(
 		input stage_1_begin,
 		input stage_1_draw_tower, //used
 		input stage_1_in_progress,//used
-		input stage_1_done,
+		input stage_1_done, //stage_1_cl
 
 		//______Stage 2_______//
 		input stage_2_begin,
@@ -31,7 +31,7 @@ module data_game_flow(
 		//___Termina States___//
 		input win,
 		input game_over,
-//_______________________________________________________________//
+//____________________________________________________________//
 
 
 //__________________________Outputs___________________________//
@@ -60,7 +60,7 @@ module data_game_flow(
 		output game_over_feedback,
 		
 		//________VGA Inputs_________//
-		output reg [8:0]colours,
+		output reg [8:0]colour,
 		output reg [14:0]coordinates,
 		output VGA_write_enable
 	//_______________________________________________________________//
@@ -79,8 +79,13 @@ module data_game_flow(
 	wire [8:0]colour_car;
 	wire [14:0]coord_car;
 
-//____________________________________________________________________//
 
+	//______________________Control signals for map background__________________________//
+	wire back_wren;
+	wire [8:0]out_colour;
+	wire [8:0]in_colour;
+	wire [14:0]mem_add;
+	
 
 
 //______________________Module Instatiations__________________________//
@@ -90,12 +95,10 @@ module data_game_flow(
 	ram19200x9_map_background(
 			.address(mem_add),
 			.clock(clk),
-			.data(9'b0),
-			.wren(1'b0),
-			.q(colour_erase_square)
+			.data(colour_tower),
+			.wren(back_wren),
+			.q(out_colour)
 	);
-	
-	
 	
 	TOWERS T1(
 		//_________________________Inputs_____________________________//
@@ -120,7 +123,12 @@ module data_game_flow(
 
       //_______VGA Outputs________//
       .coord(coord_tower),
-      .colour(colour_tower)
+      .colour(colour_tower),
+		//_______Reading from Map for Erase Square____//
+		.colour_erase_square_from_mem(out_colour),
+		.erase_mem_address(mem_add),
+		//_______Write to Map____//
+		.writeToMapEnable(back_wren)
 	);
 
 	CARS C1(
@@ -156,16 +164,21 @@ module data_game_flow(
 
 //___________________________________________________________________//
 
-//@TO DO
-//1. When draw_tower, output coord_tower and colour_tower
-//____________________________Data Path_____________________________//
-always @(*) begin
-  	
-
-end
-
-
-
+//__________________Mux to select car or tower vga data______________//
+	always @(*) begin
+		if(tower_wren == 1'b1) begin
+			colour <= colour_tower;
+			coordinates <= coord_tower;
+		end
+		else if(car_wren == 1'b1) begin
+			colour <= colour_car;
+			coordinates <= coord_car;
+		end
+		else begin
+			colour <= 0;
+			coordinates <= 0;
+		end
+	end
 
 endmodule
 

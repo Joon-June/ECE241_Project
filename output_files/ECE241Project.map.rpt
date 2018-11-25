@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ECE241Project
-Sat Nov 24 17:50:47 2018
+Sat Nov 24 23:19:06 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Sat Nov 24 17:50:47 2018           ;
+; Analysis & Synthesis Status ; Failed - Sat Nov 24 23:19:06 2018           ;
 ; Quartus Prime Version       ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name               ; ECE241Project                               ;
 ; Top-level Entity Name       ; ECE241Project                               ;
@@ -161,7 +161,7 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Sat Nov 24 17:50:25 2018
+    Info: Processing started: Sat Nov 24 23:18:50 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ECE241Project -c ECE241Project
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -177,9 +177,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file car/dra
 Info (12021): Found 2 design units, including 2 entities, in source file car/data_car.v
     Info (12023): Found entity 1: datapath_car File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/car/data_car.v Line: 1
     Info (12023): Found entity 2: DelayCounter File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/car/data_car.v Line: 165
-Error (10108): Verilog HDL Compiler Directive error at control_car.v(33): missing Compiler Directive File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/car/control_car.v Line: 33
-Error (10112): Ignored design unit "control_car" at control_car.v(1) due to previous errors File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/car/control_car.v Line: 1
-Info (12021): Found 0 design units, including 0 entities, in source file car/control_car.v
+Info (12021): Found 1 design units, including 1 entities, in source file car/control_car.v
+    Info (12023): Found entity 1: control_car File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/car/control_car.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file car/car.v
     Info (12023): Found entity 1: car File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/car/car.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file draw_tower.v
@@ -261,11 +260,11 @@ Info (12021): Found 1 design units, including 1 entities, in source file draw_st
 Info (12021): Found 1 design units, including 1 entities, in source file draw_stage_2_start.v
     Info (12023): Found entity 1: draw_stage_2_start File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/draw_stage_2_start.v Line: 1
 Info (144001): Generated suppressed messages file C:/Users/Maya Murmann/ece241-git/ECE241_Project/output_files/ECE241Project.map.smsg
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 4 errors, 2 warnings
-    Error: Peak virtual memory: 4797 megabytes
-    Error: Processing ended: Sat Nov 24 17:50:48 2018
-    Error: Elapsed time: 00:00:23
-    Error: Total CPU time (on all processors): 00:00:46
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 2 warnings
+    Error: Peak virtual memory: 4793 megabytes
+    Error: Processing ended: Sat Nov 24 23:19:06 2018
+    Error: Elapsed time: 00:00:16
+    Error: Total CPU time (on all processors): 00:00:35
 
 
 +------------------------------------------+

@@ -30,7 +30,7 @@ module control_car(
                DESTROYED   	  = 5'd7;
 	
    always @ (*)
-   begin: state_table `
+   begin: state_table
 		case (current_state)
                 RESET: next_state = WAIT_START;
                 WAIT_START: begin

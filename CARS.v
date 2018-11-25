@@ -42,9 +42,9 @@ module CARS(
 	wire [14:0]coord_car_0, coord_car_1, coord_car_2, coord_car_3; //Output coordinate from each car
     wire car_done_wire;
 
-    assign stage_1_car_done = (|game_over);
-    assign stage_2_car_done = (|game_over);
-    assign stage_3_car_done = (|game_over);
+    assign stage_1_car_done = game_over[3]; // Needs to be updated once lasers
+    assign stage_2_car_done = game_over[3]; // Needs to be updated once lasers
+    assign stage_3_car_done = game_over[3]; // Needs to be updated once lasers
 
     assign car_wren = (|car_writeEn); //Unary Opeartor
     assign game_over_feedback = 1'b0/*(|game_over)*/; //Unary Operator
@@ -66,7 +66,7 @@ module CARS(
 
         //___________Outputs_____________//
 		.game_over(game_over[0]),
-      .car_done(enable_car_draw[1]), // needs to be used
+      .car_done(enable_car_draw[1]),
 		.vga_WriteEn(car_writeEn[0]), // enables the WriteEn in vga
       .vga_coords(coord_car_0), 
 		.vga_colour(colour_car_0)
@@ -84,7 +84,7 @@ module CARS(
 
         //___________Outputs_____________//
 		.game_over(game_over[1]),
-      .car_done(enable_car_draw[2]), // needs to be used
+      .car_done(enable_car_draw[2]),
 		.vga_WriteEn(car_writeEn[1]), // enables the WriteEn in vga
       .vga_coords(coord_car_1), 
 		.vga_colour(colour_car_1)
@@ -102,7 +102,7 @@ module CARS(
 
         //___________Outputs_____________//
 		.game_over(game_over[2]),
-      .car_done(enable_car_draw[3]), // needs to be used
+      .car_done(enable_car_draw[3]),
 		.vga_WriteEn(car_writeEn[2]), // enables the WriteEn in vga
       .vga_coords(coord_car_2), 
 		.vga_colour(colour_car_2)
@@ -120,7 +120,7 @@ module CARS(
 
         //___________Outputs_____________//
 		.game_over(game_over[3]),
-      .car_done(car_done_wire), // needs to be used
+      .car_done(car_done_wire),
 		.vga_WriteEn(car_writeEn[3]), // enables the WriteEn in vga
       .vga_coords(coord_car_3), 
 		.vga_colour(colour_car_3)

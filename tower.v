@@ -6,12 +6,16 @@ module tower(
 		input go_right,
 		input go_draw,
 		input enable_draw,
+		input [8:0]colour_erase_square_from_mem, // will come from common map memory
+		
 
 		//____________Outputs________________//
 		output vga_WriteEn, // erase_car | draw_car
       	output [14:0] vga_coords, 
 		output [8:0] vga_colour,
-		output tower_done_out
+		output tower_done_out,
+		output [14:0]erase_mem_address, // will go to common map memory
+		output writeToMap
    );
 	
 	//______________________Wires & Registers______________________________//
@@ -36,6 +40,7 @@ module tower(
 
 	assign vga_WriteEn = draw_square | draw_tower | erase_square_right | erase_square_down | erase_square_tower;
 	assign tower_done_out = tower_done_wire;
+	assign writeToMap = draw_tower;
 
 	//____________________________________________________________________//
 
@@ -43,6 +48,7 @@ module tower(
 	/*________Inputs____________*/
 		.clk(clk),
     	.resetn(resetn),
+		.colour_erase_square_from_mem(colour_erase_square_from_mem), // will come from common map memory
     	.top_left(top_left), 
 		.draw_square(draw_square), 
 		.move_right(move_right), 
@@ -62,7 +68,8 @@ module tower(
 	//________________Output__________________//
 		.colour(vga_colour),
 		.coordinates(vga_coords),
-		.tower_done(tower_done_wire)
+		.tower_done(tower_done_wire),
+		.map_mem_address(erase_mem_address)
 	);
 
 	control_towerplacer c0(

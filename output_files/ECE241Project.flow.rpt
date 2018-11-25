@@ -1,5 +1,5 @@
 Flow report for ECE241Project
-Sat Nov 24 17:50:47 2018
+Sat Nov 24 23:19:06 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Flow Summary                                                              ;
 +-----------------------------+---------------------------------------------+
-; Flow Status                 ; Flow Failed - Sat Nov 24 17:50:47 2018      ;
+; Flow Status                 ; Flow Failed - Sat Nov 24 23:19:06 2018      ;
 ; Quartus Prime Version       ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name               ; ECE241Project                               ;
 ; Top-level Entity Name       ; ECE241Project                               ;
@@ -62,7 +62,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/24/2018 17:50:26 ;
+; Start date & time ; 11/24/2018 23:18:51 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; ECE241Project       ;
 +-------------------+---------------------+
@@ -73,7 +73,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 200859174716530.154309982621184        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 200859174716530.154311953117300        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; MISC_FILE                           ; ram400x9_square_grid_selection_bb.v    ; --            ; --          ; --         ;
@@ -103,8 +103,8 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:22     ; 1.0                     ; 4797 MB             ; 00:00:45                           ;
-; Total                ; 00:00:22     ; --                      ; --                  ; 00:00:45                           ;
+; Analysis & Synthesis ; 00:00:15     ; 1.0                     ; 4793 MB             ; 00:00:35                           ;
+; Total                ; 00:00:15     ; --                      ; --                  ; 00:00:35                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

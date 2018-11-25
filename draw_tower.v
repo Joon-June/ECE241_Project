@@ -4,9 +4,10 @@ module draw_tower(
     input [3:0]COUNTER_X, //Uppercase indicates grid coutner
     input [3:0]COUNTER_Y, //Uppercase indicates grid coutner
     output reg [8:0]colour,
-	output reg tower_done,
+	 output reg tower_done,
     output [7:0]x, //Will go into VGA Input
-    output [6:0]y //Will go into VGA Input
+    output [6:0]y, //Will go into VGA Input
+	 output map_mem_add
     );
     
     wire [8:0]mem_add;
@@ -26,6 +27,13 @@ module draw_tower(
 		  delay = 0;
     end
 
+	 //Memory Address Translator for 160x120 background
+    memory_address_translator_160x120 v1(
+									  .x(x), 
+									  .y(y), 
+									  .mem_address(map_mem_add) //Connection A
+									  );
+	 
     //Memory Address Translator for 20x20 .mif files
     memory_address_translator_20x20 m1(
                                 .x(counter_x), 

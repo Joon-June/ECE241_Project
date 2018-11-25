@@ -119,7 +119,7 @@ module ECE241Project(
 
 		
 		//________VGA Inputs_________//
-		.colours(colour),
+		.colour(colour),
 		.coordinates({x, y}),
 		.VGA_write_enable(writeEn_from_data)
 	);

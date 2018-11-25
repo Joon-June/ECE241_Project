@@ -1,6 +1,7 @@
 module datapath(
    input clk,
    input resetn,
+	input [8:0]colour_erase_square_from_mem, // will come from common map memory
 	 //____Control Signals___//
    input top_left, 
 	input draw_square, 
@@ -20,7 +21,8 @@ module datapath(
 	//________Control Feedback__________//
 	output reg square_done,
 	output reg erase_square_done,
-	output reg tower_done
+	output reg tower_done,
+	output [14:0]map_mem_address // will go to common map memory
     );
 	 
 	reg [3:0] Counter_X; // Column in grid, not coordinates on vga
@@ -66,7 +68,9 @@ module datapath(
 	wire [8:0]colour_erase_square;
 	wire erase_square_done_wire;
 	wire [14:0]coord_erase_square;
-						
+			
+	// For map background
+	wire [14:0]w_map_draw_add, w_map_erase_add;
 	
 	draw_tower t1(
 			.clk(clk && draw_tower),
@@ -87,18 +91,24 @@ module datapath(
 			.colour(colour_square),
 			.square_done(square_done_wire),
 			.x(coord_square[14:7]), //Will go into VGA Input
-			.y(coord_square[6:0]) //Will go into VGA Input
+			.y(coord_square[6:0]), //Will go into VGA Input
+			.map_mem_add(w_map_draw_add)
 		 );
 	
 	erase_square e1(
+			//________Inputs__________//
 			.clk(clk && (erase_square_down | erase_square_right | erase_square_tower)),
 			.resetn(resetn),
 			.COUNTER_X(Counter_X), //Uppercase indicates grid coutner
 			.COUNTER_Y(Counter_Y), //Uppercase indicates grid coutner
+			.colour_erase_square(colour_erase_square_to_mem), // Will come from to map memory
+			
+			//________Outputs__________//
 			.colour(colour_erase_square),
 			.erase_square_done(erase_square_done_wire),
 			.x(coord_erase_square[14:7]), //Will go into VGA Input
-			.y(coord_erase_square[6:0]) //Will go into VGA Input
+			.y(coord_erase_square[6:0]), //Will go into VGA Input
+			.map_address(w_map_erase_add) // Will go to map memory
 		 );
 	 
 	 always @ (posedge clk) begin
@@ -184,6 +194,7 @@ module datapath(
 			coordinates <= coord_tower;
 			colour <= colour_tower;
 			tower_done <= tower_done_wire;
+			map_mem_address <= w_map_draw_add;
 		end
 		//Separating right / down case is for state machine. Actual deletion is the same functionality
 		else if(erase_square_down | erase_square_right | erase_square_tower) begin 		
@@ -193,6 +204,8 @@ module datapath(
 			colour <= colour_erase_square;
 			coordinates <= coord_erase_square;
 			erase_square_done <= erase_square_done_wire;
+			// send address to map background
+			map_mem_address <= w_map_erase_add;
 		end
 	end
 endmodule

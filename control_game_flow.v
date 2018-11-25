@@ -31,12 +31,14 @@ module control_game_flow(
 		//___________________________//
 		//______Control Signal_______//
 		//___________________________//
-        output reg wait_start, 
-        //______Stage 1_______//
+      output reg wait_start, 
+      //______Stage 1_______//
 		output reg stage_1_begin,
+
 		output reg stage_1_draw_tower,
 		output reg stage_1_in_progress,
 		output reg stage_1_done,
+		output reg redraw_tower_1,
 
 		//______Stage 2_______//
 		output reg stage_2_begin,
@@ -128,7 +130,7 @@ module control_game_flow(
 			end
 		  
 			//___________________________//
-			//_________Stage 1___________//
+			//_________Stage 2___________//
 			//___________________________//
 		   STAGE_2_BEGIN: begin
 				if(stage_2_begin_done)
