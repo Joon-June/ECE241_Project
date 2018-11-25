@@ -59,7 +59,7 @@ module TOWERS(
                 colour = colour_tower_3;
           end
 			 else begin
-					coordr = 0;
+					coord = 0;
 					colour = 0;
 			 end
         end 

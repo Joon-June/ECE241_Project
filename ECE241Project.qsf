@@ -310,7 +310,6 @@ set_location_assignment PIN_F13 -to VGA_R[7]
 set_location_assignment PIN_C10 -to VGA_SYNC_N
 set_location_assignment PIN_D11 -to VGA_VS
 set_global_assignment -name VERILOG_FILE memory_address_translator_80x40.v
-set_global_assignment -name VERILOG_FILE data_middle_states.v
 set_global_assignment -name VERILOG_FILE data_game_flow.v
 set_global_assignment -name VERILOG_FILE control_game_flow.v
 set_global_assignment -name VERILOG_FILE car/draw_car.v
@@ -340,7 +339,6 @@ set_global_assignment -name VERILOG_FILE erase_car.v
 set_global_assignment -name VERILOG_FILE TOWERS.v
 set_global_assignment -name VERILOG_FILE CARS.v
 set_global_assignment -name VERILOG_FILE middle_states.v
-set_global_assignment -name VERILOG_FILE control_middle_states.v
 set_global_assignment -name QIP_FILE rom19200x9_LOSE.qip
 set_global_assignment -name QIP_FILE rom19200x9_WIN.qip
 set_global_assignment -name QIP_FILE rom19200x9_SAVE_GPA.qip
@@ -354,7 +352,11 @@ set_global_assignment -name VERILOG_FILE draw_WIN.v
 set_global_assignment -name VERILOG_FILE draw_LOSE.v
 set_global_assignment -name VERILOG_FILE draw_SAVE_GPA.v
 set_global_assignment -name VERILOG_FILE draw_stage_1_start.v
-set_global_assignment -name VERILOG_FILE output_files/memory_address_translator_80x40.v
 set_global_assignment -name VERILOG_FILE draw_stage_1_clear.v
 set_global_assignment -name VERILOG_FILE draw_stage_2_start.v
+<<<<<<< HEAD
+=======
+set_global_assignment -name VERILOG_FILE draw_map.v
+set_global_assignment -name VERILOG_FILE erase_80x40.v
+>>>>>>> 5e7c65886967ed764d6eb12581e3e8dec6ffc4e8
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -47,10 +47,7 @@ module draw_WIN(
         else begin
 				if(delay == 1) begin
 					temp_x <= counter_x;
-					temp_y <= counter_y;
-					if(counter_x == 0)
-						 WIN_done <= 0;
-							  
+					temp_y <= counter_y;							  
 				  
 					counter_x <= counter_x + 1;
 					if(counter_x == 8'b10011111) begin

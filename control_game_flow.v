@@ -31,8 +31,9 @@ module control_game_flow(
 		//___________________________//
 		//______Control Signal_______//
 		//___________________________//
-        output reg wait_start, 
-        //______Stage 1_______//
+      output reg wait_start, 
+      
+		//______Stage 1_______//
 		output reg stage_1_begin,
 		output reg stage_1_draw_tower,
 		output reg stage_1_in_progress,
