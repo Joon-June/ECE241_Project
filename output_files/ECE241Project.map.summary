@@ -1,21 +1,8 @@
-<<<<<<< HEAD
-Analysis & Synthesis Status : Failed - Sat Nov 24 17:50:47 2018
-=======
-Analysis & Synthesis Status : Successful - Sun Nov 25 01:02:55 2018
->>>>>>> 5e7c65886967ed764d6eb12581e3e8dec6ffc4e8
+Analysis & Synthesis Status : Successful - Sun Nov 25 01:24:47 2018
 Quartus Prime Version : 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 Revision Name : ECE241Project
 Top-level Entity Name : ECE241Project
 Family : Cyclone V
-<<<<<<< HEAD
-Logic utilization (in ALMs) : N/A until Partition Merge
-Total registers : N/A until Partition Merge
-Total pins : N/A until Partition Merge
-Total virtual pins : N/A until Partition Merge
-Total block memory bits : N/A until Partition Merge
-Total PLLs : N/A until Partition Merge
-Total DLLs : N/A until Partition Merge
-=======
 Logic utilization (in ALMs) : N/A
 Total registers : 124
 Total pins : 50
@@ -28,4 +15,3 @@ Total HSSI TX PCSs : 0
 Total HSSI PMA TX Serializers : 0
 Total PLLs : 1
 Total DLLs : 0
->>>>>>> 5e7c65886967ed764d6eb12581e3e8dec6ffc4e8

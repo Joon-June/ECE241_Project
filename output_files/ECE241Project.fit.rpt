@@ -1,5 +1,5 @@
 Fitter report for ECE241Project
-Sun Nov 25 01:04:05 2018
+Sun Nov 25 01:25:55 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -65,7 +65,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Sun Nov 25 01:04:05 2018       ;
+; Fitter Status                   ; Successful - Sun Nov 25 01:25:55 2018       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; ECE241Project                               ;
 ; Top-level Entity Name           ; ECE241Project                               ;
@@ -160,7 +160,7 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   3.5%      ;
+;     Processor 2            ;   3.8%      ;
 +----------------------------+-------------+
 
 
@@ -440,7 +440,7 @@ refer to the applicable agreement for further details.
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in C:/intelFPGA_lite/18.0/ECE241Project/output_files/ECE241Project.pin.
+The pin-out file can be found in C:/Users/Maya Murmann/ece241-git/ECE241_Project/output_files/ECE241Project.pin.
 
 
 +-------------------------------------------------------------------------------------------+
@@ -2341,20 +2341,20 @@ Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors
 Info (119006): Selected device 5CSEMA5F31C6 for design "ECE241Project"
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
-Warning: RST port on the PLL is not properly connected on instance vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated|generic_pll1. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: C:/intelFPGA_lite/18.0/ECE241Project/db/altpll_80u.tdf Line: 33
+Warning: RST port on the PLL is not properly connected on instance vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated|generic_pll1. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/db/altpll_80u.tdf Line: 33
     Info: Must be connected
 Warning (21300): LOCKED port on the PLL is not properly connected on instance "vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated|generic_pll1". The LOCKED port on the PLL should be connected when the FBOUTCLK port is connected. Although it is unnecessary to connect the LOCKED signal, any logic driven off of an output clock of the PLL will not know when the PLL is locked and ready.
 Warning (18550): Found RAM instances implemented as ROM because the write logic is disabled. One instance is listed below as an example.
     Info (119043): Atom "data_game_flow:DGF|middle_states:m1|draw_map:map|ram19200x9_map_background:U3|altsyncram:altsyncram_component|altsyncram_t3q1:auto_generated|ram_block1a18" is instantiated as RAM, but it is actually implemented as ROM function because the write logic is always disabled
-Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a0" has a port clk0 that is stuck at GND File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_h7g1.tdf Line: 41
-Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a4" has a port clk0 that is stuck at GND File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_h7g1.tdf Line: 125
-Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a3" has a port clk0 that is stuck at GND File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_h7g1.tdf Line: 104
-Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a5" has a port clk0 that is stuck at GND File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_h7g1.tdf Line: 146
-Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a2" has a port clk0 that is stuck at GND File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_h7g1.tdf Line: 83
-Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a1" has a port clk0 that is stuck at GND File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_h7g1.tdf Line: 62
-Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a6" has a port clk0 that is stuck at GND File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_h7g1.tdf Line: 167
-Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a7" has a port clk0 that is stuck at GND File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_h7g1.tdf Line: 188
-Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a8" has a port clk0 that is stuck at GND File: C:/intelFPGA_lite/18.0/ECE241Project/db/altsyncram_h7g1.tdf Line: 209
+Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a0" has a port clk0 that is stuck at GND File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/db/altsyncram_h7g1.tdf Line: 41
+Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a4" has a port clk0 that is stuck at GND File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/db/altsyncram_h7g1.tdf Line: 125
+Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a3" has a port clk0 that is stuck at GND File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/db/altsyncram_h7g1.tdf Line: 104
+Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a5" has a port clk0 that is stuck at GND File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/db/altsyncram_h7g1.tdf Line: 146
+Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a2" has a port clk0 that is stuck at GND File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/db/altsyncram_h7g1.tdf Line: 83
+Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a1" has a port clk0 that is stuck at GND File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/db/altsyncram_h7g1.tdf Line: 62
+Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a6" has a port clk0 that is stuck at GND File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/db/altsyncram_h7g1.tdf Line: 167
+Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a7" has a port clk0 that is stuck at GND File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/db/altsyncram_h7g1.tdf Line: 188
+Warning (15400): WYSIWYG primitive "data_game_flow:DGF|middle_states:m1|draw_LOSE:L1|rom19200x9_LOSE:U1|altsyncram:altsyncram_component|altsyncram_h7g1:auto_generated|ram_block1a8" has a port clk0 that is stuck at GND File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/db/altsyncram_h7g1.tdf Line: 209
 Info (171003): Fitter is performing an Auto Fit compilation, which may decrease Fitter effort to reduce compilation time
 Warning (292013): Feature LogicLock is only available with a valid subscription license. You can purchase a software subscription to gain full access to this feature.
 Warning (15714): Some pins have incomplete I/O assignments. Refer to the I/O Assignment Warnings report for details
@@ -2611,24 +2611,24 @@ Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
-Info (11888): Total time spent on timing analysis during the Fitter is 1.83 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 1.79 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:06
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
-Info (144001): Generated suppressed messages file C:/intelFPGA_lite/18.0/ECE241Project/output_files/ECE241Project.fit.smsg
+Info (144001): Generated suppressed messages file C:/Users/Maya Murmann/ece241-git/ECE241_Project/output_files/ECE241Project.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 234 warnings
-    Info: Peak virtual memory: 6379 megabytes
-    Info: Processing ended: Sun Nov 25 01:04:06 2018
-    Info: Elapsed time: 00:01:09
-    Info: Total CPU time (on all processors): 00:01:43
+    Info: Peak virtual memory: 6407 megabytes
+    Info: Processing ended: Sun Nov 25 01:25:56 2018
+    Info: Elapsed time: 00:01:08
+    Info: Total CPU time (on all processors): 00:01:41
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in C:/intelFPGA_lite/18.0/ECE241Project/output_files/ECE241Project.fit.smsg.
+The suppressed messages can be found in C:/Users/Maya Murmann/ece241-git/ECE241_Project/output_files/ECE241Project.fit.smsg.
 
 
