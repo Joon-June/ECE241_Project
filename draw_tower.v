@@ -7,7 +7,7 @@ module draw_tower(
 	 output reg tower_done,
     output [7:0]x, //Will go into VGA Input
     output [6:0]y, //Will go into VGA Input
-	 output map_mem_add
+	 output [14:0]map_mem_add
     );
     
     wire [8:0]mem_add;

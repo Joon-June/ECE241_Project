@@ -1,0 +1,127 @@
+module control_car(
+		input clk,
+		input resetn,
+		input initiate, // beginning of stage
+		input car_destroyed, // input from towers
+		input enable_draw, // begin drawing cycle
+		//_____Control Feedback ___//
+		input initial_delay_done,
+		input draw_done,
+		input erase_done,
+
+		output reg wait_start, 
+      output reg delay, 
+      output reg draw_car, 
+      output reg draw_wait, 
+      output reg erase_car, 
+      output reg increment,
+		output reg destroyed_state // signal on when current state is destroyed
+   );
+	 
+	reg [3:0] current_state, next_state; 
+	 
+	localparam RESET        	  = 5'd0,
+               WAIT_START       = 5'd1,
+               DELAY	           = 5'd2,
+               DRAW_CAR	        = 5'd3,
+				   WAIT_DRAW 		  = 5'd4,
+               ERASE_CAR        = 5'd5,
+               INCREMENT    	  = 5'd6,
+               DESTROYED   	  = 5'd7;
+	
+   always @ (*)
+   begin: state_table
+		case (current_state)
+                RESET: next_state = WAIT_START;
+                WAIT_START: begin
+                    if(initiate == 1'b1)
+                        next_state = DELAY;
+                    else
+                        next_state = WAIT_START;
+                end
+                DELAY: begin
+                    if (initial_delay_done == 1'b1)
+                        next_state = WAIT_DRAW;
+                    else
+                        next_state = DELAY;
+					end
+                WAIT_DRAW: begin // wait for the drawing of this car to be enabled
+                if(enable_draw == 1'b1)
+                    next_state = ERASE_CAR;
+                else
+                    next_state = WAIT_DRAW;
+                end                 
+                ERASE_CAR: begin
+                    if(car_destroyed == 1'b1 && erase_done == 1'b1)
+								next_state = DESTROYED;
+						  else if(erase_done == 1'b1)
+                        next_state = INCREMENT;
+                    else
+                        next_state = ERASE_CAR;
+                end
+                INCREMENT: next_state = DRAW_CAR; // increment only takes 1 clock cycle             
+                DRAW_CAR: begin
+                    if(draw_done == 1'b1)
+                        next_state = WAIT_DRAW;
+                    else
+                        next_state = DRAW_CAR;
+                end
+                DESTROYED: begin
+                    if(initiate == 1'b0)
+                        next_state = WAIT_START;
+                    else
+                        next_state = DESTROYED;
+                end 
+            default: next_state = RESET;
+		endcase // state table
+	end
+	
+	
+    // Output logic aka all of our datapath control signals
+    always @(*)
+    begin: enable_signals
+        // By default make all our signals 0 to avoid latches.
+		  
+        wait_start = 1'b0; 
+        delay = 1'b0;
+        draw_car = 1'b0;
+        draw_wait = 1'b0;
+        erase_car = 1'b0;
+        increment = 1'b0;
+		  destroyed_state = 1'b0;
+
+        case (current_state)
+            WAIT_START: begin
+                wait_start = 1'b1;
+            end
+				DELAY: begin
+                delay = 1'b1;
+            end
+				DRAW_CAR: begin
+                draw_car = 1'b1;
+            end
+				WAIT_DRAW: begin
+                draw_wait = 1'b1;
+            end
+				ERASE_CAR: begin
+                erase_car = 1'b1;
+            end
+				INCREMENT: begin
+					increment = 1'b1;
+            end
+				DESTROYED: begin
+			    destroyed_state = 1'b1;
+            end
+        // default:    // don't need default since we already made sure all of our outputs were assigned a value at the start of the always block
+        endcase
+    end // enable_signals
+	 
+	 // current_state registers
+    always@(posedge clk)
+    begin: state_FFs
+        if(!resetn)
+            current_state <= RESET;
+        else
+            current_state <= next_state;
+    end // state_FFS
+endmodule

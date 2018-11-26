@@ -78,7 +78,7 @@ module middle_states(
         .colour(colour_SAVE_GPA),
         .x(coord_SAVE_GPA[14:7]),
         .y(coord_SAVE_GPA[6:0])
-    )
+    );
     draw_WIN W1(
         .clk(clk && win),
         .resetn(resetn),
@@ -227,5 +227,4 @@ module middle_states(
         end
     end
 
- game_over_feedback
 endmodule

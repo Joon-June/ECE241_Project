@@ -73,12 +73,24 @@ module data_game_flow(
 	wire tower_wren;
 	wire [8:0]colour_tower;
 	wire [14:0]coord_tower;
+	wire tower_1_drawn, tower_2_drawn, tower_3_drawn;
+	wire [14:0] tower_1_location, tower_2_location, tower_3_location;
 
 	//_______________Car Related Wires_____________//
 	wire car_wren;
 	wire [8:0]colour_car;
 	wire [14:0]coord_car;
-
+	wire [14:0] car_0_coords, car_1_coords, car_2_coords, car_3_coords;
+	wire [3:0]destroyed_cars;
+	
+	//_______________Laser Related Wires_____________//
+	wire laser_wren;
+	wire [8:0]colour_laser;
+	wire [14:0]coord_laser;
+	
+	//_______________Signal for controlling laser/car drawing_____________//
+	wire enable_laser_draw;
+	wire enable_car_draw;
 
 	//______________________Control signals for map background__________________________//
 	wire back_wren;
@@ -86,19 +98,19 @@ module data_game_flow(
 	wire [8:0]in_colour;
 	wire [14:0]mem_add;
 	
-
+	assign VGA_write_enable = car_wren | laser_wren | tower_wren;
 
 //______________________Module Instatiations__________________________//
-	//@@@To be implemented
-	//Save Current Situation to following ram
-	//Only need to save tower information
-	ram19200x9_map_background(
+	//Common map background
+	ram19200x9_map_background MBCKGD(
 			.address(mem_add),
 			.clock(clk),
 			.data(colour_tower),
 			.wren(back_wren),
 			.q(out_colour)
 	);
+	
+	FrameCounter_30 FC1(.Clock(clk), .resetn(resetn), .Enable30(enable_laser_draw));
 	
 	TOWERS T1(
 		//_________________________Inputs_____________________________//
@@ -128,9 +140,47 @@ module data_game_flow(
 		.colour_erase_square_from_mem(out_colour),
 		.erase_mem_address(mem_add),
 		//_______Write to Map____//
-		.writeToMapEnable(back_wren)
+		.writeToMapEnable(back_wren),
+		//_______Tower Locations____//
+		.tower_1_location(tower_1_location),
+		.tower_1_drawn(tower_1_drawn),
+		.tower_2_location(tower_2_location),
+		.tower_2_drawn(tower_2_drawn),
+		.tower_3_location(tower_3_location),
+		.tower_3_drawn(tower_3_drawn)
 	);
 
+	LASERS L1(
+		  .clk(clk),
+        .resetn(resetn && (stage_1_in_progress | stage_2_in_progress | stage_3_in_progress)), // resets if no stage in progress
+		  .laser_start_draw(enable_laser_draw),
+		  .background_colour(out_colour),
+
+        //_________Tower Location Inputs_________//
+		  .tower_1_coords(tower_1_drawn),
+		  .tower_1_drawn(tower_1_drawn),
+		  .tower_2_coords(tower_2_drawn),
+		  .tower_2_drawn(tower_2_drawn),
+		  .tower_3_coords(tower_3_drawn),
+		  .tower_3_drawn(tower_3_drawn),
+
+		  //_________Car Location Inputs_________//
+		  .car_0_coords(car_0_coords),
+		  .car_1_coords(car_1_coords),
+		  .car_2_coords(car_2_coords),
+		  .car_3_coords(car_3_coords),
+		  
+		  
+		  //_________VGA Outputs_________//
+		  .laser_wren(laser_wren),
+        .coord(coord_laser),
+        .colour(colour_laser),
+		  
+		  //_________Outputs_________//
+		  .laser_draw_done(enable_car_draw),
+		  .destroyed_cars(destroyed_cars)
+	);
+	
 	CARS C1(
 		//_________________________Inputs_____________________________//
         .clk(clk && (stage_1_in_progress | stage_2_in_progress | stage_3_in_progress)),
@@ -140,6 +190,10 @@ module data_game_flow(
         .stage_1_in_progress(stage_1_in_progress),
         .stage_2_in_progress(stage_2_in_progress),
         .stage_3_in_progress(stage_3_in_progress),
+		  
+		  //_________Destroyed Cars_________//
+		  .destroyed_cars(destroyed_cars),
+		  
 		//___________________________________________________________//
 
 
@@ -155,7 +209,13 @@ module data_game_flow(
         .colour(colour_car),
 
         //Terminal States
-        .game_over_feedback(game_over_feedback)
+        .game_over_feedback(game_over_feedback),
+		  
+		  //_________Car Locations_________//
+		  .car_0_coords(car_0_coords),
+		  .car_1_coords(car_1_coords),
+		  .car_2_coords(car_2_coords),
+		  .car_3_coords(car_3_coords)
 		//__________________________________________________________//	
 	);
 
@@ -174,12 +234,42 @@ module data_game_flow(
 			colour <= colour_car;
 			coordinates <= coord_car;
 		end
+		else if(laser_wren == 1'b1) begin
+			colour <= colour_laser;
+			coordinates <= coord_laser;
+		end
 		else begin
 			colour <= 0;
 			coordinates <= 0;
 		end
 	end
 
+endmodule
+
+// Testing module to count 30fps
+module FrameCounter_30(Clock, resetn, Enable30); // tested
+	input Clock;
+	input resetn;
+	output reg Enable30;
+
+	reg [20:0] Q;
+
+	always @(posedge Clock) begin
+		if (!resetn) begin
+			Q <= 0;
+			Enable30 <= 0;
+		end
+
+		else if (Q >= 21'b110010110111001101010) begin // 30 fps @ 50MHz
+			Enable30 <= 1'b1;
+			Q <= 0;
+		end
+
+		else begin
+			Enable30 <= 1'b0;
+			Q <= Q + 1;
+		end
+	end
 endmodule
 
 

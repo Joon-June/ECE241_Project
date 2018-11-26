@@ -27,9 +27,16 @@ module TOWERS(
 		  
 		  //_______Map Memory Outputs/Inputs________//
 		  input [8:0]colour_erase_square_from_mem,
-		  output [14:0]erase_mem_address,
-		  output writeToMapEnable
+		  output reg [14:0]erase_mem_address,
+		  output writeToMapEnable,
 		  
+		  //_______Tower locations________//
+		  output [14:0]tower_1_location,
+		  output tower_1_drawn,
+		  output [14:0]tower_2_location,
+		  output tower_2_drawn,
+		  output [14:0]tower_3_location,
+		  output tower_3_drawn
  
 //__________________________________________________________//
 );
@@ -73,8 +80,9 @@ module TOWERS(
 					 erase_mem_address = erase_mem_address_3;
           end
 			 else begin
-					coordr = 0;
+					coord = 0;
 					colour = 0;
+					erase_mem_address = 0;
 			 end
         end 
 		  
@@ -105,7 +113,9 @@ module TOWERS(
 		.vga_colour(colour_tower_1),
       .tower_done_out(stage_1_tower_done),
 		.erase_mem_address(erase_mem_address_1),
-		.writeToMap(writeToMap[0])
+		.writeToMap(writeToMap[0]),
+		.tower_coordinates(tower_1_location),
+		.tower_drawn(tower_1_drawn)
    );
 
    	tower TOWER2(
@@ -124,7 +134,9 @@ module TOWERS(
 		.vga_colour(colour_tower_2),
       .tower_done_out(stage_2_tower_done),
 		.erase_mem_address(erase_mem_address_2),
-		.writeToMap(writeToMap[1])
+		.writeToMap(writeToMap[1]),
+		.tower_coordinates(tower_2_location),
+		.tower_drawn(tower_2_drawn)
    );
 
    	tower TOWER3(
@@ -143,7 +155,9 @@ module TOWERS(
 		.vga_colour(colour_tower_3),
       .tower_done_out(stage_3_tower_done),
 		.erase_mem_address(erase_mem_address_3),
-		.writeToMap(writeToMap[2])
+		.writeToMap(writeToMap[2]),
+		.tower_coordinates(tower_3_location),
+		.tower_drawn(tower_3_drawn)
    );
 //___________________________________________________________________//
 

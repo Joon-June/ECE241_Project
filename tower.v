@@ -11,11 +11,13 @@ module tower(
 
 		//____________Outputs________________//
 		output vga_WriteEn, // erase_car | draw_car
-      	output [14:0] vga_coords, 
+      output [14:0] vga_coords, 
 		output [8:0] vga_colour,
 		output tower_done_out,
 		output [14:0]erase_mem_address, // will go to common map memory
-		output writeToMap
+		output writeToMap,
+		output [14:0]tower_coordinates,
+		output tower_drawn
    );
 	
 	//______________________Wires & Registers______________________________//
@@ -69,7 +71,9 @@ module tower(
 		.colour(vga_colour),
 		.coordinates(vga_coords),
 		.tower_done(tower_done_wire),
-		.map_mem_address(erase_mem_address)
+		.map_mem_address(erase_mem_address),
+		.tower_coordinates(tower_coordinates),
+		.tower_drawn(tower_drawn)
 	);
 
 	control_towerplacer c0(

@@ -34,11 +34,9 @@ module control_game_flow(
       output reg wait_start, 
       //______Stage 1_______//
 		output reg stage_1_begin,
-
 		output reg stage_1_draw_tower,
 		output reg stage_1_in_progress,
 		output reg stage_1_done,
-		output reg redraw_tower_1,
 
 		//______Stage 2_______//
 		output reg stage_2_begin,
