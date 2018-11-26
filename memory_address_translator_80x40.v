@@ -6,5 +6,5 @@ module memory_address_translator_80x40(
     );
 	
 	always @(*)
-			mem_address = 11'b0 + y * (7'b1001111) + x;
+			mem_address = 12'b0 + y * (7'b1010000) + x;
 endmodule

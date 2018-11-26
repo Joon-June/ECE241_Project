@@ -1,16 +1,20 @@
+<<<<<<< HEAD
 Fitter Status : Successful - Sun Nov 25 01:25:55 2018
+=======
+Fitter Status : Successful - Sun Nov 25 19:08:27 2018
+>>>>>>> 622041dea1303b7bf767fafeb3c1a43c8e109b01
 Quartus Prime Version : 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 Revision Name : ECE241Project
 Top-level Entity Name : ECE241Project
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 119 / 32,070 ( < 1 % )
-Total registers : 130
+Logic utilization (in ALMs) : 1,632 / 32,070 ( 5 % )
+Total registers : 1238
 Total pins : 50 / 457 ( 11 % )
 Total virtual pins : 0
-Total block memory bits : 518,418 / 4,065,280 ( 13 % )
-Total RAM Blocks : 70 / 397 ( 18 % )
+Total block memory bits : 2,109,618 / 4,065,280 ( 52 % )
+Total RAM Blocks : 294 / 397 ( 74 % )
 Total DSP Blocks : 0 / 87 ( 0 % )
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
