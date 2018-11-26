@@ -17,8 +17,9 @@ module draw_WIN(
 	 reg delay;
 
     initial begin
-        counter_x = 5'b0;
-        counter_y = 5'b0;
+        counter_x = 0;
+        counter_y = 0;
+        WIN_done = 0;
 		  delay = 0;
     end
 	
@@ -37,9 +38,10 @@ module draw_WIN(
         );
 
     always @(posedge clk) begin
-		  if(!resetn) begin
+		if(!resetn) begin
             counter_x <= 0;
             counter_y <= 0;
+            WIN_done <= 0;
 				temp_x <= 0;
 				temp_y <= 0;
 				delay <= 0;

@@ -17,8 +17,8 @@ module draw_SAVE_GPA(
 	 reg delay;
 
     initial begin
-        counter_x = 5'b0;
-        counter_y = 5'b0;
+        counter_x = 0;
+        counter_y = 0;
         SAVE_GPA_done = 0;
 		  delay = 0;
     end

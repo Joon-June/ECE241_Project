@@ -3,20 +3,19 @@ module draw_car(
     input resetn,
     input [7:0]COUNTER_X, //Uppercase indicates grid coutner
     input [6:0]COUNTER_Y, //Uppercase indicates grid coutner
-    output reg [8:0]colour,
+    output [8:0]colour,
 	 output reg draw_done,
     output [7:0]x, //Will go into VGA Input
     output [6:0]y //Will go into VGA Input
     );
     
     wire [8:0]mem_add;
-    wire [8:0]colour_car;
 	 
 	 reg [4:0]temp_x;
 	 reg [4:0]temp_y;
     reg [4:0]counter_x;
     reg [4:0]counter_y;
-    reg delay;
+    reg [1:0]delay;
 
     initial begin
         counter_x = 8'b0;
@@ -38,7 +37,7 @@ module draw_car(
 					.clock(clk),
 					.data(9'b0),
 					.wren(1'b0),
-					.q(colour_car)
+					.q(colour)
 					);
 
     always @(posedge clk) begin
@@ -47,14 +46,16 @@ module draw_car(
             counter_y <= 0;
 				temp_x <= 0;
 				temp_y <= 0;
+                draw_done <= 0;
                 delay <= 0;
         end
-        else begin            
-            if(delay == 1) begin
+        else begin         
+            if(counter_x == 0)
+                draw_done <= 0;   
+                
+            if(delay == 2'b10) begin
                 temp_x <= counter_x;
                     temp_y <= counter_y;
-                    if(counter_x == 0)
-                        draw_done <= 0;
 
                     counter_x <= counter_x + 1;
                     if(counter_x == 5'b10011) begin
@@ -71,12 +72,9 @@ module draw_car(
                 end
             end
             else
-                delay <= 1;
+                delay <= delay + 1;
         end
     end
-
-    always @(colour_car) //1 cycle delay from counter_x & counter_y
-        colour = colour_car;
 
     assign x = COUNTER_X + temp_x;
     assign y = COUNTER_Y + temp_y;

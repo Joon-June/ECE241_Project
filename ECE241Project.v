@@ -34,7 +34,7 @@ module ECE241Project(
 	wire [6:0] y;
 	wire writeEn_from_data;
 	wire writeEn;
-	assign writeEn = (colour != 9'b111111111) && writeEn_from_data;	
+	assign writeEn = /*(colour != 9'b111111111) && */writeEn_from_data;	
 	
 	//______Game Flow Related Wires______//
 	//Initial Setup

@@ -226,7 +226,32 @@ module control_game_flow(
 		game_over_out = 1'b0;
 
         case (current_state)
-            WAIT_START: begin
+            RESET: begin
+				// By default make all our signals 0 to avoid latches.
+				wait_start = 1'b0; 
+				//______Stage 1_______//
+				stage_1_begin = 1'b0;
+				stage_1_draw_tower = 1'b0;
+				stage_1_in_progress = 1'b0;
+				stage_1_done  = 1'b0;
+
+				//______Stage 2_______//
+				stage_2_begin = 1'b0;
+				stage_2_draw_tower = 1'b0;
+				stage_2_in_progress = 1'b0;
+				stage_2_done  = 1'b0;
+
+				//______Stage 3_______//
+				stage_3_begin = 1'b0;
+				stage_3_draw_tower = 1'b0;
+				stage_3_in_progress = 1'b0;
+				stage_3_done = 1'b0;
+
+				win = 1'b0;
+				game_over_out = 1'b0;
+
+			end
+			WAIT_START: begin
                 wait_start = 1'b1;
             end
 			//________Stage 1________//
