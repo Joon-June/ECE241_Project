@@ -115,7 +115,7 @@ module CARS(
 		.clk(clk),
 		.resetn(resetn),
 		.initiate(stage_1_in_progress || stage_2_in_progress || stage_3_in_progress), // beginning of stage
-		.car_destroyed(1'b0 | (game_over[3] == 1'b1)), // .car_destroyed(destroyed_cars[3]), // input from towers
+		.car_destroyed(destroyed_cars[3]), // .car_destroyed(destroyed_cars[3]), // input from towers
 		.enable_draw(enable_car_draw[3]), // begin drawing cycle
 		.delay_frames(8'b10000000), // 256 frames @ 30fps
 

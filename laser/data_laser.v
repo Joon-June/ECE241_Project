@@ -146,10 +146,6 @@ module datapath_laser(
 				car_in_range <= 1'b1;
 				laser_direction <= car3_laser_direction;
 			end
-			else begin
-				car_in_range <= 0;
-				laser_direction <= 0;
-			end
 		end
 		else if (draw_laser) begin
 			// Set flags

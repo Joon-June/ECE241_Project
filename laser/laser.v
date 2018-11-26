@@ -24,7 +24,7 @@ module laser(
 	assign vga_WriteEn = draw_laser | erase;
 	
 	assign laser_done = draw_done | erase_done | (enable_draw && (car_in_range == 1'b0) && (drawn == 1'b0));
- 
+
 	
 	datapath_laser d0(
 		.clk(clk),
