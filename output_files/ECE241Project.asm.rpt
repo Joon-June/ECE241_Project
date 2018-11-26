@@ -1,9 +1,5 @@
 Assembler report for ECE241Project
-<<<<<<< HEAD
-Mon Nov 26 05:27:30 2018
-=======
-Mon Nov 26 05:17:49 2018
->>>>>>> 2e03ac3a09aa4635b1a9316da8ff8e3f79b5bfbd
+Mon Nov 26 06:24:34 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -14,7 +10,7 @@ Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/Users/Maya Murmann/ece241-git/ECE241_Project/output_files/ECE241Project.sof
+  5. Assembler Device Options: C:/intelFPGA_lite/18.0/ECE241Project/output_files/ECE241Project.sof
   6. Assembler Messages
 
 
@@ -41,11 +37,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-<<<<<<< HEAD
-; Assembler Status      ; Successful - Mon Nov 26 05:27:30 2018 ;
-=======
-; Assembler Status      ; Successful - Mon Nov 26 05:17:49 2018 ;
->>>>>>> 2e03ac3a09aa4635b1a9316da8ff8e3f79b5bfbd
+; Assembler Status      ; Successful - Mon Nov 26 06:24:34 2018 ;
 ; Revision Name         ; ECE241Project                         ;
 ; Top-level Entity Name ; ECE241Project                         ;
 ; Family                ; Cyclone V                             ;
@@ -60,34 +52,23 @@ refer to the applicable agreement for further details.
 +--------+---------+---------------+
 
 
-+--------------------------------------------------------------------------------+
-; Assembler Generated Files                                                      ;
-+--------------------------------------------------------------------------------+
-; File Name                                                                      ;
-+--------------------------------------------------------------------------------+
-; C:/Users/Maya Murmann/ece241-git/ECE241_Project/output_files/ECE241Project.sof ;
-+--------------------------------------------------------------------------------+
++---------------------------------------------------------------------+
+; Assembler Generated Files                                           ;
++---------------------------------------------------------------------+
+; File Name                                                           ;
++---------------------------------------------------------------------+
+; C:/intelFPGA_lite/18.0/ECE241Project/output_files/ECE241Project.sof ;
++---------------------------------------------------------------------+
 
 
-<<<<<<< HEAD
 +-----------------------------------------------------------------------------------------------+
 ; Assembler Device Options: C:/intelFPGA_lite/18.0/ECE241Project/output_files/ECE241Project.sof ;
 +----------------+------------------------------------------------------------------------------+
 ; Option         ; Setting                                                                      ;
 +----------------+------------------------------------------------------------------------------+
-; JTAG usercode  ; 0x05B2659C                                                                   ;
-; Checksum       ; 0x05B2659C                                                                   ;
+; JTAG usercode  ; 0x04E70E07                                                                   ;
+; Checksum       ; 0x04E70E07                                                                   ;
 +----------------+------------------------------------------------------------------------------+
-=======
-+----------------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/Maya Murmann/ece241-git/ECE241_Project/output_files/ECE241Project.sof ;
-+----------------+-----------------------------------------------------------------------------------------+
-; Option         ; Setting                                                                                 ;
-+----------------+-----------------------------------------------------------------------------------------+
-; JTAG usercode  ; 0x04C4C56C                                                                              ;
-; Checksum       ; 0x04C4C56C                                                                              ;
-+----------------+-----------------------------------------------------------------------------------------+
->>>>>>> 2e03ac3a09aa4635b1a9316da8ff8e3f79b5bfbd
 
 
 +--------------------+
@@ -96,24 +77,14 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-<<<<<<< HEAD
-    Info: Processing started: Mon Nov 26 05:27:12 2018
-=======
-    Info: Processing started: Mon Nov 26 05:17:36 2018
->>>>>>> 2e03ac3a09aa4635b1a9316da8ff8e3f79b5bfbd
+    Info: Processing started: Mon Nov 26 06:24:14 2018
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off ECE241Project -c ECE241Project
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
-<<<<<<< HEAD
-    Info: Peak virtual memory: 4914 megabytes
-    Info: Processing ended: Mon Nov 26 05:27:30 2018
-    Info: Elapsed time: 00:00:18
-=======
-    Info: Peak virtual memory: 4917 megabytes
-    Info: Processing ended: Mon Nov 26 05:17:50 2018
-    Info: Elapsed time: 00:00:14
->>>>>>> 2e03ac3a09aa4635b1a9316da8ff8e3f79b5bfbd
-    Info: Total CPU time (on all processors): 00:00:14
+    Info: Peak virtual memory: 4915 megabytes
+    Info: Processing ended: Mon Nov 26 06:24:35 2018
+    Info: Elapsed time: 00:00:21
+    Info: Total CPU time (on all processors): 00:00:15
 
 
