@@ -18,8 +18,8 @@ module draw_stage_3_clear(
 	 reg delay;
 
     initial begin
-        counter_x = 5'b0;
-        counter_y = 5'b0;
+        counter_x = 0;
+        counter_y = 0;
         stage_3_clear_done = 0;
 		  delay = 0;
     end
@@ -75,6 +75,6 @@ module draw_stage_3_clear(
     end
 
     //has to start at (x,y) = (39, 39) = (100111, 100111)
-    assign x = temp_x + 6'b100111; // + 39
-    assign y = temp_y + 6'b100111; // + 39
+    assign x = 8'b0 + temp_x + 6'b100111; // + 39
+    assign y = 7'b0 + temp_y + 6'b100111; // + 39
 endmodule

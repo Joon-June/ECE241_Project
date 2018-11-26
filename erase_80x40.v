@@ -51,13 +51,13 @@ module erase_80x40(
 				delay <= 0;
         end
         else begin
+            if(counter_x == 6'b100111)
+                erase_done <= 0;
+                
             if(enable) begin
 				if(delay == 1) begin
 					temp_x <= counter_x;
-					temp_y <= counter_y;
-					if(counter_x == 6'b100111)
-						 erase_done <= 0;
-							  
+					temp_y <= counter_y;							  
 				  
 					counter_x <= counter_x + 1;
 					if(counter_x == 7'b1110111) begin //119

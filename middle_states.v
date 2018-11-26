@@ -220,10 +220,8 @@ module middle_states(
             if(map_enable) begin
                 colour <= colour_map;
                 coordinates <= coord_map;
-//                if(map_done) begin
-//                    start_display_done <= 1;
-//                    map_enable <= 0;
-//                end
+                start_display_done <= map_done;
+                map_enable <= ~map_done;
             end
         end
         else if(stage_1_begin) begin
@@ -236,18 +234,18 @@ module middle_states(
                 counter_enable <= 1;
             end
 
-            if(counter_done) 
+            if(counter_done) begin
                 erase <= 1;
+                counter_enable <= 0;
+            end
 
             if(erase) begin
-                counter_enable <= 0;
                 colour <= colour_erase_80x40;
                 coordinates <= coord_erase_80x40;
-                if(erase_done) begin
-                    stage_1_begin_done <= 1;
-                    erase <= 0;
-                end
+                stage_1_begin_done <= erase_done;
+                erase <= ~erase_done;
             end
+            
         end
         else if(stage_1_done) begin
             if(!stage_1_end_display_done_temp) begin
@@ -259,17 +257,16 @@ module middle_states(
                 counter_enable <= 1;
             end
 
-            if(counter_done) 
+            if(counter_done) begin
                 erase <= 1;
-
+                counter_enable <= 0;
+            end
             if(erase) begin
                 counter_enable <= 0;
                 colour <= colour_erase_80x40;
                 coordinates <= coord_erase_80x40;
-                if(erase_done) begin
-                    stage_1_end_display_done <= 1;
-                    erase <= 0;
-                end
+                stage_1_end_display_done <= erase_done;
+                erase <= ~erase_done;
             end
         end
         else if(stage_2_begin) begin
@@ -282,17 +279,17 @@ module middle_states(
                 counter_enable <= 1;
             end
 
-            if(counter_done) 
+            if(counter_done) begin
                 erase <= 1;
+                counter_enable <= 0;
+            end
 
             if(erase) begin
                 counter_enable <= 0;
                 colour <= colour_erase_80x40;
                 coordinates <= coord_erase_80x40;
-                if(erase_done) begin
-                    stage_2_begin_done <= 1;
-                    erase <= 0;
-                end
+                stage_2_begin_done <= erase_done;
+                erase <= ~erase_done;
             end
         end
         else if(stage_2_done) begin
@@ -305,17 +302,17 @@ module middle_states(
                 counter_enable <= 1;
             end
 
-            if(counter_done) 
+            if(counter_done) begin
                 erase <= 1;
+                counter_enable <= 0;
+            end
 
             if(erase) begin
                 counter_enable <= 0;
                 colour <= colour_erase_80x40;
                 coordinates <= coord_erase_80x40;
-                if(erase_done) begin
-                    stage_2_end_display_done <= 1;
-                    erase <= 0;
-                end
+                stage_2_end_display_done <= erase_done;
+                erase <= ~erase_done;
             end
         end
         else if(stage_3_begin) begin
@@ -328,17 +325,17 @@ module middle_states(
                 counter_enable <= 1;
             end
 
-            if(counter_done) 
+           if(counter_done) begin
                 erase <= 1;
+                counter_enable <= 0;
+            end
 
             if(erase) begin
                 counter_enable <= 0;
                 colour <= colour_erase_80x40;
                 coordinates <= coord_erase_80x40;
-                if(erase_done) begin
-                    stage_3_begin_done <= 1;
-                    erase <= 0;
-                end
+                stage_3_begin_done <= erase_done;
+                erase <= ~erase_done;
             end
         end
         else if(stage_3_done) begin
@@ -351,17 +348,17 @@ module middle_states(
                 counter_enable <= 1;
             end
 
-            if(counter_done) 
+            if(counter_done) begin
                 erase <= 1;
+                counter_enable <= 0;
+            end
 
             if(erase) begin
                 counter_enable <= 0;
                 colour <= colour_erase_80x40;
                 coordinates <= coord_erase_80x40;
-                if(erase_done) begin
-                    stage_3_end_display_done <= 1;
-                    erase <= 0;
-                end
+                stage_3_end_display_done <= erase_done;
+                erase <= ~erase_done;
             end
         end
         else if(win) begin
@@ -392,7 +389,7 @@ module counter_2seconds(clk, resetn, enable, out);
 	input enable;
 	output reg out;
 
-	reg [23:0] Q;
+	reg [26:0] Q;
 
 	always @(posedge clk) begin
 		if (!resetn) begin
@@ -401,7 +398,7 @@ module counter_2seconds(clk, resetn, enable, out);
 		end
 
         if(enable) begin
-            if (Q == 24'b100110001001011010000000) begin //10 Million = 2 seconds
+            if (Q == 27'b101111101011110000100000000) begin //10 Million = 2 seconds
                 out <= 1;
                 Q <= 0;
             end
