@@ -1,6 +1,7 @@
 module draw_SAVE_GPA(
     input clk,
     input resetn,
+    input enable,
     output reg SAVE_GPA_done,
     output [8:0]colour,
     output [7:0]x, //Will go into VGA Input
@@ -47,6 +48,7 @@ module draw_SAVE_GPA(
 				delay <= 0;
         end
         else begin
+            if(enable) begin
 				if(delay == 1 && SAVE_GPA_done == 0) begin
 					temp_x <= counter_x;
 					temp_y <= counter_y;						  
@@ -67,6 +69,7 @@ module draw_SAVE_GPA(
 				end
 				else
 					delay <= 1;
+            end
         end
     end
 

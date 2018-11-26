@@ -1,6 +1,7 @@
 module draw_car(
     input clk,
     input resetn,
+    input enable,
     input [7:0]COUNTER_X, //Uppercase indicates grid coutner
     input [6:0]COUNTER_Y, //Uppercase indicates grid coutner
     output [8:0]colour,
@@ -52,27 +53,29 @@ module draw_car(
         else begin         
             if(counter_x == 0)
                 draw_done <= 0;   
-                
-            if(delay == 2'b10) begin
-                temp_x <= counter_x;
-                    temp_y <= counter_y;
-
-                    counter_x <= counter_x + 1;
-                    if(counter_x == 5'b10011) begin
-                        counter_y <= counter_y + 1;
-                        counter_x <= 0;
-                    end
             
-                //Same as {counter_x, counter_y} >= {19, 19} - i.e. done accessing square memory
-                if({counter_x, counter_y} == 10'b1001110011) begin
-                    draw_done <= 1'b1;
-                    counter_x <= 0;
-                    counter_y <= 0;
-                    delay <= 0;
+            if(enable) begin
+                if(delay == 2'b10) begin
+                    temp_x <= counter_x;
+                        temp_y <= counter_y;
+
+                        counter_x <= counter_x + 1;
+                        if(counter_x == 5'b10011) begin
+                            counter_y <= counter_y + 1;
+                            counter_x <= 0;
+                        end
+                
+                    //Same as {counter_x, counter_y} >= {19, 19} - i.e. done accessing square memory
+                    if({counter_x, counter_y} == 10'b1001110011) begin
+                        draw_done <= 1'b1;
+                        counter_x <= 0;
+                        counter_y <= 0;
+                        delay <= 0;
+                    end
                 end
+                else
+                    delay <= delay + 1;
             end
-            else
-                delay <= delay + 1;
         end
     end
 

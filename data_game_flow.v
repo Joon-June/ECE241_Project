@@ -296,34 +296,34 @@ module data_game_flow(
 	//_________________Data Path - Mux to Select VGA Inputs___________________//
 	always @(*) begin
 		if(tower_wren) begin
-			colour <= colour_tower;
-			coordinates <= coord_tower;
-			VGA_write_enable <= tower_wren;
+			colour = colour_tower;
+			coordinates = coord_tower;
+			VGA_write_enable = tower_wren;
 			mem_add = mem_add_tower;
 		end
 		else if(car_wren) begin
-			colour <= colour_car;
-			coordinates <= coord_car;
-			VGA_write_enable <= car_wren;
+			colour = colour_car;
+			coordinates = coord_car;
+			VGA_write_enable = car_wren;
 			mem_add = 0;
 		end
 		else if(middle_wren) begin
-			colour <= colour_middle;
-			coordinates <= coord_middle;
-			VGA_write_enable <= middle_wren;
+			colour = colour_middle;
+			coordinates = coord_middle;
+			VGA_write_enable = middle_wren;
 			mem_add = mem_add_curr_state;
 			
 		end
 		else if(laser_wren) begin
-			colour <= colour_laser;
-			coordinates <= coord_laser;
-			VGA_write_enable <= laser_wren;
+			colour = colour_laser;
+			coordinates = coord_laser;
+			VGA_write_enable = laser_wren;
 			mem_add = mem_add_laser;
 		end
 		else begin
-			colour <= 0;
-			coordinates <= 0;
-			VGA_write_enable <= 0;
+			colour = 0;
+			coordinates = 0;
+			VGA_write_enable = 0;
 			mem_add = 0; 
 		end
 end

@@ -46,13 +46,13 @@ Z9 !s90 -reportprogress|300|draw_tower.v|
 Z10 tCvgOpt 0
 R0
 vcounter_2seconds
-Z11 !s110 1543193139
+Z11 !s110 1543221760
 !i10b 1
-!s100 CS8_V9<_a_LRO:0[QV5B^1
-I3kJGC3cTVgjXE66XP?H2i2
+!s100 CKK_1M?O3ZdOU]=@=1A0>0
+IT;ab<?XFB>aVQfmaMFcHE1
 R2
 Z12 dC:/intelfpga_lite/18.0/ece241Project
-Z13 w1543193046
+Z13 w1543196836
 Z14 8counter_test.v
 Z15 Fcounter_test.v
 L0 34
@@ -60,7 +60,7 @@ R7
 r1
 !s85 0
 31
-Z16 !s108 1543193139.000000
+Z16 !s108 1543221759.000000
 Z17 !s107 counter_test.v|
 Z18 !s90 -reportprogress|300|counter_test.v|
 !i113 1
@@ -86,13 +86,13 @@ r1
 !i113 1
 R10
 vdraw_tower
-Z19 !s110 1543205599
+Z19 !s110 1543221039
 !i10b 1
-!s100 BLE2_ka=GPBZV1TQibeFV0
-I79OQ0aDm0b;9:@bZSMJof3
+!s100 H2O56Vl6=1gG4Bc]>1=:73
+IXW>26jRbaI@;gg3I;O9012
 R2
 R12
-w1543204973
+w1543210309
 R5
 R6
 L0 1
@@ -100,9 +100,49 @@ R7
 r1
 !s85 0
 31
-Z20 !s108 1543205599.000000
+!s108 1543221038.000000
 R8
 R9
+!i113 1
+R10
+verase_car_background
+Z20 !s110 1543209422
+!i10b 1
+!s100 [9QQPBM86J^?:MEd[T;6C1
+IAeY?@>DO6OJi`GHgi8[T71
+R2
+R12
+w1543208982
+8erase_car.v
+Ferase_car.v
+L0 1
+R7
+r1
+!s85 0
+31
+Z21 !s108 1543209422.000000
+!s107 erase_car.v|
+!s90 -reportprogress|300|erase_car.v|
+!i113 1
+R10
+vmemory_address_translator_160x120
+R20
+!i10b 1
+!s100 NKDaZGjQdD?XC<aOM0IO92
+I83ofAdO9EjJD^9M;a10V43
+R2
+R12
+w1542845440
+8memory_address_translator_160x120.v
+Fmemory_address_translator_160x120.v
+L0 2
+R7
+r1
+!s85 0
+31
+R21
+!s107 memory_address_translator_160x120.v|
+!s90 -reportprogress|300|memory_address_translator_160x120.v|
 !i113 1
 R10
 vmemory_address_translator_20x20
@@ -112,7 +152,7 @@ R19
 I@:hD5V4iLXJPZ]NlTEF=M1
 R2
 R12
-Z21 w1542831342
+Z22 w1542831342
 8memory_address_translator_20x20.v
 Fmemory_address_translator_20x20.v
 L0 2
@@ -120,9 +160,29 @@ R7
 r1
 !s85 0
 31
-R20
+Z23 !s108 1543221039.000000
 !s107 memory_address_translator_20x20.v|
 !s90 -reportprogress|300|memory_address_translator_20x20.v|
+!i113 1
+R10
+vram19200x9_map_background
+R20
+!i10b 1
+!s100 cX?<W1SH5hYG@UGjdz3Jf2
+IY2<5M3>6V2:lKd5h;b7fk2
+R2
+R12
+R22
+8ram19200x9_map_background.v
+Fram19200x9_map_background.v
+Z24 L0 39
+R7
+r1
+!s85 0
+31
+R21
+!s107 ram19200x9_map_background.v|
+!s90 -reportprogress|300|ram19200x9_map_background.v|
 !i113 1
 R10
 vram400x9_tower
@@ -132,15 +192,15 @@ R19
 InlI4LImQ_U@e;bmPCOGGG2
 R2
 R12
-R21
+R22
 8ram400x9_tower.v
 Fram400x9_tower.v
-L0 39
+R24
 R7
 r1
 !s85 0
 31
-R20
+R23
 !s107 ram400x9_tower.v|
 !s90 -reportprogress|300|ram400x9_tower.v|
 !i113 1

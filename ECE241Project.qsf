@@ -309,11 +309,10 @@ set_location_assignment PIN_E12 -to VGA_R[6]
 set_location_assignment PIN_F13 -to VGA_R[7]
 set_location_assignment PIN_C10 -to VGA_SYNC_N
 set_location_assignment PIN_D11 -to VGA_VS
-set_global_assignment -name VERILOG_FILE draw_stage_2_clear.v
+set_global_assignment -name VERILOG_FILE LASERS.v
 set_global_assignment -name VERILOG_FILE draw_stage_3_start.v
-set_global_assignment -name VERILOG_FILE laser/laser.v
-set_global_assignment -name VERILOG_FILE laser/data_laser.v
-set_global_assignment -name VERILOG_FILE laser/control_laser.v
+set_global_assignment -name VERILOG_FILE draw_stage_3_clear.v
+set_global_assignment -name VERILOG_FILE draw_stage_2_clear.v
 set_global_assignment -name VERILOG_FILE memory_address_translator_80x40.v
 set_global_assignment -name VERILOG_FILE data_game_flow.v
 set_global_assignment -name VERILOG_FILE control_game_flow.v
@@ -361,5 +360,7 @@ set_global_assignment -name VERILOG_FILE draw_stage_1_clear.v
 set_global_assignment -name VERILOG_FILE draw_stage_2_start.v
 set_global_assignment -name VERILOG_FILE draw_map.v
 set_global_assignment -name VERILOG_FILE erase_80x40.v
-set_global_assignment -name VERILOG_FILE LASERS.v
+set_global_assignment -name VERILOG_FILE laser/laser.v
+set_global_assignment -name VERILOG_FILE laser/data_laser.v
+set_global_assignment -name VERILOG_FILE laser/control_laser.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

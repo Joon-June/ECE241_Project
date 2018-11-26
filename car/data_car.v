@@ -24,17 +24,6 @@ module datapath_car(
 	output reg draw_done,
 	output reg erase_done
 	);
-	 	 
-	  /*___________Register for Game Grid___________*/
-	reg [7:0] game_grid [5:0];
-	initial begin //Represents the path of the game grid
-		game_grid[0] = 8'b0;
-		game_grid[1] = 8'b00111100;
-		game_grid[2] = 8'b00100100;
-		game_grid[3] = 8'b11100111;
-		game_grid[4] = 8'b0;
-		game_grid[5] = 8'b0;
-	end
 	 
 	/*___________________Flags____________________*/
 	wire delay_done_wire;
@@ -61,8 +50,9 @@ module datapath_car(
 						.delay_done(delay_done_wire));
 	
 	draw_car c1(
-			.clk(clk && draw_car),
+			.clk(clk),
 			.resetn(resetn),
+			.enable(draw_car),
 			.COUNTER_X(Counter_X),
 			.COUNTER_Y(Counter_Y),
 			.colour(colour_car),
@@ -72,10 +62,11 @@ module datapath_car(
 			);
 			
 	erase_car_background e1(
-			.clk(clk && erase_car),
+			.clk(clk),
 			.resetn(resetn),
-			.COUNTER_X(Counter_X),
-			.COUNTER_Y(Counter_Y),
+			.enable(erase_car),
+			.COUNTER_X_INPUT(Counter_X),
+			.COUNTER_Y_INPUT(Counter_Y),
 			.colour(colour_erase_car),
 			.erase_car_done(erase_done_wire),
 			.x(coord_erase_car[14:7]),
@@ -116,6 +107,12 @@ module datapath_car(
 			if(Counter_X >= 8'b10001100) begin
 				game_over <= 1'b1;
 			end
+		end//Separating right / down case is for state machine. Actual deletion is the same functionality
+		else if(erase_car) begin 	
+			//Erase current cell's car
+			coordinates <= coord_erase_car;
+			colour <= colour_erase_car;
+			erase_done <= erase_done_wire;
 		end
 		else if (increment) begin
 			//Reset the erase flag for next use
@@ -147,13 +144,6 @@ module datapath_car(
 			coordinates <= coord_draw_car;
 			colour <= colour_car;
 			draw_done <= draw_done_wire;
-		end
-		//Separating right / down case is for state machine. Actual deletion is the same functionality
-		else if(erase_car) begin 		
-			//Erase current cell's car
-			coordinates <= coord_erase_car;
-			colour <= colour_erase_car;
-			erase_done <= erase_done_wire;
 		end
 		else if(destroyed_state) begin
 			Counter_X <= 0;
