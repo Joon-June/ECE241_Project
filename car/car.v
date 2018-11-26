@@ -11,7 +11,8 @@ module car(
 		output vga_WriteEn, // erase_car | draw_car
       output [14:0] vga_coords, 
 		output [8:0] vga_colour,
-      output [14:0] car_location // for towers
+      output [14:0] car_location, // for towers
+		output erase_done_out
 		
    );
 	 
@@ -22,6 +23,7 @@ module car(
 	
 	assign car_done = draw_done;
  
+	assign erase_done_out = erase_done;
 	
 	datapath_car d0(
 		.clk(clk),

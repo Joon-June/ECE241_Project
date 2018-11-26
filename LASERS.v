@@ -42,7 +42,7 @@ module LASERS(
 	assign laser_wren = (|laser_writeEn);
 	
 	// consolidate list of destroyed cars
-	assign destroyed_cars[0] = ((destroyed_cars_1[0] == 1'b1) | (destroyed_cars_2[0] == 1'b1) | (destroyed_cars_3[0] == 1'b1));
+	assign destroyed_cars[0] = 1'b1;//((destroyed_cars_1[0] == 1'b1) | (destroyed_cars_2[0] == 1'b1) | (destroyed_cars_3[0] == 1'b1));
 	assign destroyed_cars[1] = ((destroyed_cars_1[1] == 1'b1) | (destroyed_cars_2[1] == 1'b1) | (destroyed_cars_3[1] == 1'b1));
 	assign destroyed_cars[2] = ((destroyed_cars_1[2] == 1'b1) | (destroyed_cars_2[2] == 1'b1) | (destroyed_cars_3[2] == 1'b1));
 	assign destroyed_cars[3] = ((destroyed_cars_1[3] == 1'b1) | (destroyed_cars_2[3] == 1'b1) | (destroyed_cars_3[3] == 1'b1));

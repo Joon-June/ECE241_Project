@@ -195,7 +195,7 @@ module data_game_flow(
 	CARS C1(
 		//_________________________Inputs_____________________________//
         .clk(clk), // && (stage_1_in_progress | stage_2_in_progress | stage_3_in_progress)),
-        .resetn(resetn),
+        .resetn(resetn && (stage_1_in_progress | stage_2_in_progress | stage_3_in_progress)),
 		  .start_car_draw(enable_car_draw),
         
         //________Control Signal__________//

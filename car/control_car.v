@@ -110,7 +110,7 @@ module control_car(
 					increment = 1'b1;
             end
 				DESTROYED: begin
-			    destroyed_state = 1'b1;
+			      destroyed_state = 1'b1;
             end
         // default:    // don't need default since we already made sure all of our outputs were assigned a value at the start of the always block
         endcase

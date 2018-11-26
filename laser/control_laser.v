@@ -38,8 +38,8 @@ module control_laser(
                 WAIT_DRAW: begin
                     if ((car_in_range == 1'b1) && (enable_draw == 1'b1))
                         next_state = DRAW_LASER;
-						  else if ((car_in_range == 1'b0) && ((enable_draw == 1'b1) && (drawn == 1'b1)))
-								next_state = ERASE;
+//						  else if ((car_in_range == 1'b0) && ((enable_draw == 1'b1) && (drawn == 1'b1)))
+//								next_state = ERASE;
                     else
                         next_state = WAIT_DRAW;
 					 end

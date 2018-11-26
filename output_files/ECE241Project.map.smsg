@@ -1,4 +1,4 @@
-Warning (10268): Verilog HDL information at data_laser.v(96): always construct contains both blocking and non-blocking assignments File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/laser/data_laser.v Line: 96
+Warning (10268): Verilog HDL information at data_laser.v(94): always construct contains both blocking and non-blocking assignments File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/laser/data_laser.v Line: 94
 Info (10281): Verilog HDL Declaration information at control_laser.v(14): object "disabled" differs only in case from object "DISABLED" in the same scope File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/laser/control_laser.v Line: 14
 Info (10281): Verilog HDL Declaration information at control_laser.v(15): object "wait_draw" differs only in case from object "WAIT_DRAW" in the same scope File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/laser/control_laser.v Line: 15
 Info (10281): Verilog HDL Declaration information at control_laser.v(16): object "draw_laser" differs only in case from object "DRAW_LASER" in the same scope File: C:/Users/Maya Murmann/ece241-git/ECE241_Project/laser/control_laser.v Line: 16

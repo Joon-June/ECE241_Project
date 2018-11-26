@@ -25,6 +25,7 @@ module laser(
 	
 	assign laser_done = draw_done | erase_done | (enable_draw && (car_in_range == 1'b0) && (drawn == 1'b0));
 
+	// assign destroyed_cars = 4'b0111;
 	
 	datapath_laser d0(
 		.clk(clk),
@@ -61,6 +62,7 @@ module laser(
 		.resetn(resetn),
 		.initiate(initiate), // corresponding tower is placed
 		.enable_draw(enable_draw), // begin drawing cycle
+
 		//_____Control Feedback ___//
 		.car_in_range(car_in_range),
 		.draw_done(draw_done),

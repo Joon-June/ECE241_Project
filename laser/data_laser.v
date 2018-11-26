@@ -11,7 +11,7 @@ module datapath_laser(
 	output reg car_in_range,
 	output reg draw_done,
 	output reg drawn,
-	output reg delay_done,
+	output delay_done,
 	output reg erase_done,
 	// ____ Data In ______ //
 	input [7:0]pos_x, // location of corresponding tower
@@ -41,16 +41,14 @@ module datapath_laser(
 	wire [1:0]car3_laser_direction;
 	
 	/*___________________Flags____________________*/
-	
-	wire delay_done_wire;
-	
+		
 	
 	/*___________Counter enabled during delay state_______*/
 	DelayLaser d1(
 						.Clock(clk),
 						.resetn(resetn),
 						.Enable(delay),
-						.delay_done(delay_done_wire));
+						.delay_done(delay_done));
 	
 	/*___________Module for translating coords to mem address for erasing_______*/
 	memory_address_translator_160x120 v1(
@@ -101,7 +99,6 @@ module datapath_laser(
 			car_in_range <= 0;
 			draw_done <= 0;
 			drawn <= 0;
-			delay_done <= 0;
 			erase_done <= 0;
 			destroyed_cars <= 0;
 			
@@ -115,7 +112,6 @@ module datapath_laser(
 			car_in_range <= 0;
 			draw_done <= 0;
 			drawn <= 0;
-			delay_done <= 0;
 			erase_done <= 0;
 			destroyed_cars <= 0;
 			
@@ -124,7 +120,6 @@ module datapath_laser(
 		end
 		else if (wait_draw) begin
 			// Reset flags
-			delay_done <= 0;
 			draw_done <= 0;
 			counter_x <= pos_x;
 			counter_y <= pos_y;
@@ -134,15 +129,15 @@ module datapath_laser(
 				car_in_range <= 1'b1;
 				laser_direction <= car0_laser_direction;
 			end
-			else if(cars_in_range[1] == 1'b1) begin
+			if(cars_in_range[1] == 1'b1) begin
 				car_in_range <= 1'b1;
 				laser_direction <= car1_laser_direction;
 			end
-			else if(cars_in_range[2] == 1'b1) begin
+			if(cars_in_range[2] == 1'b1) begin
 				car_in_range <= 1'b1;
 				laser_direction <= car2_laser_direction;
 			end
-			else if(cars_in_range[3] == 1'b1) begin
+			if(cars_in_range[3] == 1'b1) begin
 				car_in_range <= 1'b1;
 				laser_direction <= car3_laser_direction;
 			end
@@ -150,7 +145,7 @@ module datapath_laser(
 		else if (draw_laser) begin
 			// Set flags
 			drawn <= 1'b1;
-			vga_colour = 9'b000000111; // Blue
+			vga_colour = 9'b111111111; // Blue
 			// 
 			if((laser_direction == 2'b00) && (counter_y >= (pos_y - 5'b10100))) begin // Up
 				counter_y <= counter_y - 1'b1;
@@ -168,6 +163,19 @@ module datapath_laser(
 				draw_done <= 1'b1;
 				counter_x <= pos_x;
 				counter_y <= pos_y;
+			end
+			// Destroy 1 car only
+			if(cars_in_range[0] == 1'b1) begin
+				destroyed_cars[0]<= 1'b1;
+			end
+			if(cars_in_range[1] == 1'b1) begin
+				destroyed_cars[1]<= 1'b1;
+			end
+			if(cars_in_range[2] == 1'b1) begin
+				destroyed_cars[2]<= 1'b1;
+			end
+			if(cars_in_range[3] == 1'b1) begin
+				destroyed_cars[3]<= 1'b1;
 			end
 			// Assign coordinates
 			vga_coords <= {(counter_x + 4'b1010), (counter_y + 4'b1010)};
@@ -199,13 +207,13 @@ module datapath_laser(
 			if(cars_in_range[0] == 1'b1) begin
 				destroyed_cars[0]<= 1'b1;
 			end
-			else if(cars_in_range[1] == 1'b1) begin
+			if(cars_in_range[1] == 1'b1) begin
 				destroyed_cars[1]<= 1'b1;
 			end
-			else if(cars_in_range[2] == 1'b1) begin
+			if(cars_in_range[2] == 1'b1) begin
 				destroyed_cars[2]<= 1'b1;
 			end
-			else if(cars_in_range[3] == 1'b1) begin
+			if(cars_in_range[3] == 1'b1) begin
 				destroyed_cars[3]<= 1'b1;
 			end
 			// Assign coordinates
@@ -214,7 +222,6 @@ module datapath_laser(
 		else if(delay) begin
 			//Set flags
 			drawn <= 1'b0;
-			draw_done <= delay_done_wire;
 		end
 	end
 endmodule
@@ -234,17 +241,18 @@ module DelayLaser(Clock, resetn, Enable, delay_done);
 			delay_done <= 0;
 		end
 
-		else if (Q >= 25'b1111111001010000001010101) begin // 2/3 seconds on CLOCK_50, such that adjacent cars at 30pix/s will be out of range
+		else if (Q >= 2'b10) begin // 2/3 seconds on CLOCK_50, such that adjacent cars at 30pix/s will be out of range
 			delay_done <= 1'b1;
 			Q <= 0;
 		end
 
 		else if (Enable && delay_done != 1'b1) begin // do not count if delay has finished
 			Q <= Q + 1;
+			delay_done <= 0;
 		end
 		
 		else 
-			delay_done <= 1'b0;
+			delay_done <= 0;
 	end
 endmodule
 
