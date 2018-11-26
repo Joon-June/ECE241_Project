@@ -3,21 +3,20 @@ module draw_tower(
     input resetn,
     input [3:0]COUNTER_X, //Uppercase indicates grid coutner
     input [3:0]COUNTER_Y, //Uppercase indicates grid coutner
-    output reg [8:0]colour,
+    output [8:0]colour,
 	output reg tower_done,
     output [7:0]x, //Will go into VGA Input
     output [6:0]y //Will go into VGA Input
     );
     
     wire [8:0]mem_add;
-    wire [8:0]colour_tower;
 
     reg [4:0]temp_x;
     reg [4:0]temp_y;
 	 reg [4:0]counter_x;
     reg [4:0]counter_y;
 	 
-	 reg delay;
+	 reg [1:0]delay;
 
     initial begin
         counter_x = 5'b0;
@@ -39,7 +38,7 @@ module draw_tower(
 					.clock(clk),
 					.data(9'b0),
 					.wren(1'b0),
-					.q(colour_tower)
+					.q(colour)
 					);
 
     always @(posedge clk) begin
@@ -48,13 +47,14 @@ module draw_tower(
             counter_y <= 0;
 				temp_x <= 0;
 				temp_y <= 0;
+                tower_done <= 0;
 				delay <= 0;
         end
         else begin
             if(counter_x == 0)
                 tower_done <= 0;
                 
-            if(delay == 1) begin
+            if(delay == 2'b10) begin
 					temp_x <= counter_x;
 					temp_y <= counter_y;							  
 				  
@@ -71,15 +71,11 @@ module draw_tower(
 						 counter_y <= 0;
 						 delay <= 0;
 					end
-				end
-				else
-					delay <= delay + 1;
+			end
+            else
+                delay <= delay + 1;
         end
     end
-
-   always @(colour_tower) //1 cycle delay from counter_x & counter_y
-         colour = colour_tower;
-
 
     assign x = COUNTER_X * 5'b10100 + temp_x;
     assign y = COUNTER_Y * 5'b10100 + temp_y;

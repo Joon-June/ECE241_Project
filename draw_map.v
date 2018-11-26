@@ -65,7 +65,7 @@ module draw_map(
 					end
 			  
 					if({counter_x, counter_y} == 15'b100111111110111) begin
-						 map_done <= 1;
+						 map_done <= 1'b1;
 						 counter_x <= 0;
 						 counter_y <= 0;
 						 delay <= 0;

@@ -86,6 +86,8 @@ module middle_states(
     
     initial begin
         map_enable = 0;
+        erase = 0;
+        counter_enable = 0;
     end
 //_______________________________________________________//
 
@@ -207,6 +209,27 @@ module middle_states(
 //________________________________________________________//
 
     always @(posedge clk) begin
+        if(!resetn) begin
+            //______Control Feedback_____//
+            start_display_done <= 0;
+            
+            //_________STAGE 1___________//
+            stage_1_begin_done <= 0;
+            stage_1_end_display_done <= 0;
+            
+            //_________STAGE 2___________//
+            stage_2_begin_done <= 0;
+            stage_2_end_display_done <= 0;
+            
+            //_________STAGE 3___________//
+            stage_3_begin_done <= 0;
+            stage_3_end_display_done <= 0;
+
+            //VGA_Outputs
+            colour <= 0;
+            coordinates <= 0;
+        end
+        
         if(wait_start) begin
             
             //draw starting display
@@ -238,13 +261,16 @@ module middle_states(
                 erase <= 1;
                 counter_enable <= 0;
             end
-
+            
             if(erase) begin
+                counter_enable <= 0;
                 colour <= colour_erase_80x40;
                 coordinates <= coord_erase_80x40;
                 stage_1_begin_done <= erase_done;
                 erase <= ~erase_done;
-            end
+            end            
+            else if(stage_1_begin_done)
+                counter_enable <= 0;
             
         end
         else if(stage_1_done) begin
@@ -261,6 +287,7 @@ module middle_states(
                 erase <= 1;
                 counter_enable <= 0;
             end
+            
             if(erase) begin
                 counter_enable <= 0;
                 colour <= colour_erase_80x40;
@@ -268,6 +295,8 @@ module middle_states(
                 stage_1_end_display_done <= erase_done;
                 erase <= ~erase_done;
             end
+            else if(stage_1_end_display_done)
+                counter_enable <= 0;
         end
         else if(stage_2_begin) begin
             if(!stage_2_begin_done_temp) begin
@@ -291,6 +320,8 @@ module middle_states(
                 stage_2_begin_done <= erase_done;
                 erase <= ~erase_done;
             end
+            else if(stage_2_begin_done)
+                counter_enable <= 0;
         end
         else if(stage_2_done) begin
             if(!stage_2_end_display_done_temp) begin
@@ -314,6 +345,8 @@ module middle_states(
                 stage_2_end_display_done <= erase_done;
                 erase <= ~erase_done;
             end
+            else if(stage_2_end_display_done)
+                counter_enable <= 0;
         end
         else if(stage_3_begin) begin
            if(!stage_3_begin_done_temp) begin
@@ -337,6 +370,8 @@ module middle_states(
                 stage_3_begin_done <= erase_done;
                 erase <= ~erase_done;
             end
+            else if(stage_3_begin_done)
+                counter_enable <= 0;
         end
         else if(stage_3_done) begin
             if(!stage_3_end_display_done_temp) begin
@@ -360,6 +395,8 @@ module middle_states(
                 stage_3_end_display_done <= erase_done;
                 erase <= ~erase_done;
             end
+            else if(stage_3_end_display_done)
+                counter_enable <= 0;
         end
         else if(win) begin
             if(!WIN_done) begin
