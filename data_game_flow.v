@@ -110,7 +110,7 @@ module data_game_flow(
 	
 	//______________________Module Instatiations__________________________//
 	//Common map background
-	ram19200x9_map_background MBCKGD(
+	ram19200x9_map_background MBCKGD2(
 			.address(mem_add),
 			.clock(clk),
 			.data(colour_tower),
