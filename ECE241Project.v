@@ -28,13 +28,29 @@ module ECE241Project(
 	assign start = ~KEY[3];
 	
 	//_______VGA Inputs______//
-	wire [8:0] colour;
-	wire [7:0] x;
-	wire [6:0] y;
-	wire writeEn_from_data;
-	wire writeEn;
-	assign writeEn = /*(colour != 9'b111111111) && */writeEn_from_data;	
+	reg [7:0]x;
+	reg [6:0]y;
+	reg [8:0]colour;
+	reg writeEn;
 	
+	wire [8:0] temp_colour;
+	wire [7:0] temp_x;
+	wire [6:0] temp_y;
+	wire writeEn_from_data;	
+	
+	always @(posedge CLOCK_50) begin
+	  	x <= temp_x;
+	  	y <= temp_y;
+	  	colour <= temp_colour;
+
+		if(temp_x != 8'b00000000 && temp_colour != 9'b111111111) begin
+			writeEn <= writeEn_from_data;
+		end
+		else begin
+			writeEn <= 1'b0;
+		end
+
+	end
 	//______Game Flow Related Wires______//
 	//Initial Setup
 	wire wait_start;
@@ -121,8 +137,8 @@ module ECE241Project(
 
 		
 		//________VGA Inputs_________//
-		.colour(colour),
-		.coordinates({x, y}),
+		.colour(temp_colour),
+		.coordinates({temp_x, temp_y}),
 		.VGA_write_enable(writeEn_from_data)
 	);
 //____________________________________________________________________//
@@ -218,7 +234,7 @@ module ECE241Project(
 		defparam VGA.RESOLUTION = "160x120";
 		defparam VGA.MONOCHROME = "FALSE";
 		defparam VGA.BITS_PER_COLOUR_CHANNEL = 3;
-		defparam VGA.BACKGROUND_IMAGE = "defense_map_with_turn.mif";
+		defparam VGA.BACKGROUND_IMAGE = "black.mif";
 
 //____________________________________________________________________//
 endmodule

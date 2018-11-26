@@ -1,5 +1,5 @@
 Flow report for ECE241Project
-Mon Nov 26 00:04:14 2018
+Mon Nov 26 05:27:55 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -40,18 +40,18 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Mon Nov 26 00:03:40 2018       ;
+; Flow Status                     ; Successful - Mon Nov 26 05:27:30 2018       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; ECE241Project                               ;
 ; Top-level Entity Name           ; ECE241Project                               ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 1,613 / 32,070 ( 5 % )                      ;
-; Total registers                 ; 1291                                        ;
+; Logic utilization (in ALMs)     ; 1,555 / 32,070 ( 5 % )                      ;
+; Total registers                 ; 1334                                        ;
 ; Total pins                      ; 50 / 457 ( 11 % )                           ;
 ; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 2,282,418 / 4,065,280 ( 56 % )              ;
+; Total block memory bits         ; 2,455,200 / 4,065,280 ( 60 % )              ;
 ; Total DSP Blocks                ; 0 / 87 ( 0 % )                              ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/26/2018 00:00:02 ;
+; Start date & time ; 11/26/2018 05:24:12 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; ECE241Project       ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 209472083398803.154320840105356        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 209472083398803.154322785213080        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; MISC_FILE                           ; ram400x9_square_grid_selection_bb.v    ; --            ; --          ; --         ;
@@ -108,11 +108,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:50     ; 1.0                     ; 4895 MB             ; 00:00:49                           ;
-; Fitter               ; 00:02:23     ; 1.1                     ; 6353 MB             ; 00:04:03                           ;
-; Assembler            ; 00:00:19     ; 1.0                     ; 4908 MB             ; 00:00:14                           ;
-; Timing Analyzer      ; 00:00:33     ; 1.4                     ; 5250 MB             ; 00:00:41                           ;
-; Total                ; 00:04:05     ; --                      ; --                  ; 00:05:47                           ;
+; Analysis & Synthesis ; 00:00:43     ; 1.0                     ; 4901 MB             ; 00:00:47                           ;
+; Fitter               ; 00:02:10     ; 1.1                     ; 6354 MB             ; 00:04:02                           ;
+; Assembler            ; 00:00:18     ; 1.0                     ; 4914 MB             ; 00:00:14                           ;
+; Timing Analyzer      ; 00:00:23     ; 1.5                     ; 5246 MB             ; 00:00:30                           ;
+; Total                ; 00:03:34     ; --                      ; --                  ; 00:05:33                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

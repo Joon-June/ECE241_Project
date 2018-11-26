@@ -1,6 +1,7 @@
 module draw_LOSE(
     input clk,
     input resetn,
+    input enable,
     output reg LOSE_done,
     output [8:0]colour,
     output [7:0]x, //Will go into VGA Input
@@ -47,26 +48,28 @@ module draw_LOSE(
 				delay <= 0;
         end
         else begin
-				if(delay == 1) begin
-					temp_x <= counter_x;
-					temp_y <= counter_y;							  
-				  
-					counter_x <= counter_x + 1;
-					if(counter_x == 8'b10011111) begin
-					  counter_y <= counter_y + 1;
-					  counter_x <= 0;
-					end
-			  
-					//Same as {counter_x, counter_y} >= {19, 19} - i.e. done accessing square memory
-					if({counter_x, counter_y} == 15'b100111111110111) begin
-						 LOSE_done <= 1;
-						 counter_x <= 0;
-						 counter_y <= 0;
-						 delay <= 0;
-					end
-				end
-				else
-					delay <= 1;
+            if(enable) begin
+                    if(delay == 1) begin
+                        temp_x <= counter_x;
+                        temp_y <= counter_y;							  
+                    
+                        counter_x <= counter_x + 1;
+                        if(counter_x == 8'b10011111) begin
+                        counter_y <= counter_y + 1;
+                        counter_x <= 0;
+                        end
+                
+                        //Same as {counter_x, counter_y} >= {19, 19} - i.e. done accessing square memory
+                        if({counter_x, counter_y} == 15'b100111111110111) begin
+                            LOSE_done <= 1;
+                            counter_x <= 0;
+                            counter_y <= 0;
+                            delay <= 0;
+                        end
+                    end
+                    else
+                        delay <= 1;
+            end
         end
     end
 

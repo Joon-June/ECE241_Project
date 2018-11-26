@@ -1,6 +1,7 @@
 module draw_stage_2_clear(
     input clk,
     input resetn,
+    input enable,
     output reg stage_2_clear_done,
     output [8:0]colour,
     output [7:0]x, //Will go into VGA Input
@@ -48,29 +49,31 @@ module draw_stage_2_clear(
 				delay <= 0;
         end
         else begin
-				if(delay == 1) begin
-					temp_x <= counter_x;
-					temp_y <= counter_y;
-					if(counter_x == 0)
-						 stage_2_clear_done <= 0;
-							  
-				  
-					counter_x <= counter_x + 1;
-					if(counter_x == 7'b1001111) begin
-					  counter_y <= counter_y + 1;
-					  counter_x <= 0;
-					end
-			  
-					//Same as {counter_x, counter_y} >= {79, 39} - i.e. done accessing square memory
-					if({counter_x, counter_y} == 13'b1001111100111) begin
-						 stage_2_clear_done <= 1;
-						 counter_x <= 0;
-						 counter_y <= 0;
-						 delay <= 0;
-					end
-				end
-				else
-					delay <= 1;
+            if(enable) begin
+                    if(delay == 1) begin
+                        temp_x <= counter_x;
+                        temp_y <= counter_y;
+                        if(counter_x == 0)
+                            stage_2_clear_done <= 0;
+                                
+                    
+                        counter_x <= counter_x + 1;
+                        if(counter_x == 7'b1001111) begin
+                        counter_y <= counter_y + 1;
+                        counter_x <= 0;
+                        end
+                
+                        //Same as {counter_x, counter_y} >= {79, 39} - i.e. done accessing square memory
+                        if({counter_x, counter_y} == 13'b1001111100111) begin
+                            stage_2_clear_done <= 1;
+                            counter_x <= 0;
+                            counter_y <= 0;
+                            delay <= 0;
+                        end
+                    end
+                    else
+                        delay <= 1;
+            end
         end
     end
 

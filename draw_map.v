@@ -51,13 +51,12 @@ module draw_map(
         end
         else begin
             if(enable) begin
+                if(counter_x == 0)
+                    map_done <= 0;
 				if(delay == 1) begin
 					temp_x <= counter_x;
 					temp_y <= counter_y;
-					if(counter_x == 0)
-						 map_done <= 0;
 							  
-				  
 					counter_x <= counter_x + 1;
 					if(counter_x == 8'b10011111) begin
 					  counter_y <= counter_y + 1;

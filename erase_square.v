@@ -1,6 +1,7 @@
 module erase_square(
     input clk,
     input resetn,
+	input enable,
     input [3:0]COUNTER_X, //Uppercase indicates grid coutner
     input [3:0]COUNTER_Y, //Uppercase indicates grid coutner
     output [8:0]colour,
@@ -57,6 +58,7 @@ module erase_square(
 				delay <= 0;
         end
         else begin
+			if(enable) begin
 				if(counter_x == 0)
 					erase_square_done <= 0;
 				if(delay == 2'b10) begin
@@ -81,9 +83,10 @@ module erase_square(
 				end
 				else
 					delay <= delay + 1'b1;
+			end
         end
     end
 
-    assign x = COUNTER_X * 5'b10100 + temp_x;
-    assign y = COUNTER_Y * 5'b10100 + temp_y;
+    assign x = 8'b0 + COUNTER_X * 5'b10100 + temp_x;
+    assign y = 7'b0 + COUNTER_Y * 5'b10100 + temp_y;
 endmodule

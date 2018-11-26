@@ -96,16 +96,18 @@ module middle_states(
     
     //______________Terminal States_____________//
     draw_SAVE_GPA SG1(
-        .clk(clk && wait_start),
+        .clk(clk),
         .resetn(resetn),
+        .enable(wait_start),
         .SAVE_GPA_done(SAVE_GPA_done),
         .colour(colour_SAVE_GPA),
         .x(coord_SAVE_GPA[14:7]),
         .y(coord_SAVE_GPA[6:0])
     );
     draw_WIN W1(
-        .clk(clk && win),
+        .clk(clk),
         .resetn(resetn),
+        .enable(win),
         .WIN_done(WIN_done),
         .colour(colour_WIN),
         .x(coord_WIN[14:7]),
@@ -113,8 +115,9 @@ module middle_states(
     );
 
     draw_LOSE L1(
-        .clk(clk && game_over),
+        .clk(clk),
         .resetn(resetn),
+        .enable(game_over),
         .LOSE_done(LOSE_done),
         .colour(colour_LOSE),
         .x(coord_LOSE[14:7]),
@@ -123,8 +126,9 @@ module middle_states(
     //__________________________________________//
 
     draw_stage_1_start s1_start(
-        .clk(clk && stage_1_begin),
+        .clk(clk),
         .resetn(resetn),
+        .enable(stage_1_begin),
         .stage_1_start_done(stage_1_begin_done_temp),
         .colour(colour_stage_1_start),
         .x(coord_stage_1_start[14:7]),
@@ -132,8 +136,9 @@ module middle_states(
     );
 
     draw_stage_1_clear s1_clear(
-        .clk(clk && stage_1_done),
+        .clk(clk),
         .resetn(resetn),
+        .enable(stage_1_done),
         .stage_1_clear_done(stage_1_end_display_done_temp),
         .colour(colour_stage_1_clear),
         .x(coord_stage_1_clear[14:7]),
@@ -141,8 +146,9 @@ module middle_states(
     );
     
     draw_stage_2_start s2_start(
-        .clk(clk && stage_2_begin),
+        .clk(clk),
         .resetn(resetn),
+        .enable(stage_2_begin),
         .stage_2_start_done(stage_2_begin_done_temp),
         .colour(colour_stage_2_start),
         .x(coord_stage_2_start[14:7]),
@@ -150,8 +156,9 @@ module middle_states(
     );
 
     draw_stage_2_clear s2_clear(
-        .clk(clk && stage_2_done),
+        .clk(clk),
         .resetn(resetn),
+        .enable(stage_2_done),
         .stage_2_clear_done(stage_2_end_display_done_temp),
         .colour(colour_stage_2_clear),
         .x(coord_stage_2_clear[14:7]),
@@ -159,8 +166,9 @@ module middle_states(
     );
 
     draw_stage_3_start s3_start(
-        .clk(clk && stage_3_begin),
+        .clk(clk),
         .resetn(resetn),
+        .enable(stage_3_begin),
         .stage_3_start_done(stage_3_begin_done_temp),
         .colour(colour_stage_3_start),
         .x(coord_stage_3_start[14:7]),
@@ -169,8 +177,9 @@ module middle_states(
     
     
     draw_stage_3_clear s3_clear(
-        .clk(clk && stage_3_done),
+        .clk(clk),
         .resetn(resetn),
+        .enable(stage_3_done),
         .stage_3_clear_done(stage_3_end_display_done_temp),
         .colour(colour_stage_3_clear),
         .x(coord_stage_3_clear[14:7]),
@@ -244,8 +253,10 @@ module middle_states(
                 colour <= colour_map;
                 coordinates <= coord_map;
                 start_display_done <= map_done;
-                map_enable <= ~map_done;
             end
+
+            if(start_display_done)
+                map_enable <= 1'b0;
         end
         else if(stage_1_begin) begin
             if(!stage_1_begin_done_temp) begin
