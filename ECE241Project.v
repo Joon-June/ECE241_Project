@@ -13,6 +13,7 @@ module ECE241Project(
 );
 //_______________________Wires & Registers____________________________//
 	
+	// testing Git
 	//_________reset_________//
 	wire resetn;
 	assign resetn = ~SW[0];

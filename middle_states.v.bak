@@ -2,7 +2,10 @@ module middle_states(
 //___________________Inputs_______________________//
         input clk,
         input resetn,
+<<<<<<< HEAD
         input start,
+=======
+>>>>>>> mem_background_issue
         //______Control Signal_______//
        input wait_start, 
 
@@ -21,9 +24,12 @@ module middle_states(
 		//___Termina States___//
 		input win,
 		input game_over,
+<<<<<<< HEAD
 
         //_____Current Map_____//
         input [8:0]curr_colour,
+=======
+>>>>>>> mem_background_issue
 //_________________________________________________//
 
 //___________________Outputs_______________________//
@@ -43,19 +49,29 @@ module middle_states(
 		output stage_3_end_display_done,
 
 		//Terminal States
+<<<<<<< HEAD
         // output WIN_done,
         // output LOSE_done,
         // output SAVE_GPA_done,
+=======
+        output WIN_done,
+        output LOSE_done,
+        output SAVE_GPA_done,
+>>>>>>> mem_background_issue
 
         //VGA_Outputs
  		output reg [8:0]colour,
 		output reg [14:0]coordinates,
+<<<<<<< HEAD
 		output VGA_write_enable,
 
         //Memory address to curr state
         output [14:0]mem_add_curr_state
 
 
+=======
+		output VGA_write_enable       
+>>>>>>> mem_background_issue
 //_________________________________________________//
 );
 
@@ -64,12 +80,16 @@ module middle_states(
     wire [8:0] colour_stage_1_start, colour_stage_1_clear;
     wire [8:0] colour_stage_2_start, colour_stage_2_clear;
     wire [8:0] colour_stage_3_start, colour_stage_3_clear;
+<<<<<<< HEAD
     wire [8:0] colour_map, colour_erase_80x40;
+=======
+>>>>>>> mem_background_issue
 
     wire [14:0] coord_WIN, coord_LOSE, coord_SAVE_GPA;
     wire [14:0] coord_stage_1_start, coord_stage_1_clear;
     wire [14:0] coord_stage_2_start, coord_stage_2_clear;
     wire [14:0] coord_stage_3_start, coord_stage_3_clear;
+<<<<<<< HEAD
     wire [14:0] coord_map, coord_erase_80x40;
 
     wire stage_1_begin_done_temp, stage_1_end_display_done_temp;
@@ -79,10 +99,16 @@ module middle_states(
     wire counter_done;
     reg map_enable, erase, erase_done, counter_enable, ;
 
+=======
+>>>>>>> mem_background_issue
 
     assign VGA_write_enable = wait_start | stage_1_begin | stage_1_done | 
                           stage_2_begin | stage_2_done | stage_3_begin | 
                           stage_3_done | win | game_over;
+<<<<<<< HEAD
+=======
+
+>>>>>>> mem_background_issue
 //_______________________________________________________//
 
 
@@ -119,7 +145,11 @@ module middle_states(
     draw_stage_1_start s1_start(
         .clk(clk && stage_1_begin),
         .resetn(resetn),
+<<<<<<< HEAD
         .stage_1_start_done(stage_1_begin_done_temp),
+=======
+        .stage_1_start_done(stage_1_begin_done),
+>>>>>>> mem_background_issue
         .colour(colour_stage_1_start),
         .x(coord_stage_1_start[14:7]),
         .y(coord_stage_1_start[6:0])
@@ -128,7 +158,11 @@ module middle_states(
     draw_stage_1_clear s1_clear(
         .clk(clk && stage_1_done),
         .resetn(resetn),
+<<<<<<< HEAD
         .stage_1_clear_done(stage_1_end_display_done_temp),
+=======
+        .stage_1_clear_done(stage_1_end_display_done),
+>>>>>>> mem_background_issue
         .colour(colour_stage_1_clear),
         .x(coord_stage_1_clear[14:7]),
         .y(coord_stage_1_clear[6:0])
@@ -137,7 +171,11 @@ module middle_states(
     draw_stage_2_start s2_start(
         .clk(clk && stage_2_begin),
         .resetn(resetn),
+<<<<<<< HEAD
         .stage_2_start_done(stage_2_begin_done_temp),
+=======
+        .stage_2_start_done(stage_2_begin_done),
+>>>>>>> mem_background_issue
         .colour(colour_stage_2_start),
         .x(coord_stage_2_start[14:7]),
         .y(coord_stage_2_start[6:0])
@@ -146,7 +184,11 @@ module middle_states(
     draw_stage_2_clear s2_clear(
         .clk(clk && stage_2_done),
         .resetn(resetn),
+<<<<<<< HEAD
         .stage_2_clear_done(stage_2_end_display_done_temp),
+=======
+        .stage_2_clear_done(stage_2_end_display_done),
+>>>>>>> mem_background_issue
         .colour(colour_stage_2_clear),
         .x(coord_stage_2_clear[14:7]),
         .y(coord_stage_2_clear[6:0])
@@ -155,7 +197,11 @@ module middle_states(
     draw_stage_3_start s3_start(
         .clk(clk && stage_3_begin),
         .resetn(resetn),
+<<<<<<< HEAD
         .stage_3_start_done(stage_3_begin_done_temp),
+=======
+        .stage_3_start_done(stage_3_begin_done),
+>>>>>>> mem_background_issue
         .colour(colour_stage_3_start),
         .x(coord_stage_3_start[14:7]),
         .y(coord_stage_3_start[6:0])
@@ -165,11 +211,16 @@ module middle_states(
     draw_stage_3_clear s3_clear(
         .clk(clk && stage_3_done),
         .resetn(resetn),
+<<<<<<< HEAD
         .stage_3_clear_done(stage_3_end_display_done_temp),
+=======
+        .stage_3_clear_done(stage_3_end_display_done),
+>>>>>>> mem_background_issue
         .colour(colour_stage_3_clear),
         .x(coord_stage_3_clear[14:7]),
         .y(coord_stage_3_clear[6:0])
     );
+<<<<<<< HEAD
 
     draw_map map(
         .clk(clk),
@@ -200,6 +251,8 @@ module middle_states(
         .out(counter_done)
     );
 
+=======
+>>>>>>> mem_background_issue
 //________________________________________________________//
 
     always @(posedge clk) begin
@@ -207,6 +260,7 @@ module middle_states(
             //draw starting display
             colour <= colour_SAVE_GPA;
             coordinates <= coord_SAVE_GPA;
+<<<<<<< HEAD
             //Account for user input
             if(start) begin
               map_enable <= 1;  
@@ -372,12 +426,76 @@ module middle_states(
                 colour <= colour_LOSE;
                 coordinates <= coord_LOSE;
             end
+=======
+            //count 10 seconds then
+            //start_display_done <= 1;
+        end
+        else if(stage_1_begin) begin
+            //@
+            //draw map (initial)
+            //wait 1 second
+            //draw stage_1_start, then
+            colour <= colour_stage_1_start;
+            coordinates <= coord_stage_1_start;
+            //stage_1_begin_done <= 1;
+
+        end
+        else if(stage_1_done) begin
+            //@
+            //if(stage_1_end_display_done == 0)
+            //draw stage_1_clear, then
+            colour <= colour_stage_1_clear;
+            coordinates <= coord_stage_1_clear;
+            //stage_1_end_display_done <= 1;
+        end
+        else if(stage_2_begin) begin
+            //@
+            //if(stage_2_begin_done == 0)
+            //draw stage_2_start, then
+            colour <= colour_stage_2_start;
+            coordinates <= coord_stage_2_start;
+            //stage_2_begin_done <= 1;
+        end
+        else if(stage_2_done) begin
+            //@
+            //if(stage_2_end_display_done == 0)
+            //draw stage_2_clear, then
+            colour <= colour_stage_2_clear;
+            coordinates <= coord_stage_2_clear;
+            //stage_2_end_display_done <= 1;
+        end
+        else if(stage_3_begin) begin
+            //@
+            //if(stage_3_begin_done == 0)
+            //draw stage_3_start, then
+            colour <= colour_stage_3_start;
+            coordinates <= coord_stage_3_start;
+            //stage_3_begin_done <= 1;
+        end
+        else if(stage_3_done) begin
+            //if(stage_3_end_display_done == 0)
+            //draw stage_3_clear, then
+            colour <= colour_stage_3_clear;
+            coordinates <= coord_stage_3_clear;
+            //stage_3_end_display_done <= 1;
+        end
+        else if(win) begin
+            //draw win display
+            colour <= colour_WIN;
+            coordinates <= coord_WIN;
+        end
+        else if(game_over) begin
+            //draw game over display
+            colour <= colour_LOSE;
+            coordinates <= coord_LOSE;
+>>>>>>> mem_background_issue
         end
         else begin //to prevent a latch
             colour <= 0;
             coordinates <= 0;
         end
     end
+<<<<<<< HEAD
 endmodule
 
 // Module to separate clock pulses to every 1/60th of a second
@@ -407,4 +525,8 @@ module counter_2seconds(clk, resetn, enable, out);
             end
         end
 	end
+=======
+
+ game_over_feedback
+>>>>>>> mem_background_issue
 endmodule

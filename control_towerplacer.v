@@ -25,16 +25,17 @@ module control_towerplacer(
 	reg [3:0] current_state, next_state; 
 	 
 	localparam TOP_LEFT        	  = 5'd0,
-               DRAW_SQUARE        = 5'd1,
+               DRAW_SQUARE         = 5'd1,
                WAIT	              = 5'd2,
-               MOVE_DOWN	      = 5'd3,
-               MOVE_DOWN_WAIT     = 5'd4,
-               MOVE_RIGHT         = 5'd5,
-               MOVE_RIGHT_WAIT    = 5'd6,
-               DRAW_TOWER   	  = 5'd7,
-               ERASE_SQUARE_RIGHT = 5'd8,
-               ERASE_SQUARE_DOWN  = 5'd10,
-               ERASE_SQUARE_TOWER = 5'd11;
+               MOVE_DOWN	        = 5'd3,
+               MOVE_DOWN_WAIT      = 5'd4,
+               MOVE_RIGHT          = 5'd5,
+               MOVE_RIGHT_WAIT     = 5'd6,
+               DRAW_TOWER   	     = 5'd7,
+               ERASE_SQUARE_RIGHT  = 5'd8,
+               ERASE_SQUARE_DOWN   = 5'd10,
+               ERASE_SQUARE_TOWER  = 5'd11,
+					DRAW_TOWER_DONE     = 5'd12;
 	
    always @ (*)
    begin: state_table 
@@ -87,7 +88,7 @@ module control_towerplacer(
                 end
                 DRAW_TOWER: begin // TEMPORARILY RETURN TO RESET AFTER DRAWING TOWER
                     if(tower_done)
-                        next_state = TOP_LEFT;
+                        next_state = DRAW_TOWER_DONE;
                     else
                         next_state = DRAW_TOWER;
                 end
@@ -109,6 +110,7 @@ module control_towerplacer(
                     else
                         next_state = ERASE_SQUARE_TOWER;
                 end
+					 DRAW_TOWER_DONE: next_state = DRAW_TOWER_DONE;
             default: next_state = TOP_LEFT;
 		endcase // state table
 	end
@@ -141,16 +143,16 @@ module control_towerplacer(
             MOVE_DOWN: begin
                 move_down = 1'b1;
             end
-			MOVE_RIGHT: begin
+				MOVE_RIGHT: begin
                 move_right = 1'b1;
             end
-			MOVE_DOWN_WAIT: begin
+				MOVE_DOWN_WAIT: begin
                 move_down_wait = 1'b1;
             end
-			MOVE_RIGHT_WAIT: begin
+				MOVE_RIGHT_WAIT: begin
                 move_right_wait = 1'b1;
             end
-			DRAW_TOWER: begin // Do A <- A + c
+				DRAW_TOWER: begin // Do A <- A + c
 			    draw_tower = 1'b1;
             end
             ERASE_SQUARE_DOWN: begin

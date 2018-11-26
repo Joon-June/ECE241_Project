@@ -4,14 +4,19 @@ module erase_square(
 	input enable,
     input [3:0]COUNTER_X, //Uppercase indicates grid coutner
     input [3:0]COUNTER_Y, //Uppercase indicates grid coutner
+	 input [8:0]colour_erase_square, // will come from common map memory
     output [8:0]colour,
 	 output reg erase_square_done,
     output [7:0]x, //Will go into VGA Input
-    output [6:0]y //Will go into VGA Input
+    output [6:0]y, //Will go into VGA Input
+	 output [14:0]map_address // will go into map memory
     );
     
+	 assign colour = colour_erase_square;
+	 
     wire [14:0]mem_add;
-	
+
+
     reg [4:0]temp_x;
     reg [4:0]temp_y;
 	 reg [4:0]counter_x;
@@ -38,16 +43,20 @@ module erase_square(
 									  .x(x_temp_mem), 
 									  .y(y_temp_mem), 
 									  .mem_address(mem_add) //Connection A
-									  ); 
+									  );
 
+	 // output memory address to common map memory
+	 assign map_address = mem_add;
+	
     //.mif-initialized ram with map background
-	ram19200x9_map_background map_background(
-						.address(mem_add),
-						.clock(clk),
-						.data(9'b0),
-						.wren(1'b0),
-						.q(colour)
-						);
+
+//	 ram19200x9_map_background map_background(
+//						.address(mem_add),
+//						.clock(clk),
+//						.data(9'b0),
+//						.wren(1'b0),
+//						.q(colour_erase_square)
+//						);
 
     always @(posedge clk) begin
 		  if(!resetn) begin
