@@ -1,6 +1,7 @@
 module datapath(
    input clk,
    input resetn,
+	input [8:0]colour_erase_square_from_mem, // will come from common map memory
 	 //____Control Signals___//
    input top_left, 
 	input draw_square, 
@@ -13,14 +14,17 @@ module datapath(
 	input erase_square_down,
 	input erase_square_tower,
 	 //_______________________//
-   	output reg valid,
+	output reg valid,
 	output reg [8:0] colour,
 	output reg [14:0] coordinates,
+	output [14:0]tower_coordinates, // Top left location where tower is drawn
+	output reg tower_drawn,
 
 	//________Control Feedback__________//
 	output reg square_done,
 	output reg erase_square_done,
-	output reg tower_done
+	output reg tower_done,
+	output reg [14:0]map_mem_address // will go to common map memory
     );
 	 
 	reg [3:0] Counter_X; // Column in grid, not coordinates on vga
@@ -66,7 +70,12 @@ module datapath(
 	wire [8:0]colour_erase_square;
 	wire erase_square_done_wire;
 	wire [14:0]coord_erase_square;
-						
+			
+	// For map background
+	wire [14:0]w_map_draw_add, w_map_erase_add;
+	
+	// For lasers
+	assign tower_coordinates = {(5'b10100 * Counter_X) + 8'b0, (5'b10100 * Counter_Y) + 7'b0};
 	
 	draw_tower t1(
 			.clk(clk && draw_tower),
@@ -76,7 +85,8 @@ module datapath(
 			.colour(colour_tower),
 			.tower_done(tower_done_wire),
 			.x(coord_tower[14:7]),
-			.y(coord_tower[6:0])
+			.y(coord_tower[6:0]),
+			.map_mem_add(w_map_draw_add)
 			);
 	
 	draw_square_grid s1(
@@ -91,14 +101,19 @@ module datapath(
 		 );
 	
 	erase_square e1(
+			//________Inputs__________//
 			.clk(clk && (erase_square_down | erase_square_right | erase_square_tower)),
 			.resetn(resetn),
 			.COUNTER_X(Counter_X), //Uppercase indicates grid coutner
 			.COUNTER_Y(Counter_Y), //Uppercase indicates grid coutner
+			.colour_erase_square(colour_erase_square_from_mem), // Will come from to map memory
+			
+			//________Outputs__________//
 			.colour(colour_erase_square),
 			.erase_square_done(erase_square_done_wire),
 			.x(coord_erase_square[14:7]), //Will go into VGA Input
-			.y(coord_erase_square[6:0]) //Will go into VGA Input
+			.y(coord_erase_square[6:0]), //Will go into VGA Input
+			.map_address(w_map_erase_add) // Will go to map memory
 		 );
 	 
 	 always @ (posedge clk) begin
@@ -111,6 +126,7 @@ module datapath(
 			erase_square_done <= 0;
 			tower_done <= 0;
 			coordinates <= 0;
+			tower_drawn <= 0;
 
 			//for(int i = 0; i < 6; i++) begin
 			game_grid[0] <= 8'b0;
@@ -130,6 +146,7 @@ module datapath(
 			erase_square_done <= 0;
 			tower_done <= 0;
 			coordinates <= 0;
+			tower_drawn <= 0;
 		end
 		else if (draw_square) begin
 			if(!square_done) begin
@@ -184,6 +201,9 @@ module datapath(
 			coordinates <= coord_tower;
 			colour <= colour_tower;
 			tower_done <= tower_done_wire;
+			map_mem_address <= w_map_draw_add;
+			// for lasers
+			tower_drawn <= 1'b1;
 		end
 		//Separating right / down case is for state machine. Actual deletion is the same functionality
 		else if(erase_square_down | erase_square_right | erase_square_tower) begin 		
@@ -193,6 +213,8 @@ module datapath(
 			colour <= colour_erase_square;
 			coordinates <= coord_erase_square;
 			erase_square_done <= erase_square_done_wire;
+			// send address to map background
+			map_mem_address <= w_map_erase_add;
 		end
 	end
 endmodule

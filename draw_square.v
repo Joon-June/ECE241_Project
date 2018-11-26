@@ -4,7 +4,7 @@ module draw_square_grid(
     input [3:0]COUNTER_X, //Uppercase indicates grid coutner
     input [3:0]COUNTER_Y, //Uppercase indicates grid coutner
     output [8:0]colour,
-	output reg square_done,
+	 output reg square_done,
     output [7:0]x, //Will go into VGA Input
     output [6:0]y //Will go into VGA Input
     );

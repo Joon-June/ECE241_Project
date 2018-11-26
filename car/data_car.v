@@ -53,7 +53,7 @@ module datapath_car(
 	
 	
 	/*___________Counter enabled during delay state_______*/
-	DelayCounter d1(
+	DelayCar d1(
 						.Clock(clk),
 						.resetn(resetn),
 						.delay_length(delay_frames),
@@ -156,13 +156,15 @@ module datapath_car(
 			erase_done <= erase_done_wire;
 		end
 		else if(destroyed_state) begin
+			Counter_X <= 0;
+			Counter_Y <= 0;
 			draw_done <= enable_draw;
 		end
 	end
 endmodule
 
 // Module to count initial delay
-module DelayCounter(Clock, resetn, delay_length, Enable, delay_done);
+module DelayCar(Clock, resetn, delay_length, Enable, delay_done);
 	input Clock;
 	input resetn;
 	input Enable;
