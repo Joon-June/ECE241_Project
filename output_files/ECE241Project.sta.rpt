@@ -1,9 +1,5 @@
 Timing Analyzer report for ECE241Project
-<<<<<<< HEAD
-Sun Nov 25 01:26:26 2018
-=======
-Sun Nov 25 19:09:42 2018
->>>>>>> 622041dea1303b7bf767fafeb3c1a43c8e109b01
+Sun Nov 25 23:49:39 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -103,20 +99,12 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 4           ;
 ; Maximum allowed            ; 2           ;
 ;                            ;             ;
-<<<<<<< HEAD
-; Average used               ; 1.21        ;
-=======
-; Average used               ; 1.30        ;
->>>>>>> 622041dea1303b7bf767fafeb3c1a43c8e109b01
+; Average used               ; 1.32        ;
 ; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-<<<<<<< HEAD
-;     Processor 2            ;  20.5%      ;
-=======
-;     Processor 2            ;  29.9%      ;
->>>>>>> 622041dea1303b7bf767fafeb3c1a43c8e109b01
+;     Processor 2            ;  32.1%      ;
 +----------------------------+-------------+
 
 
@@ -772,11 +760,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-<<<<<<< HEAD
-    Info: Processing started: Sun Nov 25 01:26:13 2018
-=======
-    Info: Processing started: Sun Nov 25 19:08:53 2018
->>>>>>> 622041dea1303b7bf767fafeb3c1a43c8e109b01
+    Info: Processing started: Sun Nov 25 23:48:54 2018
 Info: Command: quartus_sta ECE241Project -c ECE241Project
 Info: qsta_default_script.tcl version: #2
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -896,16 +880,9 @@ Info (332146): Worst-case minimum pulse width slack is 1.666
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 2 warnings
-<<<<<<< HEAD
-    Info: Peak virtual memory: 5194 megabytes
-    Info: Processing ended: Sun Nov 25 01:26:26 2018
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:14
-=======
-    Info: Peak virtual memory: 5264 megabytes
-    Info: Processing ended: Sun Nov 25 19:09:42 2018
-    Info: Elapsed time: 00:00:49
+    Info: Peak virtual memory: 5267 megabytes
+    Info: Processing ended: Sun Nov 25 23:49:39 2018
+    Info: Elapsed time: 00:00:45
     Info: Total CPU time (on all processors): 00:00:57
->>>>>>> 622041dea1303b7bf767fafeb3c1a43c8e109b01
 
 
